@@ -6,6 +6,11 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { WorldMorphPage } from '../pages/worldmorph/worldmorph';
+
+import { WorldMorphService} from '../pages/worldmorph/services/worldmorph.service'
+import { IDE_MorphService} from '../pages/worldmorph/services/ide_morph.service'
+import { PointService} from '../pages/worldmorph/services/point.service'
+
 @NgModule({
   declarations: [
     MyApp,
@@ -27,6 +32,9 @@ import { WorldMorphPage } from '../pages/worldmorph/worldmorph';
     TabsPage,
     WorldMorphPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, 
+              WorldMorphService, 
+              IDE_MorphService,
+              PointService ]
 })
 export class AppModule {}
