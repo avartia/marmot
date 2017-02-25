@@ -34,9 +34,4 @@ Yiqiang Chen:
     TriggerMorph
     MenuItemMorph
     Color
-<<<<<<< HEAD
     Point
-=======
-    Point
-aaaaabbb
->>>>>>> adec6b17a77b8811d54c4dd4b952c9a0a04090d0

@@ -2,6 +2,11 @@
 //Point Class
 
 export interface PointInterface{
+
+    x:number;
+    
+    y:number;
+    
     //Point string representation: e.g. '(12,68)'
     toString() : string;
 
@@ -9,25 +14,25 @@ export interface PointInterface{
     copy() : PointInterface;
 
     //Point comparison(==)
-    equal(otherPoint): boolean;
+    equal(otherPoint :PointInterface): boolean;
 
     //Point comparison(>)
-    gt(otherPoint): boolean;
+    gt(otherPoint :PointInterface): boolean;
     
     //Point comparison(<)
-    lt(otherPoint): boolean;    
+    lt(otherPoint :PointInterface): boolean;    
 
     //Point comparison(>=)
-    ge(otherPoint): boolean;
+    ge(otherPoint :PointInterface): boolean;
 
     //Point comparison(<=)
-    le(otherPoint): boolean;
+    le(otherPoint :PointInterface): boolean;
 
     //Point comparison(max)
-    max(otherPoint): boolean;
+    max(otherPoint :PointInterface): boolean;
 
     //Point comparison(min)
-    min(otherPoint): boolean;
+    min(otherPoint :PointInterface): boolean;
 
     //Point conversion(round)
     round(): PointInterface;
@@ -71,7 +76,27 @@ export interface PointInterface{
     //Point coordinates(answer the angle in radians.Right is 0, down is 90)  
     theta(): number;    
 
-      
+    //Point functions(cross product, e.g. (x1*y2,x2*y1))
+    crossProduct(otherPoint:PointInterface): PointInterface;
+    
+    //Point functions(sqrt((x1-x2)^2 + (y1-y2)^2))  
+    distanceBetween(otherPoint:PointInterface): number;       
+
+    //Point functions(direction must be 'vertical' or 'horizontal') 
+    flip(direction:string, center:PointInterface): PointInterface;    
+
+    //Point functions(move at an angle in a distance.up is 0, right is 90)  
+    moveAtAngleIndistance(distance:number, angle:number): PointInterface;    
+
+    //Point functions(scale to larger or smaller)
+    scaleBy(scalePoint:PointInterface): PointInterface;
+    
+    //Point functions(add offset)  
+    translateBy(offsetPoint:PointInterface): PointInterface;       
+
+    //Point functions(anticlockwise rotation angle) 
+    rotateBy(angle:number, centerPoint:PointInterface): PointInterface;    
+    
 }
 
 export interface PointConstructor {

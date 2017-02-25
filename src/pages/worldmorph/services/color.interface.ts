@@ -10,7 +10,7 @@ export interface ColorInterface{
   copy() : ColorInterface;
 
   //Color comparison
-  equal(otherColor): boolean;
+  equal(otherColor: ColorInterface): boolean;
 
   //Color conversion (from rgb to hsv)
   toHsv(): number[];
