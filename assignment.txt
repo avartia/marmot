@@ -1,0 +1,38 @@
+interafce assignment:
+
+Siyu Xie:
+    Node
+    Rectangle
+    BlinkerMorph
+    CursorMorph
+    BouncerMorph*
+    BoxMorph
+    InspectorMorph
+    MenuMorph
+    MouseSensorMorph*
+    SpeechBubbleMorph
+    CircleBoxMorph
+    SliderButtonMorph
+    SliderMorph
+    ColorPaletteMorph
+    GrayPaletteMorph
+    ColorPickerMorph 
+
+Yiqiang Chen:
+    Morph
+    FrameMorph
+    ScrollFrameMorph
+    ListMorph
+    StringFieldMorph
+    WorldMorph
+    HandleMorph
+    HandMorph
+    PenMorph
+    ShadowMorph
+    StringMorph
+    TextMorph
+    TriggerMorph
+    MenuItemMorph
+    Color
+    Point
+aaaaa
