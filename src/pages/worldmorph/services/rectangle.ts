@@ -1,20 +1,23 @@
 import { PointService } from './point.service'
 import { Point } from './point'
-export class Rectangle{
+import {RectangleInterface} from './shared.interface'
+
+export class Rectangle implements RectangleInterface{
   private topLeftPoint: Point;
   private bottomRightPoint: Point;
 
-  constructor(left:number = 0,
+  constructor(pointService:PointService,
+              left:number = 0,
               top:number = 0,
               right:number = 0,
-              bottom:number = 0,
-              private pointService:PointService) { 
+              bottom:number = 0) { 
     this.topLeftPoint = pointService.create(left, top);
     this.bottomRightPoint = pointService.create(right, bottom);
   }
 
-  public extent(): Point{
-    return this.bottomRightPoint.subtract(this.topLeftPoint);
-  }
+  // public extent(): Point{
+  //   return this.bottomRightPoint.subtract(this.topLeftPoint);
+  // }
   
 }
+

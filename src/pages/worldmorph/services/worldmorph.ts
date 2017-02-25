@@ -1,7 +1,8 @@
 import {FrameMorph} from './framemorph'
 import {Rectangle} from './rectangle'
+import {WorldMorphInterface} from './shared.interface'
 
-export class WorldMorph extends FrameMorph{
+export class WorldMorph extends FrameMorph implements WorldMorphInterface{
   public isDevMode: boolean;
   public broken: Rectangle[]; 
   constructor() { 
@@ -19,7 +20,7 @@ export class WorldMorph extends FrameMorph{
     let myself = this;
     this.condenseDamages();
     this.broken.forEach((rect:Rectangle) => {
-      if(rect)
+      
     })
 
   }

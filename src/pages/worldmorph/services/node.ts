@@ -1,6 +1,8 @@
-export class Node {
+import {NodeInterface} from './shared.interface'
 
-  constructor(public parent:Node = null,
+export class Node implements NodeInterface {
+
+  constructor(public parent:Node = undefined,
               public children:Node[] = [] ) {
   }
 

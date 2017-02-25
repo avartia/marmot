@@ -1,7 +1,8 @@
 import {Node} from './node'
-import {doNothing} from './shared'
+import {MorphInterface} from './shared.interface'
+import {doNothing} from './shared.function'
 
-export class Morph extends Node{
+export class Morph extends Node implements MorphInterface{
     protected fps:number; 
     protected lastTime:number;
     public isVisible:boolean;
@@ -13,9 +14,9 @@ export class Morph extends Node{
     }
     
     public stepFrame(){
-        let currentTime:number, 
-            leftoverTime:number,
-            elapsedTime:number;
+        let currentTime:number; 
+        let leftoverTime:number;
+        let elapsedTime:number;
         currentTime = Date.now();
         elapsedTime = currentTime - this.lastTime; 
         if(this.fps > 0){
