@@ -1,4 +1,4 @@
-import {ScrollFrameMorphInterface} from './shared.interface'
+import {ScrollFrameMorphInterface} from './scrollframemorph.interface'
 
 export class ScrollFrameMorph implements ScrollFrameMorphInterface{
 

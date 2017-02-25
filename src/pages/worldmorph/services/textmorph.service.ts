@@ -1,7 +1,7 @@
 import { Injectable }    from '@angular/core';
 
 import {TextMorph} from './TextMorph'
-import {TextMorphConstructor, TextMorphInterface} from './shared.interface'
+import {TextMorphConstructor, TextMorphInterface} from './textmorph.interface'
 
 @Injectable()
 export class TextMorphService{
@@ -11,11 +11,11 @@ export class TextMorphService{
    }
 
   create(): TextMorph{
-    return this.createTextMorph(TextMorph) as TextMorph;
+    return this.createTextMorph(TextMorph);
   }
 
-  private createTextMorph(textMorphConstructor: TextMorphConstructor): TextMorphInterface {
-    return new textMorphConstructor();
+  private createTextMorph(textMorphConstructor: TextMorphConstructor): TextMorph {
+    return new textMorphConstructor() as TextMorph;
   }
 
   get(){

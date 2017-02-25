@@ -1,21 +1,21 @@
 import { Injectable }    from '@angular/core';
 
 import {GrayPaletteMorph} from './GrayPaletteMorph'
-import {GrayPaletteMorphConstructor, GrayPaletteMorphInterface} from './shared.interface'
+import {GrayPaletteMorphConstructor, GrayPaletteMorphServiceInterface} from './graypalettemorph.interface'
 
 @Injectable()
-export class GrayPaletteMorphService{
+export class GrayPaletteMorphService implements GrayPaletteMorphServiceInterface{
 
   constructor() {
 
    }
 
   create(): GrayPaletteMorph{
-    return this.createGrayPaletteMorph(GrayPaletteMorph) as GrayPaletteMorph;
+    return this.createGrayPaletteMorph(GrayPaletteMorph);
   }
 
-  private createGrayPaletteMorph(grayPaletteMorphConstructor: GrayPaletteMorphConstructor): GrayPaletteMorphInterface {
-    return new grayPaletteMorphConstructor();
+  private createGrayPaletteMorph(grayPaletteMorphConstructor: GrayPaletteMorphConstructor): GrayPaletteMorph {
+    return new grayPaletteMorphConstructor() as GrayPaletteMorph;
   }
 
   get(){

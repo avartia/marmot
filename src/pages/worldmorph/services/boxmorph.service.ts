@@ -1,10 +1,10 @@
 import { Injectable }    from '@angular/core';
 
-import {BoxMorph} from './BoxMorph'
-import {BoxMorphConstructor, BoxMorphInterface} from './shared.interface'
+import {BoxMorph} from './boxMorph'
+import {BoxMorphConstructor, BoxMorphServiceInterface} from './boxmorph.interface'
 
 @Injectable()
-export class BoxMorphService{
+export class BoxMorphService implements BoxMorphServiceInterface{
 
   constructor() {
 
@@ -14,8 +14,8 @@ export class BoxMorphService{
     return this.createBoxMorph(BoxMorph) as BoxMorph;
   }
 
-  private createBoxMorph(boxMorphConstructor: BoxMorphConstructor): BoxMorphInterface {
-    return new boxMorphConstructor();
+  private createBoxMorph(boxMorphConstructor: BoxMorphConstructor): BoxMorph {
+    return new boxMorphConstructor() as BoxMorph;
   }
 
   get(){

@@ -1,7 +1,7 @@
 import { Injectable }    from '@angular/core';
 
 import {MouseSensorMorph} from './MouseSensorMorph'
-import {MouseSensorMorphConstructor, MouseSensorMorphInterface} from './shared.interface'
+import {MouseSensorMorphConstructor, MouseSensorMorphServiceInterface} from './mousesensormorph.interface'
 
 @Injectable()
 export class MouseSensorMorphService{
@@ -11,11 +11,11 @@ export class MouseSensorMorphService{
    }
 
   create(): MouseSensorMorph{
-    return this.createMouseSensorMorph(MouseSensorMorph) as MouseSensorMorph;
+    return this.createMouseSensorMorph(MouseSensorMorph) ;
   }
 
-  private createMouseSensorMorph(mouseSensorMorphConstructor: MouseSensorMorphConstructor): MouseSensorMorphInterface {
-    return new mouseSensorMorphConstructor();
+  private createMouseSensorMorph(mouseSensorMorphConstructor: MouseSensorMorphConstructor): MouseSensorMorph {
+    return new mouseSensorMorphConstructor()  as MouseSensorMorph;
   }
 
   get(){

@@ -1,4 +1,4 @@
-import {BouncerMorphInterface} from './shared.interface'
+import {BouncerMorphInterface} from './bouncermorph.interface'
 
 export class BouncerMorph implements BouncerMorphInterface{
 

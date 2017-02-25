@@ -1,4 +1,4 @@
-import {FrameMorphInterface} from './shared.interface'
+import {FrameMorphInterface} from './framemorph.interface'
 import {Morph} from './morph'
 
 export class FrameMorph extends Morph implements FrameMorphInterface{

@@ -1,7 +1,7 @@
 import { Injectable }    from '@angular/core';
 
-import {Rectangle} from './Rectangle'
-import {RectangleConstructor, RectangleInterface, RectangleServiceInterface} from './shared.interface'
+import {Rectangle} from './rectangle'
+import {RectangleConstructor, RectangleServiceInterface} from './rectangle.interface'
 import { PointService } from './point.service'
 
 @Injectable()
@@ -20,7 +20,7 @@ export class RectangleService implements RectangleServiceInterface{
                                 left, 
                                 top, 
                                 right,
-                                bottom) as Rectangle;
+                                bottom);
   }
 
   private createRectangle(rectangleConstructor: RectangleConstructor, 
@@ -28,12 +28,12 @@ export class RectangleService implements RectangleServiceInterface{
                           left:number,
                           top:number,
                           right:number,
-                          bottom:number): RectangleInterface {
+                          bottom:number): Rectangle {
     return new rectangleConstructor(pointService,
                                     left,
                                     top,
                                     right,
-                                    bottom);
+                                    bottom) as Rectangle;
   }
 
   get(){

@@ -1,21 +1,21 @@
 import { Injectable }    from '@angular/core';
 
 import {HandleMorph} from './HandleMorph'
-import {HandleMorphConstructor, HandleMorphInterface} from './shared.interface'
+import {HandleMorphConstructor, HandleMorphServiceInterface} from './handlemorph.interface'
 
 @Injectable()
-export class HandleMorphService{
+export class HandleMorphService implements HandleMorphServiceInterface{
 
   constructor() {
 
    }
 
   create(): HandleMorph{
-    return this.createHandleMorph(HandleMorph) as HandleMorph;
+    return this.createHandleMorph(HandleMorph);
   }
 
-  private createHandleMorph(handleMorphConstructor: HandleMorphConstructor): HandleMorphInterface {
-    return new handleMorphConstructor();
+  private createHandleMorph(handleMorphConstructor: HandleMorphConstructor): HandleMorph {
+    return new handleMorphConstructor() as HandleMorph;
   }
 
   get(){

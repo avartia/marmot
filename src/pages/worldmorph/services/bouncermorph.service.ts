@@ -1,20 +1,20 @@
 import { Injectable }    from '@angular/core';
 
-import {BouncerMorph} from './BouncerMorph'
-import {BouncerMorphConstructor, BouncerMorphInterface} from './shared.interface'
+import {BouncerMorph} from './bouncerMorph'
+import {BouncerMorphConstructor, BouncerMorphServiceInterface} from './bouncermorph.interface'
 
 @Injectable()
-export class BouncerMorphService{
+export class BouncerMorphService implements BouncerMorphServiceInterface{
 
   constructor() {
 
    }
 
   create(): BouncerMorph{
-    return this.createBouncerMorph(BouncerMorph) as BouncerMorph;
+    return this.createBouncerMorph(BouncerMorph);
   }
 
-  private createBouncerMorph(bouncerMorphConstructor: BouncerMorphConstructor): BouncerMorphInterface {
+  private createBouncerMorph(bouncerMorphConstructor: BouncerMorphConstructor): BouncerMorph {
     return new bouncerMorphConstructor();
   }
 

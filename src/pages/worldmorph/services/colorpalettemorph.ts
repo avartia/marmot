@@ -1,4 +1,4 @@
-import {ColorPaletteMorphInterface} from './shared.interface'
+import {ColorPaletteMorphInterface} from './colorpalettemorph.interface'
 
 export class ColorPaletteMorph implements ColorPaletteMorphInterface{
 

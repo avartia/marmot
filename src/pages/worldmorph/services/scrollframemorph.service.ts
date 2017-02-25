@@ -1,21 +1,21 @@
 import { Injectable }    from '@angular/core';
 
 import {ScrollFrameMorph} from './ScrollFrameMorph'
-import {ScrollFrameMorphConstructor, ScrollFrameMorphInterface} from './shared.interface'
+import {ScrollFrameMorphConstructor, ScrollFrameMorphServiceInterface} from './scrollframemorph.interface'
 
 @Injectable()
-export class ScrollFrameMorphService{
+export class ScrollFrameMorphService implements ScrollFrameMorphServiceInterface{
 
   constructor() {
 
    }
 
   create(): ScrollFrameMorph{
-    return this.createScrollFrameMorph(ScrollFrameMorph) as ScrollFrameMorph;
+    return this.createScrollFrameMorph(ScrollFrameMorph);
   }
 
-  private createScrollFrameMorph(scrollFrameMorphConstructor: ScrollFrameMorphConstructor): ScrollFrameMorphInterface {
-    return new scrollFrameMorphConstructor();
+  private createScrollFrameMorph(scrollFrameMorphConstructor: ScrollFrameMorphConstructor): ScrollFrameMorph {
+    return new scrollFrameMorphConstructor() as ScrollFrameMorph;
   }
 
   get(){

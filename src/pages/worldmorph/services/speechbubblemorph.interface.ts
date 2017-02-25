@@ -1,0 +1,18 @@
+
+//SpeechBubbleMorph Class
+
+export interface SpeechBubbleMorphInterface{
+  //public intance member and public intance methods of SpeechBubbleMorph Class
+}
+
+export interface SpeechBubbleMorphConstructor {
+    //constructor of SpeechBubbleMorph Class
+
+    new (): SpeechBubbleMorphInterface;
+}
+
+export interface SpeechBubbleMorphServiceInterface{
+
+    //public methods of SpeechBubbleMorphService
+    create(): SpeechBubbleMorphInterface;
+}

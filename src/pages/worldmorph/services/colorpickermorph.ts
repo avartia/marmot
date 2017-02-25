@@ -1,4 +1,4 @@
-import {ColorPickerMorphInterface} from './shared.interface'
+import {ColorPickerMorphInterface} from './colorpickermorph.interface'
 
 export class ColorPickerMorph implements ColorPickerMorphInterface{
 

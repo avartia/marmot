@@ -1,4 +1,4 @@
-import {StringFieldMorphInterface} from './shared.interface'
+import {StringFieldMorphInterface} from './stringfieldmorph.interface'
 
 export class StringFieldMorph implements StringFieldMorphInterface{
 

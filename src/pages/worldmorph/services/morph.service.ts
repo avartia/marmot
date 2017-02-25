@@ -1,10 +1,10 @@
 import { Injectable }    from '@angular/core';
 
 import {Morph} from './morph'
-import {MorphConstructor, MorphInterface} from './shared.interface'
+import {MorphConstructor, MorphInterface, MorphServiceInterface} from './morph.interface'
 
 @Injectable()
-export class MorphService{
+export class MorphService implements MorphServiceInterface{
 
   constructor() {
 

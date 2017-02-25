@@ -1,4 +1,4 @@
-import {ListMorphInterface} from './shared.interface'
+import {ListMorphInterface} from './listmorph.interface'
 
 export class ListMorph implements ListMorphInterface{
 

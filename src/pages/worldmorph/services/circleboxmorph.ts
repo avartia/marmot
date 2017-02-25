@@ -1,4 +1,4 @@
-import {CircleBoxMorphInterface} from './shared.interface'
+import {CircleBoxMorphInterface} from './circleboxmorph.interface'
 
 export class CircleBoxMorph implements CircleBoxMorphInterface{
 

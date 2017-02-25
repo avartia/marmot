@@ -1,21 +1,21 @@
 import { Injectable }    from '@angular/core';
 
 import {FrameMorph} from './FrameMorph'
-import {FrameMorphConstructor, FrameMorphInterface} from './shared.interface'
+import {FrameMorphConstructor, FrameMorphServiceInterface} from './framemorph.interface'
 
 @Injectable()
-export class FrameMorphService{
+export class FrameMorphService implements FrameMorphServiceInterface{
 
   constructor() {
 
    }
 
   create(): FrameMorph{
-    return this.createFrameMorph(FrameMorph) as FrameMorph;
+    return this.createFrameMorph(FrameMorph);
   }
 
-  private createFrameMorph(frameMorphConstructor: FrameMorphConstructor): FrameMorphInterface {
-    return new frameMorphConstructor();
+  private createFrameMorph(frameMorphConstructor: FrameMorphConstructor): FrameMorph {
+    return new frameMorphConstructor() as FrameMorph;
   }
 
   get(){

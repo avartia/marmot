@@ -1,4 +1,4 @@
-import {TriggerMorphInterface} from './shared.interface'
+import {TriggerMorphInterface} from './triggermorph.interface'
 
 export class TriggerMorph implements TriggerMorphInterface{
 

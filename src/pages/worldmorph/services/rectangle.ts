@@ -1,6 +1,6 @@
 import { PointService } from './point.service'
 import { Point } from './point'
-import {RectangleInterface} from './shared.interface'
+import { RectangleInterface } from './rectangle.interface'
 
 export class Rectangle implements RectangleInterface{
   private topLeftPoint: Point;

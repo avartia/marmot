@@ -1,33 +1,28 @@
 import { Injectable }    from '@angular/core';
 
 import {Color} from './color'
-import {ColorConstructor, ColorInterface} from './shared.interface'
+import {ColorConstructor, ColorServiceInterface} from './color.interface'
 
 @Injectable()
-export class ColorService{
+export class ColorService implements ColorServiceInterface{
 
   constructor() {
 
    }
 
-  create(): Color{
-    return this.createColor(Color) as Color;
+  create(r:number,
+         g:number,
+         b:number,
+         a:number): Color{
+    return this.createColor(Color, r, g, b, a);
   }
 
-  private createColor(colorConstructor: ColorConstructor): ColorInterface {
-    return new colorConstructor();
-  }
-
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
+  private createColor(colorConstructor: ColorConstructor,
+                      r:number,
+                      g:number,
+                      b:number,
+                      a:number): Color{
+    return new colorConstructor(r, g, b, a) as Color;
   }
 
 }

@@ -1,21 +1,21 @@
 import { Injectable }    from '@angular/core';
 
 import {ColorPickerMorph} from './ColorPickerMorph'
-import {ColorPickerMorphConstructor, ColorPickerMorphInterface} from './shared.interface'
+import {ColorPickerMorphConstructor, ColorPickerMorphServiceInterface} from './colorpickermorph.interface'
 
 @Injectable()
-export class ColorPickerMorphService{
+export class ColorPickerMorphService implements ColorPickerMorphServiceInterface{
 
   constructor() {
 
    }
 
   create(): ColorPickerMorph{
-    return this.createColorPickerMorph(ColorPickerMorph) as ColorPickerMorph;
+    return this.createColorPickerMorph(ColorPickerMorph);
   }
 
-  private createColorPickerMorph(colorPickerMorphConstructor: ColorPickerMorphConstructor): ColorPickerMorphInterface {
-    return new colorPickerMorphConstructor();
+  private createColorPickerMorph(colorPickerMorphConstructor: ColorPickerMorphConstructor): ColorPickerMorph {
+    return new colorPickerMorphConstructor() as ColorPickerMorph;
   }
 
   get(){

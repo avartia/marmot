@@ -1,4 +1,4 @@
-import {SliderMorphInterface} from './shared.interface'
+import {SliderMorphInterface} from './slidermorph.interface'
 
 export class SliderMorph implements SliderMorphInterface{
 

@@ -1,7 +1,7 @@
 import { Injectable }    from '@angular/core';
 
 import {StringMorph} from './StringMorph'
-import {StringMorphConstructor, StringMorphInterface} from './shared.interface'
+import {StringMorphConstructor, StringMorphServiceInterface} from './stringmorph.interface'
 
 @Injectable()
 export class StringMorphService{
@@ -11,11 +11,11 @@ export class StringMorphService{
    }
 
   create(): StringMorph{
-    return this.createStringMorph(StringMorph) as StringMorph;
+    return this.createStringMorph(StringMorph);
   }
 
-  private createStringMorph(stringMorphConstructor: StringMorphConstructor): StringMorphInterface {
-    return new stringMorphConstructor();
+  private createStringMorph(stringMorphConstructor: StringMorphConstructor): StringMorph {
+    return new stringMorphConstructor() as StringMorph;
   }
 
   get(){

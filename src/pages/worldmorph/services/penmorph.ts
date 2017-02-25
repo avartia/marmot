@@ -1,4 +1,4 @@
-import {PenMorphInterface} from './shared.interface'
+import {PenMorphInterface} from './penmorph.interface'
 
 export class PenMorph implements PenMorphInterface{
 

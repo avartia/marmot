@@ -1,4 +1,4 @@
-import {GrayPaletteMorphInterface} from './shared.interface'
+import {GrayPaletteMorphInterface} from './graypalettemorph.interface'
 
 export class GrayPaletteMorph implements GrayPaletteMorphInterface{
 

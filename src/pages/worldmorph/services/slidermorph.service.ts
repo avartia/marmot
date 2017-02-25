@@ -1,21 +1,21 @@
 import { Injectable }    from '@angular/core';
 
 import {SliderMorph} from './SliderMorph'
-import {SliderMorphConstructor, SliderMorphInterface} from './shared.interface'
+import {SliderMorphConstructor, SliderMorphServiceInterface} from './slidermorph.interface'
 
 @Injectable()
-export class SliderMorphService{
+export class SliderMorphService implements SliderMorphServiceInterface{
 
   constructor() {
 
    }
 
   create(): SliderMorph{
-    return this.createSliderMorph(SliderMorph) as SliderMorph;
+    return this.createSliderMorph(SliderMorph);
   }
 
-  private createSliderMorph(sliderMorphConstructor: SliderMorphConstructor): SliderMorphInterface {
-    return new sliderMorphConstructor();
+  private createSliderMorph(sliderMorphConstructor: SliderMorphConstructor): SliderMorph {
+    return new sliderMorphConstructor() as SliderMorph;
   }
 
   get(){

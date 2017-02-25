@@ -1,4 +1,4 @@
-import {ColorInterface} from './shared.interface'
+import {ColorInterface} from './color.interface'
 
 export class Color implements ColorInterface{
 

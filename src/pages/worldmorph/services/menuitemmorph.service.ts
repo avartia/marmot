@@ -1,21 +1,21 @@
 import { Injectable }    from '@angular/core';
 
 import {MenuItemMorph} from './MenuItemMorph'
-import {MenuItemMorphConstructor, MenuItemMorphInterface} from './shared.interface'
+import {MenuItemMorphConstructor, MenuItemMorphServiceInterface} from './menuitemmorph.interface'
 
 @Injectable()
-export class MenuItemMorphService{
+export class MenuItemMorphService implements MenuItemMorphServiceInterface{
 
   constructor() {
 
    }
 
   create(): MenuItemMorph{
-    return this.createMenuItemMorph(MenuItemMorph) as MenuItemMorph;
+    return this.createMenuItemMorph(MenuItemMorph);
   }
 
-  private createMenuItemMorph(menuItemMorphConstructor: MenuItemMorphConstructor): MenuItemMorphInterface {
-    return new menuItemMorphConstructor();
+  private createMenuItemMorph(menuItemMorphConstructor: MenuItemMorphConstructor): MenuItemMorph {
+    return new menuItemMorphConstructor() as MenuItemMorph;
   }
 
   get(){

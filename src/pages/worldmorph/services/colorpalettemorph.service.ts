@@ -1,10 +1,10 @@
 import { Injectable }    from '@angular/core';
 
 import {ColorPaletteMorph} from './ColorPaletteMorph'
-import {ColorPaletteMorphConstructor, ColorPaletteMorphInterface} from './shared.interface'
+import {ColorPaletteMorphConstructor, ColorPaletteMorphServiceInterface} from './colorpalettemorph.interface'
 
 @Injectable()
-export class ColorPaletteMorphService{
+export class ColorPaletteMorphService implements ColorPaletteMorphServiceInterface{
 
   constructor() {
 
@@ -14,20 +14,8 @@ export class ColorPaletteMorphService{
     return this.createColorPaletteMorph(ColorPaletteMorph) as ColorPaletteMorph;
   }
 
-  private createColorPaletteMorph(colorPaletteMorphConstructor: ColorPaletteMorphConstructor): ColorPaletteMorphInterface {
-    return new colorPaletteMorphConstructor();
-  }
-
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
+  private createColorPaletteMorph(colorPaletteMorphConstructor: ColorPaletteMorphConstructor): ColorPaletteMorph {
+    return new colorPaletteMorphConstructor() as ColorPaletteMorph;
   }
 
 }

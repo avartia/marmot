@@ -1,4 +1,4 @@
-import {MenuMorphInterface} from './shared.interface'
+import {MenuMorphInterface} from './menumorph.interface'
 
 export class MenuMorph implements MenuMorphInterface{
 

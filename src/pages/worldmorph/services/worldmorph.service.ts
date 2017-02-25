@@ -1,21 +1,21 @@
 import { Injectable }    from '@angular/core';
 
 import {WorldMorph} from './WorldMorph'
-import {WorldMorphConstructor, WorldMorphInterface} from './shared.interface'
+import {WorldMorphConstructor, WorldMorphServiceInterface} from './worldmorph.interface'
 
 @Injectable()
-export class WorldMorphService{
+export class WorldMorphService implements WorldMorphServiceInterface{
 
   constructor() {
 
    }
 
   create(): WorldMorph{
-    return this.createWorldMorph(WorldMorph) as WorldMorph;
+    return this.createWorldMorph(WorldMorph);
   }
 
-  private createWorldMorph(worldMorphConstructor: WorldMorphConstructor): WorldMorphInterface {
-    return new worldMorphConstructor();
+  private createWorldMorph(worldMorphConstructor: WorldMorphConstructor): WorldMorph {
+    return new worldMorphConstructor() as WorldMorph;
   }
 
   get(){

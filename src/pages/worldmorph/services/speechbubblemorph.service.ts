@@ -1,33 +1,21 @@
 import { Injectable }    from '@angular/core';
 
 import {SpeechBubbleMorph} from './SpeechBubbleMorph'
-import {SpeechBubbleMorphConstructor, SpeechBubbleMorphInterface} from './shared.interface'
+import {SpeechBubbleMorphConstructor, SpeechBubbleMorphServiceInterface} from './speechbubblemorph.interface'
 
 @Injectable()
-export class SpeechBubbleMorphService{
+export class SpeechBubbleMorphService implements SpeechBubbleMorphServiceInterface{
 
   constructor() {
 
-   }
+  }
 
   create(): SpeechBubbleMorph{
-    return this.createSpeechBubbleMorph(SpeechBubbleMorph) as SpeechBubbleMorph;
+    return this.createSpeechBubbleMorph(SpeechBubbleMorph);
   }
 
-  private createSpeechBubbleMorph(speechBubbleMorphConstructor: SpeechBubbleMorphConstructor): SpeechBubbleMorphInterface {
-    return new speechBubbleMorphConstructor();
-  }
-
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
+  private createSpeechBubbleMorph(speechBubbleMorphConstructor: SpeechBubbleMorphConstructor): SpeechBubbleMorph {
+    return new speechBubbleMorphConstructor() as SpeechBubbleMorph;
   }
 
 }

@@ -1,4 +1,4 @@
-import {NodeInterface} from './shared.interface'
+import {NodeInterface} from './node.interface'
 
 export class Node implements NodeInterface {
 

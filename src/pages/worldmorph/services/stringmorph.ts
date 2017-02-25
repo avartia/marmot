@@ -1,4 +1,4 @@
-import {StringMorphInterface} from './shared.interface'
+import {StringMorphInterface} from './stringmorph.interface'
 
 export class StringMorph implements StringMorphInterface{
 

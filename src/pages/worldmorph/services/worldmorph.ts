@@ -1,6 +1,6 @@
 import {FrameMorph} from './framemorph'
 import {Rectangle} from './rectangle'
-import {WorldMorphInterface} from './shared.interface'
+import {WorldMorphInterface} from './worldmorph.interface'
 
 export class WorldMorph extends FrameMorph implements WorldMorphInterface{
   public isDevMode: boolean;

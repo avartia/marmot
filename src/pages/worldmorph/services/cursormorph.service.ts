@@ -1,33 +1,21 @@
 import { Injectable }    from '@angular/core';
 
 import {CursorMorph} from './CursorMorph'
-import {CursorMorphConstructor, CursorMorphInterface} from './shared.interface'
+import {CursorMorphConstructor, CursorMorphServiceInterface} from './cursormorph.interface'
 
 @Injectable()
-export class CursorMorphService{
+export class CursorMorphService implements CursorMorphServiceInterface{
 
   constructor() {
 
    }
 
   create(): CursorMorph{
-    return this.createCursorMorph(CursorMorph) as CursorMorph;
+    return this.createCursorMorph(CursorMorph);
   }
 
-  private createCursorMorph(cursorMorphConstructor: CursorMorphConstructor): CursorMorphInterface {
-    return new cursorMorphConstructor();
-  }
-
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
+  private createCursorMorph(cursorMorphConstructor: CursorMorphConstructor): CursorMorph {
+    return new cursorMorphConstructor() as CursorMorph;
   }
 
 }
