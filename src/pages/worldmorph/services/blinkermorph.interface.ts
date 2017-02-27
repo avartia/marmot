@@ -1,5 +1,6 @@
 
 //BlinkerMorph Class
+//can be used for text cursors
 
 export interface BlinkerMorphInterface{
   //public intance member and public intance methods of BlinkerMorph Class
