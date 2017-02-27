@@ -33,5 +33,5 @@ Yiqiang Chen:
     TextMorph
     TriggerMorph
     MenuItemMorph
-    Color
-    Point
+    Color!
+    Point!

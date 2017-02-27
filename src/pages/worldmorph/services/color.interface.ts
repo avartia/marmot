@@ -49,5 +49,5 @@ export interface ColorServiceInterface{
     create(r:number,
            g:number,
            b:number,
-           a:number): ColorInterface;
+           a?:number): ColorInterface;
 }

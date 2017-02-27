@@ -13,7 +13,7 @@ export class ColorService implements ColorServiceInterface{
   create(r:number,
          g:number,
          b:number,
-         a:number): Color{
+         a?:number): Color{
     return this.createColor(Color, r, g, b, a);
   }
 
