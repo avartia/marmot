@@ -3,6 +3,8 @@ import {RectangleInterface} from './rectangle.interface'
 import {ColorInterface} from "./color.interface"
 import {MenuMorphInterface} from './menumorph.interface'
 import {PointInterface} from './point.interface'
+import {ShadowMorphInterface} from './shadowmorph.interface'
+
 //Morph Class
 
 export interface MorphInterface extends NodeInterface{
@@ -201,8 +203,73 @@ export interface MorphInterface extends NodeInterface{
 
   //Morph accessing(set color of morph with redrawing)
   setColor(newColor:ColorInterface):void;  
+
+  //Morph displaying(initialize background of a morph)
+  //if texture exists, then draw texture  
+  drawNew():void;
+
+  //Morph displaying
+  //initialize texture of a morph and draw texture
+  drawTexture(url:string):void;  
+
+  //Morph displaying(draw texture of a morph)
+  //maybe repeat texture 
+  drawCachedTexture():void;
+
+  //Morph displaying(draw canvas of a morph without its children)
+  drawOnCanvas(otherCanvas:HTMLCanvasElement,
+               drawingArea:RectangleInterface):void;
+
+  //Morph displaying(draw canvas of a morph with its children)
+  fullDrawOnCanvas(otherCanvas:HTMLCanvasElement,
+               drawingArea:RectangleInterface):void;
+
+  //Morph displaying(hide a morph with its children)
+  hide():void;
+
+  //Morph displaying(show a morph with its children)
+  show():void;  
+
+  //Morph displaying(toggle visibility of a morph with its children)
+  toggleVisibility():void; 
+
+  //Morph full image(?)
+  fullImageClassic():HTMLImageElement;
+
+  //Morph full image(?)
+  fullImage():HTMLImageElement;
+
+  //Morph shadow()
+  shadowImage(off:PointInterface, 
+              color:ColorInterface):HTMLCanvasElement;
   
-       
+  //Morph shadow()
+  shadowImageBlurred(off:PointInterface, 
+                     color:ColorInterface):HTMLCanvasElement;
+  
+  //Morph shadow()
+  shadow(off:PointInterface,
+         alpha:number, 
+         color:ColorInterface):ShadowMorphInterface;
+  
+  //Morph shadow()
+  addShadow(off:PointInterface,
+         alpha:number, 
+         color:ColorInterface):ShadowMorphInterface;
+
+  //Morph shadow()
+  getShadow():ShadowMorphInterface;
+
+  //Morph shadow()
+  removeShadow():void;
+  
+   
+  
+
+
+
+
+
 
 }
 
