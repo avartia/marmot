@@ -1,6 +1,32 @@
 interface assignment:
 ***if you have finished writing interface, 
 ***please append ! to show you have done!
+
+first phase:
+necessary class:
+  Node!
+  Rectangle!
+  Morph!
+  FrameMorph!
+  WorldMorph
+  HandMorph
+  Point!
+  Color!
+  SyntaxElementMorph
+  BlockMorph
+  CommandBlockMorph
+
+Siyu Xie:
+  SyntaxElementMorph
+  BlockMorph
+  CommandBlockMorph
+
+Yiqiang Chen:
+  WorldMorph
+  HandMorph
+
+
+
 Siyu Xie:
     Node
     Rectangle
