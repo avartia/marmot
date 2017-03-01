@@ -1,6 +1,31 @@
 interface assignment:
 ***if you have finished writing interface, 
 ***please append ! to show you have done!
+
+necessary morph:
+WorldMorph
+Rectangle!
+Point!
+FrameMorph!
+HandMorph
+Morph!
+Node!
+BlockMorph
+CommandBlockMorph
+
+Siyu Xie:
+SyntaxElementMorph
+BlockMorph
+CommandBlockMorph
+
+Yiqiang Chen:
+WorldMorph
+HandMorph
+
+
+
+
+
 Siyu Xie:
     Node
     Rectangle
@@ -18,10 +43,8 @@ Siyu Xie:
 
 Yiqiang Chen:
     Morph!
-    FrameMorph
-    ScrollFrameMorph
-    ListMorph
-    StringFieldMorph
+    FrameMorph!
+    ScrollFrameMorph!
     WorldMorph
     HandMorph
     PenMorph

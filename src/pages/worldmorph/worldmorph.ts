@@ -17,7 +17,7 @@ export class WorldMorphPage implements AfterViewChecked, OnDestroy{
   ngAfterViewChecked() {
     this.isLoop = true;
     this.world = this.worldMorphService.create();
-    this.world.isDevMode = true;
+    this.loop();
     this.ngZone.runOutsideAngular(() => this.loop());
   }
   ngOnDestroy() {

@@ -222,7 +222,7 @@ export interface MorphInterface extends NodeInterface{
                drawingArea:RectangleInterface):void;
 
   //Morph displaying(draw canvas of a morph with its children)
-  fullDrawOnCanvas(otherCanvas:HTMLCanvasElement,
+  fullDrawOn(otherCanvas:HTMLCanvasElement,
                drawingArea:RectangleInterface):void;
 
   //Morph displaying(hide a morph with its children)
