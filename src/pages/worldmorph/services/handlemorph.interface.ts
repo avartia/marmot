@@ -1,4 +1,4 @@
-
+import {WorldMorphInterface} from './worldmorph.interface'
 //HandleMorph Class
 
 export interface HandleMorphInterface{
@@ -14,5 +14,5 @@ export interface HandleMorphConstructor {
 export interface HandleMorphServiceInterface{
 
     //public methods of HandleMorphService
-    create(): HandleMorphInterface;
+    create(aWorld:WorldMorphInterface): HandleMorphInterface;
 }
