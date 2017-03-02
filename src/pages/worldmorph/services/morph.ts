@@ -1,11 +1,36 @@
 import {Node} from './node'
-import {MorphInterface} from './shared.interface'
+import {MorphInterface} from './morph.interface'
+import {Rectangle} from './rectangle'
+import {Color} from "./color"
+import {MenuMorph} from './menumorph'
+import {Point} from './point'
+import {ShadowMorph} from './shadowmorph'
+import {WorldMorph} from './worldmorph'
 import {doNothing} from './shared.function'
 
 export class Morph extends Node implements MorphInterface{
+    
+    public isVisible:boolean;
+    public image:HTMLCanvasElement;
+    public bounds:Rectangle;
+    public cachedFullImage:HTMLCanvasElement;
+    public cachedFullBounds:Rectangle;
+    public color:Color;
+    public alpha:number;
+    public isDraggable:boolean;
+    public isTemplate:boolean;
+    public acceptsDrops:boolean;
+    
     protected fps:number; 
     protected lastTime:number;
-    public isVisible:boolean;
+    protected trackChanges:boolean;
+    protected shadowBlur:number;
+    protected isMorph:boolean;
+    protected texture:string;
+    protected cachedTexture:HTMLImageElement; 
+    protected noticesTransparentClick:boolean;
+    protected customContextMenu:MenuMorph;
+
     constructor() {
         super();
         this.fps = 0;

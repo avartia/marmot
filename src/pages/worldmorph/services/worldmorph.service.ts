@@ -2,32 +2,24 @@ import { Injectable }    from '@angular/core';
 
 import {WorldMorph} from './WorldMorph'
 import {WorldMorphConstructor, WorldMorphServiceInterface} from './worldmorph.interface'
-
+import {HandMorphService} from './handmorph.service'
 @Injectable()
 export class WorldMorphService implements WorldMorphServiceInterface{
 
-  constructor() {
+  constructor(private handMorphService:HandMorphService) {
 
    }
 
-  create(): WorldMorph{
-    return this.createWorldMorph(WorldMorph);
+  create(aCanvas:HTMLCanvasElement): WorldMorph{
+    return this.createWorldMorph(WorldMorph, 
+                                 this.handMorphService,
+                                 aCanvas);
   }
 
-  private createWorldMorph(worldMorphConstructor: WorldMorphConstructor): WorldMorph {
-    return new worldMorphConstructor() as WorldMorph;
-  }
-
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
+  private createWorldMorph(worldMorphConstructor: WorldMorphConstructor,
+                           handMorphService:HandMorphService,
+                           aCanvas:HTMLCanvasElement): WorldMorph {
+    return new worldMorphConstructor(handMorphService, aCanvas) as WorldMorph;
   }
 
 }

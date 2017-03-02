@@ -7,7 +7,7 @@ necessary class:
   Node!
   Rectangle!
   Morph!
-  FrameMorph!
+  FrameMorph
   WorldMorph
   HandMorph
   Point!
@@ -17,13 +17,19 @@ necessary class:
   CommandBlockMorph
 
 Siyu Xie:
+  Node
+  Rectangle
   SyntaxElementMorph
   BlockMorph
   CommandBlockMorph
 
 Yiqiang Chen:
-  WorldMorph
-  HandMorph
+  Morph
+  Point
+  Color
+  FrameMorph!
+  WorldMorph!
+  HandMorph!
 
 
 
