@@ -9,19 +9,15 @@ necessary class:
   Morph!
   FrameMorph
   WorldMorph
-  HandMorph
+  HandMorph!
   Point!
   Color!
-  SyntaxElementMorph
-  BlockMorph
-  CommandBlockMorph
+  PenMorph
 
 Siyu Xie:
   Node
   Rectangle
-  SyntaxElementMorph
-  BlockMorph
-  CommandBlockMorph
+  PenMorph
 
 Yiqiang Chen:
   Morph

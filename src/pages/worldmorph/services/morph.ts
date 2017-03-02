@@ -9,7 +9,7 @@ import {WorldMorph} from './worldmorph'
 import {doNothing} from './shared.function'
 
 export class Morph extends Node implements MorphInterface{
-    
+        
     public isVisible:boolean;
     public image:HTMLCanvasElement;
     public bounds:Rectangle;
@@ -31,7 +31,7 @@ export class Morph extends Node implements MorphInterface{
     protected noticesTransparentClick:boolean;
     protected customContextMenu:MenuMorph;
 
-    constructor() {
+    constructor(noDraw:boolean) {
         super();
         this.fps = 0;
         this.lastTime = Date.now();
@@ -58,7 +58,22 @@ export class Morph extends Node implements MorphInterface{
         }
     }
 
-    public step:() => void = doNothing;
+    public drawNew():void{
+
+
+    }
+    public setWidth(width:number):void{
+
+    }
+
+    public setHeight(width:number):void{
+
+    }
+
+    public setExtent(extentPoint:Point, 
+                     silently:boolean):void{
+
+    }
 
 
 

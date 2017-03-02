@@ -16,8 +16,8 @@ export class WorldMorphPage implements AfterViewChecked, OnDestroy{
   }
   ngAfterViewChecked() {
     this.isLoop = true;
-    this.world = this.worldMorphService.create();
-    this.loop();
+    
+    this.world = this.worldMorphService.create(this.canvasRef.nativeElement);
     this.ngZone.runOutsideAngular(() => this.loop());
   }
   ngOnDestroy() {

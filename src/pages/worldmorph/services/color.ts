@@ -41,39 +41,6 @@ export class Color implements ColorInterface{
     }
   }
 
-  //Color conversion (from rgb to hsv)
-  toHsv(): number[]{
-    return;
-  }
-
-  //Color conversion (from hsv to rgb)
-  toRgb(h:number, 
-        s:number,
-        v:number):Color{
-    return;
-  }
-
-  //Color mixing
-  mix(proportion:number, 
-      otherColor:Color): Color{
-    return;
-  }
-    
-  //Color darker based on rgb, ignore alpha
-  darker(percent:number):Color{
-    return;
-  }
-
-  //Color lighter based on rgb, ignore alpha
-  lighter(percent:number):Color{
-    return;
-  }
-
-  //Color darker based on hsv, ignore alpha
-  hsvDarker():Color{
-    return;
-  }
-
   
 
 }
