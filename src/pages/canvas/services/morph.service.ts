@@ -10,25 +10,13 @@ export class MorphService implements MorphServiceInterface{
 
    }
 
-  create(noDraw:boolean): Morph{
+  create(noDraw?:boolean): Morph{
     return this.createMorph(Morph, noDraw) as Morph;
   }
 
   private createMorph(morphConstructor: MorphConstructor,
                       noDraw:boolean): MorphInterface {
     return new morphConstructor(noDraw);
-  }
-
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
   }
 
 }

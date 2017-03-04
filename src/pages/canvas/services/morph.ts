@@ -250,7 +250,7 @@ export class Morph extends Node implements MorphInterface{
     }
 
     // Morph accessing(make morph completely within another morph by translation)  
-    keepWithin(otherMorph:Morph):void{
+    keepWithin(otherMorph:MorphInterface):void{
 
     }
 

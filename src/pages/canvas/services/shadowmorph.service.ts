@@ -1,7 +1,7 @@
 import { Injectable }    from '@angular/core';
 
 import {ShadowMorph} from './ShadowMorph'
-import {ShadowMorphConstructor, ShadowMorphServiceInterface} from './shadowmorph.interface'
+import {ShadowMorphConstructor, ShadowMorphServiceInterface} from './ShadowMorph.interface'
 
 @Injectable()
 export class ShadowMorphService implements ShadowMorphServiceInterface{
@@ -14,8 +14,9 @@ export class ShadowMorphService implements ShadowMorphServiceInterface{
     return this.createShadowMorph(ShadowMorph);
   }
 
-  private createShadowMorph(shadowMorphConstructor: ShadowMorphConstructor): ShadowMorph {
-    return new shadowMorphConstructor() as ShadowMorph; 
+  private createShadowMorph(ShadowMorphConstructor: ShadowMorphConstructor): ShadowMorph {
+    return new ShadowMorphConstructor() as ShadowMorph;
   }
+
 
 }

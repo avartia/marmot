@@ -1,4 +1,4 @@
-import {ShadowMorphInterface} from './shadowmorph.interface'
+import { ShadowMorphInterface } from './ShadowMorph.interface'
 import { Morph } from './morph'
 export class ShadowMorph extends Morph implements ShadowMorphInterface{
 
@@ -6,9 +6,6 @@ export class ShadowMorph extends Morph implements ShadowMorphInterface{
     super();
   }
 
-  topMorphAt():null{
-    return;
-  }
 
   
 

@@ -2,20 +2,27 @@ import { Injectable }    from '@angular/core';
 
 import {PenMorph} from './PenMorph'
 import {PenMorphConstructor, PenMorphServiceInterface} from './penmorph.interface'
+import { RectangleService } from './rectangle.service'
 
 @Injectable()
 export class PenMorphService implements PenMorphServiceInterface{
 
-  constructor() {
+  constructor( private rectangleService:RectangleService) {
 
    }
 
   create(): PenMorph{
-    return this.createPenMorph(PenMorph);
+    return this.createPenMorph(PenMorph, this.rectangleService);
   }
 
+<<<<<<< HEAD
   private createPenMorph(penMorphConstructor: PenMorphConstructor): PenMorph {
     return new penMorphConstructor() as PenMorph;
+=======
+  private createPenMorph(penMorphConstructor: PenMorphConstructor,
+                         rectangleService:RectangleService): PenMorph {
+    return new penMorphConstructor(rectangleService) as PenMorph;
+>>>>>>> feature
   }
 
 }

@@ -1,10 +1,8 @@
-import {MorphInterface} from './morph.interface'
+import { MorphInterface } from './morph.interface'
 //ShadowMorph Class
 
 export interface ShadowMorphInterface extends MorphInterface{
-    //public intance member and public intance methods of ShadowMorph Class
-
-    topMorphAt():null;
+  //public intance member and public intance methods of ShadowMorph Class
 }
 
 export interface ShadowMorphConstructor {

@@ -1,8 +1,15 @@
+import { MorphInterface } from './morph.interface'
+import { RectangleService } from './rectangle.service'
 
 //PenMorph Class
 
+<<<<<<< HEAD
 export interface PenMorphInterface{
     //public intance member and public intance methods of PenMorph Class
+=======
+export interface PenMorphInterface extends MorphInterface{
+  //public intance member and public intance methods of PenMorph Class
+>>>>>>> feature
 
 
     // PenMorph display:
@@ -27,7 +34,7 @@ export interface PenMorphInterface{
 export interface PenMorphConstructor {
     //constructor of PenMorph Class
 
-    new (): PenMorphInterface;
+    new (rectangleService:RectangleService): PenMorphInterface;
 }
 
 export interface PenMorphServiceInterface{

@@ -20,16 +20,4 @@ export class HandMorphService implements HandMorphServiceInterface{
     return new handMorphConstructor(aWorld) as HandMorph;
   }
 
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
-  }
-
 }

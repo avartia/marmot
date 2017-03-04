@@ -3,16 +3,16 @@ import { Point } from './point'
 import { RectangleInterface } from './rectangle.interface'
 
 export class Rectangle implements Rectangle{
-    private topLeftPoint: Point;
-    private bottomRightPoint: Point;
+    public origin: Point;
+    public corner: Point;
 
     constructor(pointService:PointService,
                 left:number = 0,
                 top:number = 0,
                 right:number = 0,
                 bottom:number = 0) { 
-        this.topLeftPoint = pointService.create(left, top);
-        this.bottomRightPoint = pointService.create(right, bottom);
+        this.origin = pointService.create(left, top);
+        this.corner = pointService.create(right, bottom);
     }
 
     // public extent(): Point{

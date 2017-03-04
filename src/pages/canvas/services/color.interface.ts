@@ -2,7 +2,13 @@
 
 export interface ColorInterface{
     // public member variables
-      
+    r:number;
+
+    g:number;
+
+    b:number;
+
+    a:number;
     // public methods
 
     // Color string representation: e.g. 'rgba(255,165,0,1)'
