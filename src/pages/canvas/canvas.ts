@@ -5,7 +5,7 @@ import { WorldMorph } from './services/worldmorph'
   selector: 'page-worldmorph',
   templateUrl: 'worldmorph.html'
 })
-export class WorldMorphPage implements AfterViewChecked, OnDestroy{
+export class CanvasPage implements AfterViewChecked, OnDestroy{
 
   @ViewChild('myCanvas') canvasRef: ElementRef;
   private isLoop: boolean;
@@ -16,8 +16,8 @@ export class WorldMorphPage implements AfterViewChecked, OnDestroy{
   }
   ngAfterViewChecked() {
     this.isLoop = true;
-    this.world = this.worldMorphService.create();
-    this.loop();
+    
+    this.world = this.worldMorphService.create(this.canvasRef.nativeElement);
     this.ngZone.runOutsideAngular(() => this.loop());
   }
   ngOnDestroy() {

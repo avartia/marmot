@@ -1,13 +1,12 @@
-import {MorphInterface} from './morph.interface'
-import {WorldMorphInterface} from './worldmorph.interface'
-import {PointInterface} from './point.interface'
-
+import { MorphInterface } from './morph.interface'
+import { WorldMorphInterface } from './worldmorph.interface'
+import { PointInterface } from './point.interface'
 
 //HandMorph Class
 // I represent the Mouse cursor
 // HandMorph inherits from Morph
 
-export interface HandMorphInterface{
+export interface HandMorphInterface extends MorphInterface{
   //public intance member and public intance methods of HandMorph Class
 
   world:WorldMorphInterface;

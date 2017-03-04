@@ -3,13 +3,13 @@ import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 // import { TabsPage } from '../pages/tabs/tabs';
-import { WorldMorphPage } from '../pages/worldmorph/worldmorph';
+import { CanvasPage } from '../pages/canvas/canvas';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = WorldMorphPage;
+  rootPage = CanvasPage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
