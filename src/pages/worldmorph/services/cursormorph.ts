@@ -1,4 +1,4 @@
-import {CursorMorphInterface} from './shared.interface'
+import {CursorMorphInterface} from './cursormorph.interface'
 
 export class CursorMorph implements CursorMorphInterface{
 

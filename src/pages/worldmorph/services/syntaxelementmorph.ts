@@ -1,0 +1,1 @@
+import {} from './syntaxelementmorph.interface'

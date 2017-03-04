@@ -1,21 +1,21 @@
 import { Injectable }    from '@angular/core';
 
-import {BlinkerMorph} from './BlinkerMorph'
-import {BlinkerMorphConstructor, BlinkerMorphInterface} from './shared.interface'
+import {BlinkerMorph} from './blinkermorph'
+import {BlinkerMorphConstructor, BlinkerMorphServiceInterface} from './blinkerMorph.interface'
 
 @Injectable()
-export class BlinkerMorphService{
+export class BlinkerMorphService implements BlinkerMorphServiceInterface{
 
   constructor() {
 
    }
 
-  create(): BlinkerMorph{
-    return this.createBlinkerMorph(BlinkerMorph) as BlinkerMorph;
+  create(rate?:number): BlinkerMorph{
+    return this.createBlinkerMorph(BlinkerMorph,rate);
   }
 
-  private createBlinkerMorph(blinkerMorphConstructor: BlinkerMorphConstructor): BlinkerMorphInterface {
-    return new blinkerMorphConstructor();
+  private createBlinkerMorph(blinkerMorphConstructor: BlinkerMorphConstructor,rate:number): BlinkerMorph {
+    return new blinkerMorphConstructor(rate) as BlinkerMorph;
   }
 
   get(){
