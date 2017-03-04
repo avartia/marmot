@@ -18,16 +18,4 @@ export class PenMorphService implements PenMorphServiceInterface{
     return new penMorphConstructor() as PenMorph;
   }
 
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
-  }
-
 }

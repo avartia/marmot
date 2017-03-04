@@ -1,5 +1,6 @@
 import {PenMorphInterface} from './penmorph.interface'
 import {Morph} from './morph'
+import {Point} from './point'
 
 export class PenMorph extends Morph implements PenMorphInterface{
   private heading;
@@ -37,22 +38,59 @@ export class PenMorph extends Morph implements PenMorphInterface{
         Math.max(start.x, dest.x, left.x, right.x),
         Math.max(start.y, dest.y, left.y, right.y)
     );
-
     
+    // draw arrow shape
+    context.fillStyle=this.color.toString();
+    context.beginPath();
+
+    context.moveTo(start.x, start.y);
+    context.lineTo(left.x, left.y);
+    context.lineTo(dest.x, dest.y);
+    context.lineTo(right.x, right.y);
+
+    context.closePath();
+    context.strokeStyle='white';
+    context.lineWidth=3;
+    context.stroke();
+    context.strokeStyle = 'black';
+    context.lineWidth = 1;
+    context.stroke();
+    context.fill();   
     
 
 
   }
 
   // PenMorph access:
-  setHeading(degrees:number):void;
+  setHeading(degrees:number):void{
+    this.heading=parseFloat(degrees)%360;
+    this.drawNew();
+  }
 
-  turn(degrees:number):void;
+  turn(degrees:number):void{
+    this.setHeading(this.heading+parseFloat(degrees));
+  }
 
   //move the turtle forward
-  forward(steps:number):void;
+  forward(steps:number):void{
+    let start:Point=this.center();
+    let dest:Point;
+    let dist:number=parseFloat(steps);
+    if(dist>=0){
+      this.position().distanceAngle(dist,this.heading);
+    } else{
+      dest=this.position().distanceAngle(
+        Math.abs(dist),
+        (this.heading-180)
+      )
+    }
+    this.setPosition(dest);
+  }
 
-  clear():void;
+  clear():void{
+    this.parent.drawNew();
+    this.parent.changed();
+  }
 
 
   
