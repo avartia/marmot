@@ -12,22 +12,25 @@ import {RectangleService} from './rectangle.service'
 // WorldMorph inherits from FrameMorph
 
 export interface WorldMorphInterface extends FrameMorphInterface{
-  // public member variables
+    // public member variables
 
-  worldCanvas:HTMLCanvasElement;
+    worldCanvas:HTMLCanvasElement;
 
-  broken:RectangleInterface[];
+    broken:RectangleInterface[];
 
-  hand:HandMorphInterface;
+    hand:HandMorphInterface;
 
-  // public methods
+    // public methods
 
-  // WorldMorph does one cycle including stepping frame and updating broken areas
-  doOneCycle():void;
+    // WorldMorph does one cycle including stepping frame and updating broken areas
+    doOneCycle():void;
+
+    // World Morph display
+    fullDrawOn(aCanvas:HTMLCanvasElement, aRect:RectangleInterface):void;
 }
 
 export interface WorldMorphConstructor {
-    //constructor of WorldMorph Class
+    // constructor of WorldMorph Class
 
     new (handMorphService:HandMorphService,
          colorService:ColorService,
@@ -37,6 +40,6 @@ export interface WorldMorphConstructor {
 
 export interface WorldMorphServiceInterface{
 
-    //public methods of WorldMorphService
+    // public methods of WorldMorphService
     create(aCanvas:HTMLCanvasElement): WorldMorphInterface;
 }

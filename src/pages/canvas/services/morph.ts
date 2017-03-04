@@ -31,7 +31,7 @@ export class Morph extends Node implements MorphInterface{
     protected noticesTransparentClick:boolean;
     protected customContextMenu:MenuMorph;
 
-    constructor(noDraw:boolean) {
+    constructor(noDraw:boolean = null) {
         super();
         this.fps = 0;
         this.lastTime = Date.now();
@@ -74,6 +74,12 @@ export class Morph extends Node implements MorphInterface{
                      silently:boolean):void{
 
     }
+
+    public fullDrawOn(otherCanvas:HTMLCanvasElement,
+                      drawingArea:Rectangle):void{
+
+    }
+    
 
 
 

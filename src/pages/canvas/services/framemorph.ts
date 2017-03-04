@@ -1,17 +1,16 @@
 import {FrameMorphInterface} from './framemorph.interface'
 import {Morph} from './morph'
-import {MorphInterface} from './morph.interface'
-import {ScrollFrameMorphInterface} from './scrollframemorph.interface'
-import {RectangleInterface} from './rectangle.interface'
-import {PointInterface} from './point.interface'
+import {ScrollFrameMorph} from './scrollframemorph'
+import {Rectangle} from './rectangle'
+import {Point} from './point'
 
 export class FrameMorph extends Morph implements FrameMorphInterface{
 
-  constructor(public scrollFrame:ScrollFrameMorphInterface = null) { 
+  constructor(public scrollFrame:ScrollFrameMorph = null) { 
     super();
   }
 
-  fullBounds():RectangleInterface{
+  fullBounds():Rectangle{
     return;
   }
 
@@ -21,12 +20,12 @@ export class FrameMorph extends Morph implements FrameMorphInterface{
   }
 
   fullDrawOn(aCanvas:HTMLCanvasElement,
-             aRect:RectangleInterface):void{
+             aRect:Rectangle):void{
     return
   }
 
   // FrameMorph navigation:
-  topMorphAt(point:PointInterface):MorphInterface{
+  topMorphAt(point:Point):Morph{
     return
   }
 

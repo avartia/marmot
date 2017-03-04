@@ -5,7 +5,7 @@ import { WorldMorph } from './services/worldmorph'
   selector: 'page-worldmorph',
   templateUrl: 'worldmorph.html'
 })
-export class WorldMorphPage implements AfterViewChecked, OnDestroy{
+export class CanvasPage implements AfterViewChecked, OnDestroy{
 
   @ViewChild('myCanvas') canvasRef: ElementRef;
   private isLoop: boolean;

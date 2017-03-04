@@ -222,11 +222,11 @@ export interface MorphInterface extends NodeInterface{
   drawCachedTexture():void;
 
   // Morph displaying(draw canvas of a morph without its children)
-  drawOnCanvas(otherCanvas:HTMLCanvasElement,
+  drawOn(otherCanvas:HTMLCanvasElement,
                drawingArea:RectangleInterface):void;
 
   // Morph displaying(draw canvas of a morph with its children)
-  fullDrawOnCanvas(otherCanvas:HTMLCanvasElement,
+  fullDrawOn(otherCanvas:HTMLCanvasElement,
                drawingArea:RectangleInterface):void;
 
   // Morph displaying(hide a morph with its children)
