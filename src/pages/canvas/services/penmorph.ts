@@ -20,27 +20,27 @@ export class PenMorph extends Morph implements PenMorphInterface{
   // PenMorph display:
   // my orientation can be overridden with the "facing" parameter to
   // implement Scratch-style rotation styles
-//   drawNew(facing:number):void{
-//       let context, start, dest, left, right, len,
-//           direction = facing || this.heading;
+  drawNew(facing:number):void{
+      let context, start, dest, left, right, len,
+          direction = facing || this.heading;
 
-//       this.image= newCanvas(this.extent());
-//       context=this.image.getContext('2d');
-//       len = this.width() / 2;
-//       start = this.center().subtract(this.bounds.origin);
+      this.image= newCanvas(this.extent());
+      context=this.image.getContext('2d');
+      len = this.width() / 2;
+      start = this.center().subtract(this.bounds.origin);
 
-//       dest = start.distanceAngle(len * 0.75, direction - 180);
-//       left = start.distanceAngle(len, direction + 195);
-//       right = start.distanceAngle(len, direction - 195);
+      dest = start.distanceAngle(len * 0.75, direction - 180);
+      left = start.distanceAngle(len, direction + 195);
+      right = start.distanceAngle(len, direction - 195);
 
-//       // cache penBounds
-//       this.penBounds = this.rectangleService.create(
-//           Math.min(start.x, dest.x, left.x, right.x),
-//           Math.min(start.y, dest.y, left.y, right.y),
-//           Math.max(start.x, dest.x, left.x, right.x),
-//           Math.max(start.y, dest.y, left.y, right.y)
-//       );
-//   }
+      // cache penBounds
+      this.penBounds = this.rectangleService.create(
+          Math.min(start.x, dest.x, left.x, right.x),
+          Math.min(start.y, dest.y, left.y, right.y),
+          Math.max(start.x, dest.x, left.x, right.x),
+          Math.max(start.y, dest.y, left.y, right.y)
+      );
+  }
 
   // PenMorph access:
   setHeading(degrees:number):void{
