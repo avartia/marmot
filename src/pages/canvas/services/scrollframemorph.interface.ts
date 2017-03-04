@@ -1,7 +1,7 @@
-
+import { FrameMorphInterface } from './framemorph.interface'
 //ScrollFrameMorph Class
 
-export interface ScrollFrameMorphInterface{
+export interface ScrollFrameMorphInterface extends FrameMorphInterface{
   //public intance member and public intance methods of ScrollFrameMorph Class
 }
 

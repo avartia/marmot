@@ -21,7 +21,6 @@ export class FrameMorph extends Morph implements FrameMorphInterface{
 
   fullDrawOn(aCanvas:HTMLCanvasElement,
              aRect:Rectangle):void{
-    return
   }
 
   // FrameMorph navigation:
@@ -31,16 +30,13 @@ export class FrameMorph extends Morph implements FrameMorphInterface{
 
   // FrameMorph scrolling support:
   adjustBounds():void{
-    return
   }
 
   // FrameMorph dragging & dropping of contents:
   reactToDropOf():void{
-    return;
   }
 
   reactToGrabOf():void{
-    return;
   }
   
 

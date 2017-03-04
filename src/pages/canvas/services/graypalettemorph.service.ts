@@ -17,17 +17,4 @@ export class GrayPaletteMorphService implements GrayPaletteMorphServiceInterface
   private createGrayPaletteMorph(grayPaletteMorphConstructor: GrayPaletteMorphConstructor): GrayPaletteMorph {
     return new grayPaletteMorphConstructor() as GrayPaletteMorph;
   }
-
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
-  }
-
 }

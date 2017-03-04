@@ -2,30 +2,32 @@ import { MorphInterface } from './morph.interface'
 import { WorldMorphInterface } from './worldmorph.interface'
 import { PointInterface } from './point.interface'
 
-//HandMorph Class
+// HandMorph Class
 // I represent the Mouse cursor
 // HandMorph inherits from Morph
 
 export interface HandMorphInterface extends MorphInterface{
-  //public intance member and public intance methods of HandMorph Class
+    // public member variables
+    
+    world:WorldMorphInterface;
 
-  world:WorldMorphInterface;
+    morphToGrab:MorphInterface;
 
-  morphToGrab:MorphInterface;
+    grabPosition:PointInterface;
+    
+    // public methods
 
-  grabPosition:PointInterface;
+    fullChanged():void;
 
-  fullChanged():void;
+    // HandMorph dragging and dropping:
+    grab(aMorph:MorphInterface):void;
 
-  // HandMorph dragging and dropping:
-  grab(aMorph:MorphInterface):void;
+    // HandMorph event dispatching:
+    processTouchStart(event:Event):void;
 
-  // HandMorph event dispatching:
-  processTouchStart(event:Event):void;
+    processTouchMove(event:Event):void;
 
-  processTouchMove(event:Event):void;
-
-  processTouchEnd(event:Event):void;
+    processTouchEnd(event:Event):void;
 }
 
 export interface HandMorphConstructor {

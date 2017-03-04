@@ -36,16 +36,4 @@ export class RectangleService implements RectangleServiceInterface{
                                     bottom) as Rectangle;
   }
 
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
-  }
-
 }

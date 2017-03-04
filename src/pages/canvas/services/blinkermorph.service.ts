@@ -6,28 +6,17 @@ import {BlinkerMorphConstructor, BlinkerMorphServiceInterface} from './blinkermo
 @Injectable()
 export class BlinkerMorphService implements BlinkerMorphServiceInterface{
 
-  constructor() {
+    constructor() {
 
-   }
+    }
 
-  create(): BlinkerMorph{
-    return this.createBlinkerMorph(BlinkerMorph);
-  }
+    create(rate?:number): BlinkerMorph{
+      return this.createBlinkerMorph(BlinkerMorph, rate);
+    }
 
-  private createBlinkerMorph(blinkerMorphConstructor: BlinkerMorphConstructor): BlinkerMorph {
-    return new blinkerMorphConstructor() as BlinkerMorph;
-  }
-
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
-  }
+    private createBlinkerMorph(blinkerMorphConstructor: BlinkerMorphConstructor,
+                              rate:number): BlinkerMorph {
+      return new blinkerMorphConstructor(rate) as BlinkerMorph;
+    }
 
 }

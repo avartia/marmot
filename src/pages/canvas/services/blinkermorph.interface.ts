@@ -3,11 +3,11 @@ import {MorphInterface} from './morph.interface'
 //can be used for text cursors
 
 export interface BlinkerMorphInterface extends MorphInterface{
-  //public intance member and public intance methods of BlinkerMorph Class
+    //public intance member and public intance methods of BlinkerMorph Class
 
-  // BlinkerMorph stepping:
-  //toggle the visibility of BlinkerMorph and its children
-  step():void;
+    // BlinkerMorph stepping:
+    //toggle the visibility of BlinkerMorph and its children
+    step():void;
 }
 
 export interface BlinkerMorphConstructor {

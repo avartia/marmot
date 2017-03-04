@@ -17,16 +17,4 @@ export class PointService implements PointServiceInterface{
     return new pointConstructor(x, y) as Point;
   }
 
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
-  }
-
 }

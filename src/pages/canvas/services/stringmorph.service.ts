@@ -18,16 +18,4 @@ export class StringMorphService{
     return new stringMorphConstructor() as StringMorph;
   }
 
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
-  }
-
 }

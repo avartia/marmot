@@ -18,16 +18,4 @@ export class StringFieldMorphService implements StringFieldMorphServiceInterface
     return new stringFieldMorphConstructor() as StringFieldMorph;
   }
 
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
-  }
-
 }

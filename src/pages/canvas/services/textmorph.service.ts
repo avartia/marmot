@@ -18,16 +18,4 @@ export class TextMorphService{
     return new textMorphConstructor() as TextMorph;
   }
 
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
-  }
-
 }

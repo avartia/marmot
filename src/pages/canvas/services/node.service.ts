@@ -10,7 +10,7 @@ export class NodeService implements NodeServiceInterface{
 
    }
 
-  create(parent:Node, children:Node[]): Node{
+  create(parent?:Node | null, children?:Node[]): Node{
     return this.createNode(Node, parent, children);
   }
 

@@ -1,8 +1,9 @@
-import {MenuItemMorphInterface} from './menuitemmorph.interface'
-
-export class MenuItemMorph implements MenuItemMorphInterface{
+import { MenuItemMorphInterface } from './menuitemmorph.interface'
+import { TriggerMorph } from './triggermorph'
+export class MenuItemMorph extends TriggerMorph implements MenuItemMorphInterface{
 
   constructor() { 
+    super();
   }
 
 

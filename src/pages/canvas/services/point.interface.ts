@@ -2,10 +2,6 @@
 //Point Class
 
 export interface PointInterface{
-
-    x:number;
-    
-    y:number;
     
     //Point string representation: e.g. '(12,68)'
     toString() : string;

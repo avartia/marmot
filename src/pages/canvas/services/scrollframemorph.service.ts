@@ -18,16 +18,5 @@ export class ScrollFrameMorphService implements ScrollFrameMorphServiceInterface
     return new scrollFrameMorphConstructor() as ScrollFrameMorph;
   }
 
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
-  }
 
 }

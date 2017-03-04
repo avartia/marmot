@@ -1,8 +1,9 @@
 import {TriggerMorphInterface} from './triggermorph.interface'
-
-export class TriggerMorph implements TriggerMorphInterface{
+import { Morph } from './morph'
+export class TriggerMorph extends Morph implements TriggerMorphInterface{
 
   constructor() { 
+    super();
   }
 
 

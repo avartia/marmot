@@ -2,6 +2,7 @@ import { Injectable }    from '@angular/core';
 
 import {FrameMorph} from './FrameMorph'
 import {FrameMorphConstructor, FrameMorphServiceInterface} from './framemorph.interface'
+import {ScrollFrameMorph} from './scrollframemorph'
 
 @Injectable()
 export class FrameMorphService implements FrameMorphServiceInterface{
@@ -10,12 +11,13 @@ export class FrameMorphService implements FrameMorphServiceInterface{
 
    }
 
-  create(): FrameMorph{
-    return this.createFrameMorph(FrameMorph);
+  create(aScrollFrame?:ScrollFrameMorph): FrameMorph{
+    return this.createFrameMorph(FrameMorph, aScrollFrame);
   }
 
-  private createFrameMorph(frameMorphConstructor: FrameMorphConstructor): FrameMorph {
-    return new frameMorphConstructor() as FrameMorph;
+  private createFrameMorph(frameMorphConstructor: FrameMorphConstructor,
+                           aScrollFrame:ScrollFrameMorph): FrameMorph {
+    return new frameMorphConstructor(aScrollFrame) as FrameMorph;
   }
 
   get(){

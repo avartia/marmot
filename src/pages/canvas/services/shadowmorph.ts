@@ -1,10 +1,14 @@
 import {ShadowMorphInterface} from './shadowmorph.interface'
-
-export class ShadowMorph implements ShadowMorphInterface{
+import { Morph } from './morph'
+export class ShadowMorph extends Morph implements ShadowMorphInterface{
 
   constructor() { 
+    super();
   }
 
+  topMorphAt():null{
+    return;
+  }
 
   
 

@@ -18,16 +18,4 @@ export class ShadowMorphService implements ShadowMorphServiceInterface{
     return new shadowMorphConstructor() as ShadowMorph; 
   }
 
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
-  }
-
 }

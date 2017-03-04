@@ -18,16 +18,4 @@ export class MenuMorphService implements MenuMorphServiceInterface{
     return new menuMorphConstructor() as MenuMorph;
   }
 
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
-  }
-
 }

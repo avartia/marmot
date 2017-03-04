@@ -3,6 +3,7 @@ import { Injectable }    from '@angular/core';
 import {HandMorph} from './HandMorph'
 import {HandMorphConstructor, HandMorphServiceInterface} from './handmorph.interface'
 import {WorldMorph} from './worldmorph'
+
 @Injectable()
 export class HandMorphService implements HandMorphServiceInterface{
 

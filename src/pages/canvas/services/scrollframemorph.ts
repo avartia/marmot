@@ -1,8 +1,9 @@
-import {ScrollFrameMorphInterface} from './scrollframemorph.interface'
-
-export class ScrollFrameMorph implements ScrollFrameMorphInterface{
+import { ScrollFrameMorphInterface } from './scrollframemorph.interface'
+import { FrameMorph } from './framemorph'
+export class ScrollFrameMorph extends FrameMorph implements ScrollFrameMorphInterface{
 
   constructor() { 
+    super();
   }
 
 

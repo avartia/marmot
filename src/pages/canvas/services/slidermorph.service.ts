@@ -18,16 +18,5 @@ export class SliderMorphService implements SliderMorphServiceInterface{
     return new sliderMorphConstructor() as SliderMorph;
   }
 
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
-  }
 
 }

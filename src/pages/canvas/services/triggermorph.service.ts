@@ -18,16 +18,4 @@ export class TriggerMorphService implements TriggerMorphServiceInterface{
     return new triggerMorphConstructor() as TriggerMorph;
   }
 
-  get(){
-
-  }
-
-  update(){
-
-  }
-
-  delete(){
-
-  }
-
 }
