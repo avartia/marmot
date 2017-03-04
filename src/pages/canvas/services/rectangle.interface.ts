@@ -1,9 +1,15 @@
+import { PointInterface } from './point.interface'
 import { PointService } from './point.service'
+
 //Rectangle Class
 
 export interface RectangleInterface{
-    //public intance member and public intance methods of Rectangle Class
+    //public member variables
+    origin: PointInterface;
 
+    corner: PointInterface;
+
+    //public methods
     // Rectangle string representation: e.g. '[0@0 | 160@80]'
     toString():string;
 

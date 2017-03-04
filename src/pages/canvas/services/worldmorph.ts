@@ -31,6 +31,7 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
         this.worldCanvas = aCanvas;
         this.noticesTransparentClick = true;
         this.broken = [];
+        
         this.hand = handMorphService.create(this);
         this.drawNew();
         this.fillPage();

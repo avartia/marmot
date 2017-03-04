@@ -2,8 +2,8 @@ import {PointInterface} from './point.interface'
 
 export class Point implements PointInterface{
 
-    constructor(private x:number = 0,
-                private y:number = 0) { 
+    constructor(public x:number = 0,
+                public y:number = 0) { 
     }
 
     //Point string representation: e.g. '(12,68)'

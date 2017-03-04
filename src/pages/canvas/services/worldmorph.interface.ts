@@ -1,9 +1,10 @@
 import {FrameMorphInterface} from './framemorph.interface'
-import {RectangleInterface} from './rectangle.interface'
-import {HandMorphInterface} from './handmorph.interface'
+import {Rectangle} from './rectangle'
+import {HandMorph} from './handmorph'
 import {HandMorphService} from './handmorph.service'
 import {ColorService} from './color.service'
-import {RectangleService} from './rectangle.service'
+import { RectangleService } from './rectangle.service'
+import { WorldMorph } from "./WorldMorph";
 
 
 
@@ -16,9 +17,9 @@ export interface WorldMorphInterface extends FrameMorphInterface{
 
     worldCanvas:HTMLCanvasElement;
 
-    broken:RectangleInterface[];
+    broken:Rectangle[];
 
-    hand:HandMorphInterface;
+    hand:HandMorph;
 
     // public methods
 
@@ -26,7 +27,7 @@ export interface WorldMorphInterface extends FrameMorphInterface{
     doOneCycle():void;
 
     // World Morph display
-    fullDrawOn(aCanvas:HTMLCanvasElement, aRect:RectangleInterface):void;
+    fullDrawOn(aCanvas:HTMLCanvasElement, aRect:Rectangle):void;
 }
 
 export interface WorldMorphConstructor {
@@ -35,11 +36,11 @@ export interface WorldMorphConstructor {
     new (handMorphService:HandMorphService,
          colorService:ColorService,
          rectangleService:RectangleService,
-         aCanvas:HTMLCanvasElement): WorldMorphInterface;
+         aCanvas:HTMLCanvasElement): WorldMorph;
 }
 
 export interface WorldMorphServiceInterface{
 
     // public methods of WorldMorphService
-    create(aCanvas:HTMLCanvasElement): WorldMorphInterface;
+    create(aCanvas:HTMLCanvasElement): WorldMorph;
 }

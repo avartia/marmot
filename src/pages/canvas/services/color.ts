@@ -2,10 +2,10 @@ import {ColorInterface} from './color.interface'
 
 export class Color implements ColorInterface{
 
-    constructor(private r:number,
-                private g:number,
-                private b:number,
-                private a:number = 1) { 
+    constructor(public r:number,
+                public g:number,
+                public b:number,
+                public a:number = 1) { 
       
     }
 
