@@ -1,20 +1,21 @@
-import { PointInterface } from './point.interface'
+import { Point } from './point'
+import { Rectangle } from './rectangle'
 import { PointService } from './point.service'
 
 //Rectangle Class
 
 export interface RectangleInterface{
     //public member variables
-    origin: PointInterface;
+    origin: Point;
 
-    corner: PointInterface;
+    corner: Point;
 
     //public methods
     // Rectangle string representation: e.g. '[0@0 | 160@80]'
     toString():string;
 
     // Rectangle copying:
-    copy():RectangleInterface;
+    copy():Rectangle;
 
     // Rectangle accessing - setting:
     // Change the Rectangle by resetting topLeftPoint and bottomRightPoint
@@ -27,109 +28,109 @@ export interface RectangleInterface{
     bottom():number;
 
     //Get the bottomCenter point of the Rectangle
-    bottomCenter():PointInterface;
+    bottomCenter():Point;
 
-    bottomLeft():PointInterface;
+    bottomLeft():Point;
 
-    bottomRight():PointInterface;
+    bottomRight():Point;
 
     //Return Rectangle itself
-    boundingBox():RectangleInterface;
+    boundingBox():Rectangle;
 
     //Get the center point of the Rectangle
-    center():PointInterface;
+    center():Point;
 
     //Get an array containing 4 corners of the Rectangle
-    corners():PointInterface[];
+    corners():Point[];
 
     //Get the extent vector of the Rectangle
-    extent():PointInterface;
+    extent():Point;
 
     height():number;
 
     left():number;
 
-    leftCenter():PointInterface;
+    leftCenter():Point;
 
     right():number;
 
-    rightCenter():PointInterface;
+    rightCenter():Point;
 
     top():number;
 
-    topCenter():PointInterface;
+    topCenter():Point;
 
-    topLeft():PointInterface;
+    topLeft():Point;
 
-    topRight():PointInterface;
+    topRight():Point;
 
     width():number;
 
     //Get the topLeftPoint of the Rectangle
-    position():PointInterface;
+    position():Point;
 
     // Rectangle comparison:
 
     // Compare two Rectangle
-    equal(aRect:RectangleInterface):boolean;
+    equal(aRect:Rectangle):boolean;
 
     ////??????????????????
-    abs():RectangleInterface;
+    abs():Rectangle;
 
     //Rectangle functions:
 
     //create a Rectangle that is an inset of the Rectangle
-    insetBy(delta:PointInterface|number):RectangleInterface;
+    insetBy(delta:Point|number):Rectangle;
 
     //create a Rectangle that can contain the current Rectangle
-    expandBy(delta:PointInterface|number):RectangleInterface;
+    expandBy(delta:Point|number):Rectangle;
 
     //expand the current Rectangle from bottomLeft direction
-    growBy(delta:PointInterface|number):RectangleInterface;
+    growBy(delta:Point|number):Rectangle;
 
     //Get the intersect part of two Rectangle
-    intersect(aRect:RectangleInterface):RectangleInterface;
+    intersect(aRect:Rectangle):Rectangle;
 
     //Get the Rectangle that can contain these to Rectangle
-    merge(aRect:RectangleInterface):RectangleInterface;
+    merge(aRect:Rectangle):Rectangle;
 
     //expand the rectangle that can contain aRect
-    mergeWith(aRect:RectangleInterface):void;
+    mergeWith(aRect:Rectangle):void;
 
     //Apply round method to topLeftPoint and bottomRightPoint to create a new Rectangle
-    round():RectangleInterface;
+    round():Rectangle;
 
     // round me by applying floor() to my origin and ceil() to my corner
     // expand by 1 to be on the safe side, this eliminates rounding
     // artifacts caused by Safari's auto-scaling on retina displays
-    spread():RectangleInterface;
+    spread():Rectangle;
 
     //make the rectangle be inside of aRect after self+delta
     //at least topleft inside
-    amountToTranslateWithin(aRect:RectangleInterface):RectangleInterface;
+    amountToTranslateWithin(aRect:Rectangle):Rectangle;
 
     // Rectangle testing:
 
     //whether this rectangle can contain aPoint
-    containsPoint(aPoint:PointInterface):boolean;
+    containsPoint(aPoint:Point):boolean;
 
     //whether this rectangle can contain aRect
-    containsRectangle(aRect:RectangleInterface):boolean;
+    containsRectangle(aRect:Rectangle):boolean;
 
     //whether this rectangle can intersect with aRect
-    intersects(aRect:RectangleInterface):boolean;
+    intersects(aRect:Rectangle):boolean;
 
     //whether aRect is in a new Rectangle into which the rectangle expanded
     //by threshold
-    isNearTo(aRect:RectangleInterface,threshold:number):boolean;
+    isNearTo(aRect:Rectangle,threshold:number):boolean;
 
     // Rectangle transforming:
 
     //scale the current rectangle by scale
-    scaleBy(scale:number):RectangleInterface;
+    scaleBy(scale:number):Rectangle;
     
     //translate the current rectangle by factor
-    translateBy(factor:number):RectangleInterface;
+    translateBy(factor:number):Rectangle;
 
     // Rectangle converting:
 
@@ -149,7 +150,7 @@ export interface RectangleConstructor {
          left:number,
          top:number,
          right:number,
-         bottom:number): RectangleInterface;
+         bottom:number): Rectangle;
 }
 
 export interface RectangleServiceInterface{
@@ -158,5 +159,5 @@ export interface RectangleServiceInterface{
     create(left:number,
            top:number,
            right:number,
-           bottom:number): RectangleInterface;
+           bottom:number): Rectangle;
 }

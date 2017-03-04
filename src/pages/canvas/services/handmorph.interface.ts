@@ -11,7 +11,7 @@ import {HandMorph} from './handmorph'
 export interface HandMorphInterface extends MorphInterface{
     // public member variables
     
-    world:WorldMorph;
+    myWorld:WorldMorph;
 
     morphToGrab:Morph;
 

@@ -33,7 +33,7 @@ export class RectangleService implements RectangleServiceInterface{
                                     left,
                                     top,
                                     right,
-                                    bottom) as Rectangle;
+                                    bottom);
   }
 
 }

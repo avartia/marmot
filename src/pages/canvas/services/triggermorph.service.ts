@@ -15,7 +15,7 @@ export class TriggerMorphService implements TriggerMorphServiceInterface{
   }
 
   private createTriggerMorph(triggerMorphConstructor: TriggerMorphConstructor): TriggerMorph {
-    return new triggerMorphConstructor() as TriggerMorph;
+    return new triggerMorphConstructor();
   }
 
 }

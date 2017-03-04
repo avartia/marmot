@@ -15,7 +15,7 @@ export class SpeechBubbleMorphService implements SpeechBubbleMorphServiceInterfa
   }
 
   private createSpeechBubbleMorph(speechBubbleMorphConstructor: SpeechBubbleMorphConstructor): SpeechBubbleMorph {
-    return new speechBubbleMorphConstructor() as SpeechBubbleMorph;
+    return new speechBubbleMorphConstructor();
   }
 
 }

@@ -9,7 +9,7 @@ export class HandMorph extends Morph implements HandMorphInterface{
 
     public grabPosition:Point;
     
-    constructor(public worldMorph:WorldMorph) { 
+    constructor(public myWorld:WorldMorph) { 
       super();
     }
 

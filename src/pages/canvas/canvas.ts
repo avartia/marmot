@@ -2,8 +2,8 @@ import { Component, ElementRef, ViewChild, NgZone, OnDestroy, AfterViewChecked }
 import { WorldMorphService} from './services/worldmorph.service'
 import { WorldMorph } from './services/worldmorph'
 @Component({
-  selector: 'page-worldmorph',
-  templateUrl: 'worldmorph.html'
+  selector: 'page-canvas',
+  templateUrl: 'canvas.html'
 })
 export class CanvasPage implements AfterViewChecked, OnDestroy{
 

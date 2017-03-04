@@ -15,7 +15,7 @@ export class ShadowMorphService implements ShadowMorphServiceInterface{
   }
 
   private createShadowMorph(ShadowMorphConstructor: ShadowMorphConstructor): ShadowMorph {
-    return new ShadowMorphConstructor() as ShadowMorph;
+    return new ShadowMorphConstructor();
   }
 
 

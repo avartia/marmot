@@ -6,7 +6,6 @@ import {MenuMorph} from './menumorph'
 import {Point} from './point'
 import {ShadowMorph} from './shadowmorph'
 import {WorldMorph} from './worldmorph'
-import {doNothing} from './shared.function'
 
 export class Morph extends Node implements MorphInterface{
         
@@ -21,15 +20,16 @@ export class Morph extends Node implements MorphInterface{
     public isTemplate:boolean;
     public acceptsDrops:boolean;
     
-    protected fps:number; 
-    protected lastTime:number;
-    protected trackChanges:boolean;
-    protected shadowBlur:number;
-    protected isMorph:boolean;
-    protected texture:string;
-    protected cachedTexture:HTMLImageElement; 
-    protected noticesTransparentClick:boolean;
-    protected customContextMenu:MenuMorph;
+    public fps:number; 
+    public lastTime:number;
+    public trackChanges:boolean;
+    public shadowBlur:number;
+    public isMorph:boolean;
+    public texture:string;
+    public cachedTexture:HTMLImageElement; 
+    public noticesTransparentClick:boolean;
+    public customContextMenu:MenuMorph;
+
 
     constructor(noDraw:boolean = null) {
         super();
@@ -250,7 +250,7 @@ export class Morph extends Node implements MorphInterface{
     }
 
     // Morph accessing(make morph completely within another morph by translation)  
-    keepWithin(otherMorph:MorphInterface):void{
+    keepWithin(otherMorph:Morph):void{
 
     }
 
@@ -384,7 +384,7 @@ export class Morph extends Node implements MorphInterface{
     }
     
     // Morph accessing(get worldmorph which contains the morph)
-    world():WorldMorph{
+    getWorld():WorldMorph{
         return;
     }
 

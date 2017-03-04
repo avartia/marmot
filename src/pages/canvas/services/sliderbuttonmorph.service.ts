@@ -15,7 +15,7 @@ export class SliderButtonMorphService implements SliderButtonMorphServiceInterfa
   }
 
   private createSliderButtonMorph(sliderButtonMorphConstructor: SliderButtonMorphConstructor): SliderButtonMorph {
-    return new sliderButtonMorphConstructor() as SliderButtonMorph;
+    return new sliderButtonMorphConstructor();
   }
 
 }

@@ -15,7 +15,7 @@ export class StringFieldMorphService implements StringFieldMorphServiceInterface
   }
 
   private createStringFieldMorph(stringFieldMorphConstructor: StringFieldMorphConstructor): StringFieldMorph {
-    return new stringFieldMorphConstructor() as StringFieldMorph;
+    return new stringFieldMorphConstructor();
   }
 
 }

@@ -15,7 +15,7 @@ export class SliderMorphService implements SliderMorphServiceInterface{
   }
 
   private createSliderMorph(sliderMorphConstructor: SliderMorphConstructor): SliderMorph {
-    return new sliderMorphConstructor() as SliderMorph;
+    return new sliderMorphConstructor();
   }
 
 

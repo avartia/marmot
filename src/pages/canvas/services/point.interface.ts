@@ -1,7 +1,9 @@
+import { Point } from "./point";
 
 //Point Class
 
-export interface PointInterface{
+
+export interface PointInterface {
     
     x:number;
 
@@ -11,61 +13,61 @@ export interface PointInterface{
     toString() : string;
 
     //Point copying
-    copy() : PointInterface;
+    copy() : Point;
 
     //Point comparison(==)
-    equal(otherPoint :PointInterface): boolean;
+    equal(otherPoint :Point): boolean;
 
     //Point comparison(>)
-    gt(otherPoint :PointInterface): boolean;
+    gt(otherPoint :Point): boolean;
     
     //Point comparison(<)
-    lt(otherPoint :PointInterface): boolean;    
+    lt(otherPoint :Point): boolean;    
 
     //Point comparison(>=)
-    ge(otherPoint :PointInterface): boolean;
+    ge(otherPoint :Point): boolean;
 
     //Point comparison(<=)
-    le(otherPoint :PointInterface): boolean;
+    le(otherPoint :Point): boolean;
 
     //Point comparison(max)
-    max(otherPoint :PointInterface): boolean;
+    max(otherPoint :Point): boolean;
 
     //Point comparison(min)
-    min(otherPoint :PointInterface): boolean;
+    min(otherPoint :Point): boolean;
 
     //Point conversion(round)
-    round(): PointInterface;
+    round(): Point;
 
     //Point conversion(absolute)
-    abs(): PointInterface;  
+    abs(): Point;  
 
     //Point conversion(negative)
-    neg(): PointInterface;
+    neg(): Point;
 
     //Point conversion(mirror)
-    mirror(): PointInterface;   
+    mirror(): Point;   
     
     //Point conversion(floor)
-    floor(): PointInterface;
+    floor(): Point;
 
     //Point conversion(ceil)
-    ceil(): PointInterface;    
+    ceil(): Point;    
 
     //Point arithmetic(add)  
-    add(other:PointInterface | number): PointInterface;  
+    add(other:Point | number): Point;  
 
     //Point arithmetic(subtract)  
-    subtract(other:PointInterface | number): PointInterface;     
+    subtract(other:Point | number): Point;     
 
     //Point arithmetic(multiplyBy)  
-    multiplyBy(other:PointInterface | number): PointInterface;
+    multiplyBy(other:Point | number): Point;
 
     //Point arithmetic(divideBy)  
-    divideBy(other:PointInterface | number): PointInterface;     
+    divideBy(other:Point | number): Point;     
 
     //Point arithmetic(floor the result of DivideBy)  
-    floorDivideBy(other:PointInterface | number): PointInterface;
+    floorDivideBy(other:Point | number): Point;
     
     //Point coordinates(sqrt(x^2 + y^2),(x, y) is the coordination)  
     sqrtLength(): number;   
@@ -77,34 +79,34 @@ export interface PointInterface{
     theta(): number;    
 
     //Point functions(cross product, e.g. (x1*y2,x2*y1))
-    crossProduct(otherPoint:PointInterface): PointInterface;
+    crossProduct(otherPoint:Point): Point;
     
     //Point functions(sqrt((x1-x2)^2 + (y1-y2)^2))  
-    distanceBetween(otherPoint:PointInterface): number;       
+    distanceBetween(otherPoint:Point): number;       
 
     //Point functions(direction must be 'vertical' or 'horizontal') 
-    flip(direction:string, center:PointInterface): PointInterface;    
+    flip(direction:string, center:Point): Point;    
 
     //Point functions(move at an angle in a distance.up is 0, right is 90)  
-    moveAtAngleIndistance(distance:number, angle:number): PointInterface;    
+    moveAtAngleIndistance(distance:number, angle:number): Point;    
 
     //Point functions(scale to larger or smaller)
-    scaleBy(scalePoint:PointInterface): PointInterface;
+    scaleBy(scalePoint:Point): Point;
     
     //Point functions(add offset)  
-    translateBy(offsetPoint:PointInterface): PointInterface;       
+    translateBy(offsetPoint:Point): Point;       
 
     //Point functions(anticlockwise rotation angle) 
-    rotateBy(angle:number, centerPoint:PointInterface): PointInterface;    
+    rotateBy(angle:number, centerPoint:Point): Point;    
     
 }
 
 export interface PointConstructor {
-    new (x:number, y:number): PointInterface;
+    new (x:number, y:number): Point;
 }
 
 export interface PointServiceInterface{
 
     //public methods of PointService
-    create(x:number, y:number): PointInterface;
+    create(x:number, y:number): Point;
 }

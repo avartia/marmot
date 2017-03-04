@@ -90,7 +90,6 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
 
     // WorldMorph events
     private initEventListeners():void{
-        let canvas = this.worldCanvas;
         let myself = this;
         this.canvasGesture = new Gesture(this.worldCanvas);
         this.canvasGesture.listen();

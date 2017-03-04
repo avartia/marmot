@@ -31,7 +31,7 @@ export class WorldMorphService implements WorldMorphServiceInterface{
     return new worldMorphConstructor(handMorphService, 
                                      colorService,
                                      rectangleService,
-                                     aCanvas) as WorldMorph;
+                                     aCanvas);
   }
 
 }

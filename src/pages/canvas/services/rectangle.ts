@@ -2,7 +2,7 @@ import { PointService } from './point.service'
 import { Point } from './point'
 import { RectangleInterface } from './rectangle.interface'
 
-export class Rectangle implements Rectangle{
+export class Rectangle implements RectangleInterface{
     public origin: Point;
     public corner: Point;
 

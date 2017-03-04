@@ -42,38 +42,40 @@ export interface MorphInterface extends NodeInterface{
     // whether a morph can accept dropping from other morphs
     acceptsDrops:boolean;
 
-    // protected member variables
+    // frame to be flushed per second
+    fps:number;
 
     // whether to track changes
-    // trackChanges:boolean;
+    trackChanges:boolean;
 
     // A float specifying the level of the blurring effect. 
-    // shadowBlur:number;
+    shadowBlur:number;
 
     // whether to be a morph
-    // isMorph:boolean;
+    isMorph:boolean;
 
     // optional url of a fill-image
-    // texture:string;
+    texture:string;
 
     // cached actually texture image 
-    // cachedTexture:HTMLImageElement; 
+    cachedTexture:HTMLImageElement; 
 
     // whether a morph can notice clicks from its parent
-    // noticesTransparentClick:boolean;
+    noticesTransparentClick:boolean;
 
-    // frame to be flushed per second
-    // fps:number;
 
     // customed context menu
-    // customContextMenu:MenuMorph;
+    customContextMenu:MenuMorph;
 
     // last modified or created time
-    // lastTime:number;
+    lastTime:number;
+
+    // protected member variables
+
 
     // public member methods
 
-    // Morph string representation: e.g. 'a Morph 2 [(20,45) | (130, 250)]'
+    //Morph string representation: e.g. 'a Morph 2 [(20,45) | (130, 250)]'
     // toString():string;
 
     // Morph deleting
@@ -286,7 +288,7 @@ export interface MorphInterface extends NodeInterface{
     childChanged():void;
     
     // Morph accessing(get worldmorph which contains the morph)
-    world():WorldMorph;
+    getWorld():WorldMorph;
 
     // Morph accessing(add new morph and remove old parent)
     add(childMorph):void;
