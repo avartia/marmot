@@ -1,4 +1,5 @@
 import {TriggerMorphInterface} from './triggermorph.interface'
+import {MenuItemMorph} from './menuitemmorph'
 //MenuItemMorph Class
 
 export interface MenuItemMorphInterface extends TriggerMorphInterface{
@@ -10,11 +11,11 @@ export interface MenuItemMorphInterface extends TriggerMorphInterface{
 export interface MenuItemMorphConstructor {
     //constructor of MenuItemMorph Class
 
-    new (): MenuItemMorphInterface;
+    new (): MenuItemMorph;
 }
 
 export interface MenuItemMorphServiceInterface{
 
     //public methods of MenuItemMorphService
-    create(): MenuItemMorphInterface;
+    create(): MenuItemMorph;
 }

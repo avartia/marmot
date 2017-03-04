@@ -11,11 +11,11 @@ export class ColorPaletteMorphService implements ColorPaletteMorphServiceInterfa
    }
 
   create(): ColorPaletteMorph{
-    return this.createColorPaletteMorph(ColorPaletteMorph) as ColorPaletteMorph;
+    return this.createColorPaletteMorph(ColorPaletteMorph);
   }
 
   private createColorPaletteMorph(colorPaletteMorphConstructor: ColorPaletteMorphConstructor): ColorPaletteMorph {
-    return new colorPaletteMorphConstructor() as ColorPaletteMorph;
+    return new colorPaletteMorphConstructor();
   }
 
 }

@@ -1,4 +1,4 @@
-
+import {ColorPickerMorph} from './colorpickermorph'
 //ColorPickerMorph Class
 
 export interface ColorPickerMorphInterface{
@@ -8,11 +8,11 @@ export interface ColorPickerMorphInterface{
 export interface ColorPickerMorphConstructor {
     //constructor of ColorPickerMorph Class
 
-    new (): ColorPickerMorphInterface;
+    new (): ColorPickerMorph;
 }
 
 export interface ColorPickerMorphServiceInterface{
 
     //public methods of ColorPickerMorphService
-    create(): ColorPickerMorphInterface;
+    create(): ColorPickerMorph;
 }

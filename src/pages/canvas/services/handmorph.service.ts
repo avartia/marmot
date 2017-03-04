@@ -17,7 +17,7 @@ export class HandMorphService implements HandMorphServiceInterface{
 
   private createHandMorph(handMorphConstructor: HandMorphConstructor,
                           aWorld:WorldMorph): HandMorph {
-    return new handMorphConstructor(aWorld) as HandMorph;
+    return new handMorphConstructor(aWorld);
   }
 
 }

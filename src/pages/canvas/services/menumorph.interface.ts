@@ -1,4 +1,4 @@
-
+import {MenuMorph} from './menumorph'
 //MenuMorph Class
 
 export interface MenuMorphInterface{
@@ -8,11 +8,11 @@ export interface MenuMorphInterface{
 export interface MenuMorphConstructor {
     //constructor of MenuMorph Class
 
-    new (): MenuMorphInterface;
+    new (): MenuMorph;
 }
 
 export interface MenuMorphServiceInterface{
 
     //public methods of MenuMorphService
-    create(): MenuMorphInterface;
+    create(): MenuMorph;
 }

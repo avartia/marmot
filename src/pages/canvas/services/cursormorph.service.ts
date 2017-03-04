@@ -17,7 +17,7 @@ export class CursorMorphService implements CursorMorphServiceInterface{
 
   private createCursorMorph(cursorMorphConstructor: CursorMorphConstructor,
                             aStringOrTextMorph:string|TextMorph): CursorMorph {
-    return new cursorMorphConstructor(aStringOrTextMorph) as CursorMorph;
+    return new cursorMorphConstructor(aStringOrTextMorph);
   }
 
 }

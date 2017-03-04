@@ -15,7 +15,7 @@ export class ColorPickerMorphService implements ColorPickerMorphServiceInterface
   }
 
   private createColorPickerMorph(colorPickerMorphConstructor: ColorPickerMorphConstructor): ColorPickerMorph {
-    return new colorPickerMorphConstructor() as ColorPickerMorph;
+    return new colorPickerMorphConstructor();
   }
 
   get(){

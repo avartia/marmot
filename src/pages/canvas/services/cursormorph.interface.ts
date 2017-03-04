@@ -1,5 +1,6 @@
 import {BlinkerMorphInterface} from './blinkermorph.interface'
-import {TextMorphInterface} from './textmorph.interface'
+import {TextMorph} from './textmorph'
+import {CursorMorph} from './cursormorph'
 //CursorMorph Class
 
 export interface CursorMorphInterface extends BlinkerMorphInterface{
@@ -42,11 +43,11 @@ export interface CursorMorphInterface extends BlinkerMorphInterface{
 export interface CursorMorphConstructor {
     //constructor of CursorMorph Class
 
-    new (aStringOrTextMorph:string|TextMorphInterface): CursorMorphInterface;
+    new (aStringOrTextMorph:string|TextMorph): CursorMorph;
 }
 
 export interface CursorMorphServiceInterface{
 
     //public methods of CursorMorphService
-    create(aStringOrTextMorph:string|TextMorphInterface): CursorMorphInterface;
+    create(aStringOrTextMorph:string|TextMorph): CursorMorph;
 }

@@ -15,7 +15,7 @@ export class MenuItemMorphService implements MenuItemMorphServiceInterface{
   }
 
   private createMenuItemMorph(menuItemMorphConstructor: MenuItemMorphConstructor): MenuItemMorph {
-    return new menuItemMorphConstructor() as MenuItemMorph;
+    return new menuItemMorphConstructor();
   }
 
   get(){

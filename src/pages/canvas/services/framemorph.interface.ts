@@ -1,7 +1,9 @@
 import {MorphInterface} from './morph.interface'
-import {ScrollFrameMorphInterface} from './scrollframemorph.interface'
-import {RectangleInterface} from './rectangle.interface'
-import {PointInterface} from './point.interface'
+import {Morph} from './morph'
+import {FrameMorph} from './framemorph'
+import {ScrollFrameMorph} from './scrollframemorph'
+import {Rectangle} from './rectangle'
+import {Point} from './point'
 
 // FrameMorph Class
 // I clip my submorphs at my bounds
@@ -10,18 +12,18 @@ import {PointInterface} from './point.interface'
 export interface FrameMorphInterface extends MorphInterface{
     // public intance member and public intance methods of FrameMorph Class
 
-    scrollFrame:ScrollFrameMorphInterface;
+    scrollFrame:ScrollFrameMorph;
 
-    fullBounds():RectangleInterface;
+    fullBounds():Rectangle;
 
     // use only for shadows
     fullImage():HTMLCanvasElement;
 
     fullDrawOn(aCanvas:HTMLCanvasElement,
-                aRect:RectangleInterface):void;
+                aRect:Rectangle):void;
 
     // FrameMorph navigation:
-    topMorphAt(point:PointInterface):MorphInterface;
+    topMorphAt(point:Point):Morph;
 
     // FrameMorph scrolling support:
     adjustBounds():void;
@@ -38,11 +40,11 @@ export interface FrameMorphInterface extends MorphInterface{
 export interface FrameMorphConstructor {
     //constructor of FrameMorph Class
 
-    new (aScrollFrame:ScrollFrameMorphInterface): FrameMorphInterface;
+    new (aScrollFrame:ScrollFrameMorph): FrameMorph;
 }
 
 export interface FrameMorphServiceInterface{
 
     //public methods of FrameMorphService
-    create(aScrollFrame?:ScrollFrameMorphInterface): FrameMorphInterface;
+    create(aScrollFrame?:ScrollFrameMorph): FrameMorph;
 }

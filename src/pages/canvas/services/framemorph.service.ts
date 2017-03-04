@@ -17,7 +17,7 @@ export class FrameMorphService implements FrameMorphServiceInterface{
 
   private createFrameMorph(frameMorphConstructor: FrameMorphConstructor,
                            aScrollFrame:ScrollFrameMorph): FrameMorph {
-    return new frameMorphConstructor(aScrollFrame) as FrameMorph;
+    return new frameMorphConstructor(aScrollFrame);
   }
 
 }

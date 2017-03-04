@@ -22,7 +22,7 @@ export class ColorService implements ColorServiceInterface{
                       g:number,
                       b:number,
                       a:number): Color{
-    return new colorConstructor(r, g, b, a) as Color;
+    return new colorConstructor(r, g, b, a);
   }
 
 }

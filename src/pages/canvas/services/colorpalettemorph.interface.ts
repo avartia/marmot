@@ -1,4 +1,4 @@
-
+import {ColorPaletteMorph} from './colorpalettemorph'
 //ColorPaletteMorph Class
 
 export interface ColorPaletteMorphInterface{
@@ -8,11 +8,11 @@ export interface ColorPaletteMorphInterface{
 export interface ColorPaletteMorphConstructor {
     //constructor of ColorPaletteMorph Class
 
-    new (): ColorPaletteMorphInterface;
+    new (): ColorPaletteMorph;
 }
 
 export interface ColorPaletteMorphServiceInterface{
 
     //public methods of ColorPaletteMorphService
-    create(): ColorPaletteMorphInterface;
+    create(): ColorPaletteMorph;
 }

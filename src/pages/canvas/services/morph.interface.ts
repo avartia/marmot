@@ -1,10 +1,11 @@
 import {NodeInterface} from './node.interface'
-import {RectangleInterface} from './rectangle.interface'
-import {ColorInterface} from "./color.interface"
-import {MenuMorphInterface} from './menumorph.interface'
-import {PointInterface} from './point.interface'
-import {ShadowMorphInterface} from './shadowmorph.interface'
-import {WorldMorphInterface} from './worldmorph.interface'
+import {Rectangle} from './rectangle'
+import {Color} from "./color"
+import {MenuMorph} from './menumorph'
+import {Point} from './point'
+import {ShadowMorph} from './shadowmorph'
+import {WorldMorph} from './worldmorph'
+import {Morph} from './morph'
 
 // Morph Class
 
@@ -18,16 +19,16 @@ export interface MorphInterface extends NodeInterface{
     image:HTMLCanvasElement;
 
     // rectangle area the morph belongs to
-    bounds:RectangleInterface;
+    bounds:Rectangle;
 
     // cached whole image
     cachedFullImage:HTMLCanvasElement;
 
     // cached whole Bounds, which merge the bounds of children
-    cachedFullBounds:RectangleInterface;
+    cachedFullBounds:Rectangle;
 
     // background color of morph
-    color:ColorInterface;
+    color:Color;
 
     // specifies how transparent a morph is.
     alpha:number;
@@ -65,7 +66,7 @@ export interface MorphInterface extends NodeInterface{
     // fps:number;
 
     // customed context menu
-    // customContextMenu:MenuMorphInterface;
+    // customContextMenu:MenuMorph;
 
     // last modified or created time
     // lastTime:number;
@@ -97,43 +98,43 @@ export interface MorphInterface extends NodeInterface{
     bottom():number;
 
     // Morph accessing(get morph center point coordinates)
-    center():PointInterface;
+    center():Point;
 
     // Morph accessing(get morph center point's coordinate of bottom border)
-    bottomCenter():PointInterface;
+    bottomCenter():Point;
 
     // Morph accessing(get morph center point's coordinate of left border)
-    leftCenter():PointInterface;
+    leftCenter():Point;
 
     // Morph accessing(get morph center point's coordinate of right border)
-    rightCenter():PointInterface;
+    rightCenter():Point;
 
     // Morph accessing(get morph center point's coordinate of top border)
-    topCenter():PointInterface;
+    topCenter():Point;
 
     // Morph accessing(get morph bottom left point's coordinate)
-    bottomLeft():PointInterface;
+    bottomLeft():Point;
 
     // Morph accessing(get morph bottom right point's coordinate)
-    bottomRight():PointInterface;
+    bottomRight():Point;
 
     // Morph accessing(get morph top left point's coordinate)
-    topLeft():PointInterface;
+    topLeft():Point;
 
     // Morph accessing(get morph top right point's coordinate)
-    topRight():PointInterface;
+    topRight():Point;
 
     // Morph accessing(get morph bound itself)
-    bounding():RectangleInterface;
+    bounding():Rectangle;
 
     // Morph accessing(get morph four corners)
-    corners():PointInterface[];
+    corners():Point[];
 
     // Morph accessing(get topLeftPoint of morph bound)
-    position():PointInterface;
+    position():Point;
 
     // Morph accessing(get extent including width and height of morph)
-    extent():PointInterface;
+    extent():Point;
 
     // Morph accessing(get width of morph bound)
     width():number;
@@ -142,25 +143,25 @@ export interface MorphInterface extends NodeInterface{
     height():number;
 
     // Morph accessing(get morph bound with its children)
-    fullBounds():RectangleInterface;
+    fullBounds():Rectangle;
 
     // Morph accessing(get morph bound with its children but no shadow)
-    fullBoundsNoShadow():RectangleInterface;
+    fullBoundsNoShadow():Rectangle;
 
     // Morph accessing(get morph bound itself intersected by all parents' framemorphs)
-    visibleBounds():RectangleInterface;
+    visibleBounds():Rectangle;
 
     // Morph accessing(move morph with recording changes)
-    moveBy(offset:PointInterface | number):void
+    moveBy(offset:Point | number):void
 
     // Morph accessing(just move morph with its children)
-    silentMoveBy(offset:PointInterface | number):void
+    silentMoveBy(offset:Point | number):void
 
     // Morph accessing(set position of morph with recording changes)
-    setPosition(otherPoint:PointInterface):void;
+    setPosition(otherPoint:Point):void;
 
     // Morph accessing(set position of morph without recording changes)
-    silentSetPosition(offset:PointInterface):void  
+    silentSetPosition(offset:Point):void  
 
     // Morph accessing(set left border of morph by translation)
     setLeft(left:number):void;
@@ -175,24 +176,24 @@ export interface MorphInterface extends NodeInterface{
     setBottom(left:number):void;  
 
     // Morph accessing(set center position of morph itself by translation)
-    setCenter(centerPoint:PointInterface):void;
+    setCenter(centerPoint:Point):void;
 
     // Morph accessing(set center position of morph with children by translation)
-    setFullCenter(centerPoint:PointInterface):void;  
+    setFullCenter(centerPoint:Point):void;  
 
     // Morph accessing(make morph completely within another morph by translation)  
-    keepWithin(otherMorph:MorphInterface):void;
+    keepWithin(otherMorph:Morph):void;
 
     // Morph accessing(?)
     scrollIntoView():void;
 
     // Morph accessing(set new extent of morph)
     // silently avoids redrawing the morph
-    setExtent(extentPoint:PointInterface, 
+    setExtent(extentPoint:Point, 
                 silently:boolean):void;  
 
     // Morph accessing(set new extent of morph by redrawing a complete morph)
-    silentSetExtent(extentPoint:PointInterface):void;    
+    silentSetExtent(extentPoint:Point):void;    
 
     // Morph accessing(set width of morph with redrawing)
     setWidth(width:number):void;  
@@ -207,7 +208,7 @@ export interface MorphInterface extends NodeInterface{
     silentSetHeight(height:number):void;  
 
     // Morph accessing(set color of morph with redrawing)
-    setColor(newColor:ColorInterface):void;  
+    setColor(newColor:Color):void;  
 
     // Morph displaying(initialize background of a morph)
     // if texture exists, then draw texture  
@@ -223,11 +224,11 @@ export interface MorphInterface extends NodeInterface{
 
     // Morph displaying(draw canvas of a morph without its children)
     drawOn(otherCanvas:HTMLCanvasElement,
-                drawingArea:RectangleInterface):void;
+                drawingArea:Rectangle):void;
 
     // Morph displaying(draw canvas of a morph with its children)
     fullDrawOn(otherCanvas:HTMLCanvasElement,
-                drawingArea:RectangleInterface):void;
+                drawingArea:Rectangle):void;
 
     // Morph displaying(hide a morph with its children)
     hide():void;
@@ -245,25 +246,25 @@ export interface MorphInterface extends NodeInterface{
     fullImage():HTMLCanvasElement;
 
     // Morph shadow(?)
-    shadowImage(off:PointInterface, 
-                color:ColorInterface):HTMLCanvasElement;
+    shadowImage(off:Point, 
+                color:Color):HTMLCanvasElement;
     
     // Morph shadow(produce shadow morph)
-    shadowImageBlurred(off:PointInterface, 
-                        color:ColorInterface):HTMLCanvasElement;
+    shadowImageBlurred(off:Point, 
+                        color:Color):HTMLCanvasElement;
     
     // Morph shadow(create and set shadow morph)
-    shadow(off:PointInterface,
+    shadow(off:Point,
             alpha:number, 
-            color:ColorInterface):ShadowMorphInterface;
+            color:Color):ShadowMorph;
     
     // Morph shadow(add shadowmorph to a morph)
-    addShadow(off:PointInterface,
+    addShadow(off:Point,
             alpha:number, 
-            color:ColorInterface):ShadowMorphInterface;
+            color:Color):ShadowMorph;
 
     // Morph shadow(get shadowmorph which belongs to a morph)
-    getShadow():ShadowMorphInterface;
+    getShadow():ShadowMorph;
 
     // Morph shadow(remove shadowmorph which belongs to a morph)
     removeShadow():void;
@@ -285,7 +286,7 @@ export interface MorphInterface extends NodeInterface{
     childChanged():void;
     
     // Morph accessing(get worldmorph which contains the morph)
-    world():WorldMorphInterface;
+    world():WorldMorph;
 
     // Morph accessing(add new morph and remove old parent)
     add(childMorph):void;
@@ -295,20 +296,20 @@ export interface MorphInterface extends NodeInterface{
     addBack(childMorph):void;
 
     // Morph accessing(get top layer of morph)  
-    topMorphAt(point:PointInterface):MorphInterface;
+    topMorphAt(point:Point):Morph;
 
     // Morph accessing(get overlapped morph) 
-    overlappedMorphs():MorphInterface[];
+    overlappedMorphs():Morph[];
 
     // Morph pixel access(get color of some pixel in the morph)
-    getPixelColor(aPoint:PointInterface):ColorInterface;
+    getPixelColor(aPoint:Point):Color;
 
     // Morph pixel access
     // (answer whether some point is transparent in the morph)
-    isTransparentAt(aPoint:PointInterface):boolean;
+    isTransparentAt(aPoint:Point):boolean;
 
     // Morph duplicating(shallow copy without children)
-    copy():MorphInterface;
+    copy():Morph;
 
     /**Morph duplicating
      * Produce a copy of me with my entire tree of submorphs. Morphs
@@ -316,7 +317,7 @@ export interface MorphInterface extends NodeInterface{
      * Other properties are also *shallow* copied, so you must override
      * to deep copy Arrays and (complex) Objects
      */  
-     fullCopy():MorphInterface;
+     fullCopy():Morph;
 
     /**Morph duplicating
      * Recursively copy this entire composite morph, 
@@ -333,7 +334,7 @@ export interface MorphInterface extends NodeInterface{
      * The same goes for morphs that contain other complex data 
      * that should be copied when the morph is duplicated.
      */
-    // copyRecordingReferences(map:Map<MorphInterface, MorphInterface>):
+    // copyRecordingReferences(map:Map<Morph, Morph>):
 
     /**Morph duplicating
      * Update intra-morph references within a composite morph that has
@@ -341,32 +342,32 @@ export interface MorphInterface extends NodeInterface{
      * orginal composite then the copy of that button in the new composite
      * should refer to the copy of X in new composite, not the original X.
      */
-    // updateReferences(map:Map<MorphInterface, MorphInterface>);
+    // updateReferences(map:Map<Morph, Morph>);
 
     // Morph dragging and dropping
     // get root morph which contains dragging morph
-    rootForGrab():MorphInterface;
+    rootForGrab():Morph;
 
     // Morph dragging and dropping
     // answer whether a morph can accept drop of another morph
-    wantsDropOf(aMorph:MorphInterface):boolean;  
+    wantsDropOf(aMorph:Morph):boolean;  
 
     // Morph dragging and dropping
     // pick up a morph
-    pickUp(aWorld:WorldMorphInterface):void;   
+    pickUp(aWorld:WorldMorph):void;   
     
     // Morph dragging and dropping
     // answer whether a morph has been picked up
-    isPickedUp(aWorld:WorldMorphInterface):void;   
+    isPickedUp(aWorld:WorldMorph):void;   
 
     // Morph dragging and dropping
     // answer a dictionary specifying where I am right now, so
     // I can slide back to it if I'm dropped somewhere else
-    situation():{origin:MorphInterface, position:PointInterface};   
+    situation():{origin:Morph, position:Point};   
 
     // Morph dragging and dropping
     // slide back to origin position when dropped somewhere else
-    slideBackTo(situation:{origin:MorphInterface, position:PointInterface},
+    slideBackTo(situation:{origin:Morph, position:Point},
                 steps:number):void;
 
     // Morph utilities
@@ -403,7 +404,7 @@ export interface MorphInterface extends NodeInterface{
      */
     prompt(msg:string,
             callback:Function,
-            environment:MorphInterface,
+            environment:Morph,
             defaultContents:string,
             width:number,
             floorNum:number,
@@ -420,24 +421,24 @@ export interface MorphInterface extends NodeInterface{
      */
     pickColor(msg:string,
                 callback:Function,
-                environment:MorphInterface,
-                defaultContents:ColorInterface):void;
+                environment:Morph,
+                defaultContents:Color):void;
 
     // Morph utilities
     // inspect menu
-    inspect(anotherObject:MorphInterface):void;
+    inspect(anotherObject:Morph):void;
 
     // Morph menus
     // answer proper menu
-    contextMenu():MenuMorphInterface;
+    contextMenu():MenuMorph;
 
     // Morph menus
     // answer hierarchy menu
-    // hierarchyMenu():MenuMorphInterface;
+    // hierarchyMenu():MenuMorph;
 
     // Morph menus
     // answer developers menu
-    // developersMenu():MenuMorphInterface;
+    // developersMenu():MenuMorph;
 
     // Morph menus
     // answer user menu
@@ -473,7 +474,7 @@ export interface MorphInterface extends NodeInterface{
     // Morph eval
 
     // Morph collision detection
-    // isTouching(otherMorph:MorphInterface):
+    // isTouching(otherMorph:Morph):
     
     // overlappingImage():
   
@@ -482,11 +483,11 @@ export interface MorphInterface extends NodeInterface{
 export interface MorphConstructor {
     // constructor of Morph Class
 
-    new (noDraw:boolean): MorphInterface;
+    new (noDraw:boolean): Morph;
 }
 
 export interface MorphServiceInterface{
 
     // public methods of MorphService
-    create(noDraw?:boolean): MorphInterface;
+    create(noDraw?:boolean): Morph;
 }

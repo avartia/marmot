@@ -1,4 +1,5 @@
 // Color Class
+import {Color} from './color'
 
 export interface ColorInterface{
     // public member variables
@@ -15,10 +16,10 @@ export interface ColorInterface{
     toString() : string;
 
     // Color copying
-    copy() : ColorInterface;
+    copy() : Color;
 
     // Color comparison
-    equal(otherColor: ColorInterface): boolean;
+    equal(otherColor: Color): boolean;
 
     // Color conversion (from rgb to hsv)
     toHsv(): number[];
@@ -26,20 +27,20 @@ export interface ColorInterface{
     // Color conversion (from hsv to rgb)
     toRgb(h:number, 
           s:number,
-          v:number):ColorInterface;
+          v:number):Color;
 
     // Color mixing
     mix(proportion:number, 
-        otherColor:ColorInterface): ColorInterface;
+        otherColor:Color): Color;
       
     // Color darker based on rgb, ignore alpha
-    darker(percent:number):ColorInterface;
+    darker(percent:number):Color;
 
     // Color lighter based on rgb, ignore alpha
-    lighter(percent:number):ColorInterface;
+    lighter(percent:number):Color;
 
     // Color darker based on hsv, ignore alpha
-    hsvDarker():ColorInterface;
+    hsvDarker():Color;
 }
 
 export interface ColorConstructor {
@@ -48,7 +49,7 @@ export interface ColorConstructor {
     new (r:number,
          g:number,
          b:number,
-         a:number): ColorInterface;
+         a:number): Color;
 }
 
 export interface ColorServiceInterface{
@@ -57,5 +58,5 @@ export interface ColorServiceInterface{
     create(r:number,
            g:number,
            b:number,
-           a?:number): ColorInterface;
+           a?:number): Color;
 }

@@ -16,7 +16,7 @@ export class BlinkerMorphService implements BlinkerMorphServiceInterface{
 
     private createBlinkerMorph(blinkerMorphConstructor: BlinkerMorphConstructor,
                               rate:number): BlinkerMorph {
-      return new blinkerMorphConstructor(rate) as BlinkerMorph;
+      return new blinkerMorphConstructor(rate);
     }
 
 }
