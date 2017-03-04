@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 
-import {TriggerMorph} from './TriggerMorph'
+import {TriggerMorph} from './triggermorph'
 import {TriggerMorphConstructor, TriggerMorphServiceInterface} from './triggermorph.interface'
 
 @Injectable()
@@ -15,7 +15,7 @@ export class TriggerMorphService implements TriggerMorphServiceInterface{
   }
 
   private createTriggerMorph(triggerMorphConstructor: TriggerMorphConstructor): TriggerMorph {
-    return new triggerMorphConstructor() as TriggerMorph;
+    return new triggerMorphConstructor();
   }
 
 }

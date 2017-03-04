@@ -1,4 +1,5 @@
 import { MorphInterface } from './morph.interface'
+import { ShadowMorph } from "./shadowmorph";
 //ShadowMorph Class
 
 export interface ShadowMorphInterface extends MorphInterface{
@@ -8,11 +9,11 @@ export interface ShadowMorphInterface extends MorphInterface{
 export interface ShadowMorphConstructor {
     //constructor of ShadowMorph Class
 
-    new (): ShadowMorphInterface;
+    new (): ShadowMorph;
 }
 
 export interface ShadowMorphServiceInterface{
 
     //public methods of ShadowMorphService
-    create(): ShadowMorphInterface;
+    create(): ShadowMorph;
 }

@@ -1,4 +1,5 @@
-import {MorphInterface} from './morph.interface'
+import { MorphInterface } from './morph.interface'
+import { TriggerMorph } from "./triggermorph";
 //TriggerMorph Class
 
 export interface TriggerMorphInterface extends MorphInterface{
@@ -8,11 +9,11 @@ export interface TriggerMorphInterface extends MorphInterface{
 export interface TriggerMorphConstructor {
     //constructor of TriggerMorph Class
 
-    new (): TriggerMorphInterface;
+    new (): TriggerMorph;
 }
 
 export interface TriggerMorphServiceInterface{
 
     //public methods of TriggerMorphService
-    create(): TriggerMorphInterface;
+    create(): TriggerMorph;
 }

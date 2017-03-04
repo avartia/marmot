@@ -1,4 +1,5 @@
 import {MorphInterface} from './morph.interface'
+import {BlinkerMorph} from './blinkermorph'
 //BlinkerMorph Class
 //can be used for text cursors
 
@@ -13,11 +14,11 @@ export interface BlinkerMorphInterface extends MorphInterface{
 export interface BlinkerMorphConstructor {
     //constructor of BlinkerMorph Class
 
-    new (rate:number): BlinkerMorphInterface;
+    new (rate:number): BlinkerMorph;
 }
 
 export interface BlinkerMorphServiceInterface{
 
     //public methods of BlinkerMorphService
-    create(rate?:number): BlinkerMorphInterface;
+    create(rate?:number): BlinkerMorph;
 }

@@ -41,6 +41,7 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
     public doOneCycle(): void{
         this.stepFrame();
         this.updateBroken();
+        console.log("one cycle");
     }
 
     // World Morph display
@@ -74,7 +75,7 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
     }
 
     private condense(src:Rectangle[]):Rectangle[] {
-        return;
+        return [];
     }
 
     private fillPage():void{
@@ -90,18 +91,20 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
 
     // WorldMorph events
     private initEventListeners():void{
-        let canvas = this.worldCanvas;
         let myself = this;
         this.canvasGesture = new Gesture(this.worldCanvas);
         this.canvasGesture.listen();
 
         this.canvasGesture.on('panstart', (event) => {
+            console.log("panstart");
             myself.hand.processTouchStart(event);
         });
         this.canvasGesture.on('panmove', (event) => {
+            console.log("panmove");            
             myself.hand.processTouchMove(event);
         });
         this.canvasGesture.on('panend', (event) => {
+            console.log("panend");            
             myself.hand.processTouchEnd(event);
         });    
         this.canvasGesture.on('panup', (event) => {

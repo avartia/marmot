@@ -15,7 +15,7 @@ export class MenuMorphService implements MenuMorphServiceInterface{
   }
 
   private createMenuMorph(menuMorphConstructor: MenuMorphConstructor): MenuMorph {
-    return new menuMorphConstructor() as MenuMorph;
+    return new menuMorphConstructor();
   }
 
 }

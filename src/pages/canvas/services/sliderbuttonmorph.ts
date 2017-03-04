@@ -1,4 +1,4 @@
-import {SliderButtonMorphInterface} from './SliderButtonMorph.interface'
+import {SliderButtonMorphInterface} from './sliderbuttonmorph.interface'
 
 export class SliderButtonMorph implements SliderButtonMorphInterface{
 

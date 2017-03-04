@@ -14,7 +14,7 @@ export class PointService implements PointServiceInterface{
   }
 
   private createPoint(pointConstructor: PointConstructor, x: number, y: number): Point {
-    return new pointConstructor(x, y) as Point;
+    return new pointConstructor(x, y);
   }
 
 }

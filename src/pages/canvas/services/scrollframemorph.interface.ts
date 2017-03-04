@@ -1,4 +1,7 @@
 import { FrameMorphInterface } from './framemorph.interface'
+import { ScrollFrameMorph } from './scrollframemorph'
+
+
 //ScrollFrameMorph Class
 
 export interface ScrollFrameMorphInterface extends FrameMorphInterface{
@@ -8,11 +11,11 @@ export interface ScrollFrameMorphInterface extends FrameMorphInterface{
 export interface ScrollFrameMorphConstructor {
     //constructor of ScrollFrameMorph Class
 
-    new (): ScrollFrameMorphInterface;
+    new (): ScrollFrameMorph;
 }
 
 export interface ScrollFrameMorphServiceInterface{
 
     //public methods of ScrollFrameMorphService
-    create(): ScrollFrameMorphInterface;
+    create(): ScrollFrameMorph;
 }
