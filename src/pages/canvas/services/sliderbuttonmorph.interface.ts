@@ -1,4 +1,4 @@
-import { SliderButtonMorph } from "./SliderButtonMorph";
+import { SliderButtonMorph } from "./sliderbuttonmorph";
 
 //SliderButtonMorph Class
 

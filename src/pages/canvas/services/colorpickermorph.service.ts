@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 
-import {ColorPickerMorph} from './ColorPickerMorph'
+import {ColorPickerMorph} from './colorPickerMorph'
 import {ColorPickerMorphConstructor, ColorPickerMorphServiceInterface} from './colorpickermorph.interface'
 
 @Injectable()

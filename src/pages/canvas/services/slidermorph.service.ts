@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 
-import {SliderMorph} from './SliderMorph'
+import {SliderMorph} from './slidermorph'
 import {SliderMorphConstructor, SliderMorphServiceInterface} from './slidermorph.interface'
 
 @Injectable()

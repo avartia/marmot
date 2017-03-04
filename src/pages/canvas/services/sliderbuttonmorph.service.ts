@@ -1,7 +1,7 @@
 import { Injectable }    from '@angular/core';
 
-import {SliderButtonMorph} from './SliderButtonMorph'
-import {SliderButtonMorphConstructor, SliderButtonMorphServiceInterface} from './SliderButtonMorph.interface'
+import {SliderButtonMorph} from './sliderbuttonmorph'
+import {SliderButtonMorphConstructor, SliderButtonMorphServiceInterface} from './sliderbuttonmorph.interface'
 
 @Injectable()
 export class SliderButtonMorphService implements SliderButtonMorphServiceInterface{

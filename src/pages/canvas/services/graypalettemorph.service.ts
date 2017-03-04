@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 
-import {GrayPaletteMorph} from './GrayPaletteMorph'
+import {GrayPaletteMorph} from './grayPaletteMorph'
 import {GrayPaletteMorphConstructor, GrayPaletteMorphServiceInterface} from './graypalettemorph.interface'
 
 @Injectable()

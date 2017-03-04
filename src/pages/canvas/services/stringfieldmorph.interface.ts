@@ -1,4 +1,4 @@
-import { StringFieldMorph } from "./StringFieldMorph";
+import { StringFieldMorph } from "./stringfieldmorph";
 
 //StringFieldMorph Class
 

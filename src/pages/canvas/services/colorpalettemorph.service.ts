@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 
-import {ColorPaletteMorph} from './ColorPaletteMorph'
+import {ColorPaletteMorph} from './colorPaletteMorph'
 import {ColorPaletteMorphConstructor, ColorPaletteMorphServiceInterface} from './colorpalettemorph.interface'
 
 @Injectable()

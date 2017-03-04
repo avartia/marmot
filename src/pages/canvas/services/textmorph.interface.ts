@@ -1,4 +1,4 @@
-import { TextMorph } from "./TextMorph";
+import { TextMorph } from "./textmorph";
 
 //TextMorph Class
 

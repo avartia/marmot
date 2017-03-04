@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 
-import {StringMorph} from './StringMorph'
+import {StringMorph} from './stringmorph'
 import {StringMorphConstructor, StringMorphServiceInterface} from './stringmorph.interface'
 
 @Injectable()

@@ -1,4 +1,4 @@
-import { StringMorph } from "./StringMorph";
+import { StringMorph } from "./stringmorph";
 
 //StringMorph Class
 

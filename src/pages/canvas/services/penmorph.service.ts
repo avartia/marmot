@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 
-import {PenMorph} from './PenMorph'
+import {PenMorph} from './penmorph'
 import {PenMorphConstructor, PenMorphServiceInterface} from './penmorph.interface'
 import { RectangleService } from './rectangle.service'
 

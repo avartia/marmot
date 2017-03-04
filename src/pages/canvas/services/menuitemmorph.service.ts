@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 
-import {MenuItemMorph} from './MenuItemMorph'
+import {MenuItemMorph} from './menuitemmorph'
 import {MenuItemMorphConstructor, MenuItemMorphServiceInterface} from './menuitemmorph.interface'
 
 @Injectable()

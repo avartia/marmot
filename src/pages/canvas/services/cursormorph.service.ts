@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 
-import { CursorMorph } from './CursorMorph'
+import { CursorMorph } from './cursorMorph'
 import { CursorMorphConstructor, CursorMorphServiceInterface } from './cursormorph.interface'
 import { TextMorph } from './textmorph'
 

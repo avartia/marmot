@@ -1,6 +1,6 @@
 import { MorphInterface } from './morph.interface'
 import { RectangleService } from './rectangle.service'
-import { PenMorph } from "./PenMorph";
+import { PenMorph } from "./penmorph";
 
 //PenMorph Class
 

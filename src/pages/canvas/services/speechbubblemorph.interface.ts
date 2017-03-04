@@ -1,4 +1,4 @@
-import { SpeechBubbleMorph } from "./SpeechBubbleMorph";
+import { SpeechBubbleMorph } from "./speechbubblemorph";
 
 //SpeechBubbleMorph Class
 

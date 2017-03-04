@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 
-import {TextMorph} from './TextMorph'
+import {TextMorph} from './textmorph'
 import {TextMorphConstructor, TextMorphServiceInterface} from './textmorph.interface'
 
 @Injectable()

@@ -1,5 +1,5 @@
 import { MorphInterface } from './morph.interface'
-import { TriggerMorph } from "./TriggerMorph";
+import { TriggerMorph } from "./triggermorph";
 //TriggerMorph Class
 
 export interface TriggerMorphInterface extends MorphInterface{

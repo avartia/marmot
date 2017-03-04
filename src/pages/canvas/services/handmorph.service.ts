@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 
-import {HandMorph} from './HandMorph'
+import {HandMorph} from './handmorph'
 import {HandMorphConstructor, HandMorphServiceInterface} from './handmorph.interface'
 import {WorldMorph} from './worldmorph'
 

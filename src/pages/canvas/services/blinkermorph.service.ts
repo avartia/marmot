@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 
-import {BlinkerMorph} from './BlinkerMorph'
+import {BlinkerMorph} from './blinkerMorph'
 import {BlinkerMorphConstructor, BlinkerMorphServiceInterface} from './blinkermorph.interface'
 
 @Injectable()
