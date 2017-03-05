@@ -34,7 +34,9 @@ export class Node implements NodeInterface {
 
     //find the root of the current Node
     root():Node{
-        return;
+        if(this.parent==null)
+            return this;
+        return this.parent.root();
     }
 
     //find the number of Nodes from current Node to root
