@@ -1,8 +1,7 @@
-import { MorphInterface } from './morph.interface'
 import { ShadowMorph } from "./shadowmorph";
 //ShadowMorph Class
 
-export interface ShadowMorphInterface extends MorphInterface{
+export interface ShadowMorphInterface{
   //public intance member and public intance methods of ShadowMorph Class
 }
 

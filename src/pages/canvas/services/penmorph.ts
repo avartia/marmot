@@ -21,7 +21,7 @@ export class PenMorph extends Morph implements PenMorphInterface{
   // PenMorph display:
   // my orientation can be overridden with the "facing" parameter to
   // implement Scratch-style rotation styles
-  drawNewPen(facing?:number):void{
+  drawNew(facing?:number):void{
       let context:CanvasRenderingContext2D;
       let start:Point;
       let dest:Point;

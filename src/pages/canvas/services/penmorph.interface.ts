@@ -1,17 +1,16 @@
-import { MorphInterface } from './morph.interface'
 import { RectangleService } from './rectangle.service'
 import { PenMorph } from "./penmorph";
 
 //PenMorph Class
 
 
-export interface PenMorphInterface extends MorphInterface{
+export interface PenMorphInterface{
     //public intance member and public intance methods of PenMorph Class
 
     // PenMorph display:
     // my orientation can be overridden with the "facing" parameter to
     // implement Scratch-style rotation styles
-    drawNewPen(facing:number):void;
+    drawNew(facing:number):void;
 
     // PenMorph access:
     setHeading(degrees:number):void;

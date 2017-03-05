@@ -36,6 +36,7 @@ export class Morph extends Node implements MorphInterface{
         this.fps = 0;
         this.lastTime = Date.now();
         this.isVisible = true;
+        
     }
     
     public stepFrame(){

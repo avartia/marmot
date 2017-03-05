@@ -1,5 +1,4 @@
 import { Morph } from './morph'
-import { MorphInterface } from './morph.interface'
 import { WorldMorph } from './worldmorph'
 import { Point } from './point'
 import {HandMorph} from './handmorph'
@@ -8,7 +7,7 @@ import {HandMorph} from './handmorph'
 // I represent the Mouse cursor
 // HandMorph inherits from Morph
 
-export interface HandMorphInterface extends MorphInterface{
+export interface HandMorphInterface{
     // public member variables
     
     myWorld:WorldMorph;

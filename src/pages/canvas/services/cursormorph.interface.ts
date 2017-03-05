@@ -1,9 +1,8 @@
-import {BlinkerMorphInterface} from './blinkermorph.interface'
 import {TextMorph} from './textmorph'
 import {CursorMorph} from './cursormorph'
 //CursorMorph Class
 
-export interface CursorMorphInterface extends BlinkerMorphInterface{
+export interface CursorMorphInterface{
   //public intance member and public intance methods of CursorMorph Class
   //String/Text editing widget
 

@@ -1,4 +1,3 @@
-import {MorphInterface} from './morph.interface'
 import {Morph} from './morph'
 import {FrameMorph} from './framemorph'
 import {ScrollFrameMorph} from './scrollframemorph'
@@ -9,7 +8,7 @@ import {Point} from './point'
 // I clip my submorphs at my bounds
 // FrameMorph inherit from Morph
 
-export interface FrameMorphInterface extends MorphInterface{
+export interface FrameMorphInterface{
     // public intance member and public intance methods of FrameMorph Class
 
     scrollFrame:ScrollFrameMorph;

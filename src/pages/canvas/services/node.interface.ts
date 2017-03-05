@@ -4,7 +4,7 @@ import { Node } from './node'
 export interface NodeInterface{
     //public member variables
     
-    p:Node;
+    parent:Node;
     
     children:Node[];
     //public methods
@@ -60,11 +60,11 @@ export interface NodeInterface{
 export interface NodeConstructor {
     //constructor of Node Class
 
-    new (p:Node, children:Node[]): Node;
+    new (parent:Node, children:Node[]): Node;
 }
 
 export interface NodeServiceInterface{
 
     //public methods of NodeService
-    create(p?:Node, children?:Node[]): Node;
+    create(parent?:Node, children?:Node[]): Node;
 }

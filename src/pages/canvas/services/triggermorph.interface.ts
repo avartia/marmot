@@ -1,8 +1,7 @@
-import { MorphInterface } from './morph.interface'
 import { TriggerMorph } from "./triggermorph";
 //TriggerMorph Class
 
-export interface TriggerMorphInterface extends MorphInterface{
+export interface TriggerMorphInterface{
   //public intance member and public intance methods of TriggerMorph Class
 }
 

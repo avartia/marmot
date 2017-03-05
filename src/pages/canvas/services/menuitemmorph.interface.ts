@@ -1,8 +1,8 @@
-import {TriggerMorphInterface} from './triggermorph.interface'
+
 import {MenuItemMorph} from './menuitemmorph'
 //MenuItemMorph Class
 
-export interface MenuItemMorphInterface extends TriggerMorphInterface{
+export interface MenuItemMorphInterface{
   //public intance member and public intance methods of MenuItemMorph Class
 
 

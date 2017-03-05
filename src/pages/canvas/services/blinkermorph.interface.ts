@@ -1,9 +1,9 @@
-import {MorphInterface} from './morph.interface'
 import {BlinkerMorph} from './blinkermorph'
+
 //BlinkerMorph Class
 //can be used for text cursors
 
-export interface BlinkerMorphInterface extends MorphInterface{
+export interface BlinkerMorphInterface{
     //public intance member and public intance methods of BlinkerMorph Class
 
     // BlinkerMorph stepping:

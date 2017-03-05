@@ -1,8 +1,7 @@
-import {FrameMorphInterface} from './framemorph.interface'
-import {Rectangle} from './rectangle'
-import {HandMorph} from './handmorph'
-import {HandMorphService} from './handmorph.service'
-import {ColorService} from './color.service'
+import { Rectangle } from './rectangle'
+import { HandMorph } from './handmorph'
+import { HandMorphService } from './handmorph.service'
+import { ColorService } from './color.service'
 import { RectangleService } from './rectangle.service'
 import { WorldMorph } from "./worldmorph";
 
@@ -12,7 +11,7 @@ import { WorldMorph } from "./worldmorph";
 // I represent the <canvas> element
 // WorldMorph inherits from FrameMorph
 
-export interface WorldMorphInterface extends FrameMorphInterface{
+export interface WorldMorphInterface{
     // public member variables
 
     worldCanvas:HTMLCanvasElement;

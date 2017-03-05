@@ -41,7 +41,6 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
     public doOneCycle(): void{
         this.stepFrame();
         this.updateBroken();
-        console.log("one cycle");
     }
 
     // World Morph display
@@ -132,6 +131,11 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
 
         });
         
+    }
+
+    private createPenMorph():void{
+        
+
     }
     
 }

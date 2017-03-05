@@ -2,14 +2,10 @@ import {NodeInterface} from './node.interface'
 
 export class Node implements NodeInterface {
 
-    public p:Node;
 
-    public children:Node[];
+    constructor(public parent:Node = null,
+                public children:Node[] = []) {
 
-    constructor(p:Node = null,
-                children:Node[] = []) {
-        this.p = p;
-        this.children = children;
     }
 
     // Node string representation: e.g. 'a Node[3]'

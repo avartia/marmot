@@ -10,12 +10,12 @@ export class NodeService implements NodeServiceInterface{
 
    }
 
-  create(p?:Node, children?:Node[]): Node{
-    return this.createNode(Node, p, children);
+  create(parent?:Node, children?:Node[]): Node{
+    return this.createNode(Node, parent, children);
   }
 
-  private createNode(nodeConstructor: NodeConstructor, p:Node, children:Node[]): Node {
-    return new nodeConstructor(p, children);
+  private createNode(nodeConstructor: NodeConstructor, parent:Node, children:Node[]): Node {
+    return new nodeConstructor(parent, children);
   }
 
 }
