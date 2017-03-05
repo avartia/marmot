@@ -1,9 +1,10 @@
-import {PointInterface} from './point.interface'
-
+import { PointInterface } from './point.interface'
+import { PointService } from './point.service'
 export class Point implements PointInterface{
 
     constructor(public x:number = 0,
-                public y:number = 0) { 
+                public y:number = 0,
+                private ) { 
     }
 
     //Point string representation: e.g. '(12,68)'
@@ -88,7 +89,11 @@ export class Point implements PointInterface{
 
     //Point arithmetic(subtract)  
     subtract(other:Point | number): Point{
-        return;
+        if (other instanceof Point) {
+            return new Point(this.x - )
+        } else {
+            
+        }
     }   
 
     //Point arithmetic(multiplyBy)  
