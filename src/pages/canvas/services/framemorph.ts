@@ -5,13 +5,28 @@ import {Rectangle} from './rectangle'
 import {Point} from './point'
 
 export class FrameMorph extends Morph implements FrameMorphInterface{
+  public scrollFrame:ScrollFrameMorph;
 
-  constructor(public scrollFrame:ScrollFrameMorph = null) { 
+  constructor(public aScrollFrame:ScrollFrameMorph = null) { 
     super();
+    this.scrollFrame=aScrollFrame;
+    this.color=new Color(255,250,245);
+    this.drawNew();
+    this.acceptsDrops=true;
+
+    if (this.scrollFrame) {
+        this.isDraggable = false;
+        this.noticesTransparentClick = false;
+        this.alpha = 0;
+    }
   }
 
   fullBounds():Rectangle{
-    return;
+    var shadow = this.getShadow();
+    if (shadow !== null) {
+        return this.bounds.merge(shadow.bounds);
+    }
+    return this.bounds;
   }
 
   // use only for shadows

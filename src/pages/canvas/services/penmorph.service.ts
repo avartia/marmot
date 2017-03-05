@@ -17,7 +17,7 @@ export class PenMorphService implements PenMorphServiceInterface{
 
   private createPenMorph(penMorphConstructor: PenMorphConstructor,
                          rectangleService:RectangleService): PenMorph {
-    return new penMorphConstructor(rectangleService) as PenMorph;
+    return new penMorphConstructor(rectangleService);
   }
 
 }

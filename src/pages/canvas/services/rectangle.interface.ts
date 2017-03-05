@@ -130,7 +130,7 @@ export interface RectangleInterface{
     scaleBy(scale:number):Rectangle;
     
     //translate the current rectangle by factor
-    translateBy(factor:number):Rectangle;
+    translateBy(factor:number|Point):Rectangle;
 
     // Rectangle converting:
 

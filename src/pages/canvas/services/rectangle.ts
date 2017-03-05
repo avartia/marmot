@@ -2,6 +2,9 @@ import { PointService } from './point.service'
 import { Point } from './point'
 import { RectangleInterface } from './rectangle.interface'
 
+
+
+
 export class Rectangle implements RectangleInterface{
     public origin: Point;
     public corner: Point;
@@ -27,7 +30,12 @@ export class Rectangle implements RectangleInterface{
 
     // Rectangle copying:
     copy():Rectangle{
-        return;
+        return new Rectangle(
+        this.left(),
+        this.top(),
+        this.right(),
+        this.bottom()
+    );
     }
 
     // Rectangle accessing - setting:
@@ -43,7 +51,7 @@ export class Rectangle implements RectangleInterface{
 
     //Get the Y coordinate of the bottom of the square
     bottom():number{
-		return;
+		return this.corner.y;
 	}
 
     //Get the bottomCenter point of the Rectangle
@@ -66,7 +74,9 @@ export class Rectangle implements RectangleInterface{
 
     //Get the center point of the Rectangle
     center():Point{
-		return;
+		return this.origin.add(
+            this.corner.subtract(this.origin).floorDivideBy(2)
+        );
 	}
 
     //Get an array containing 4 corners of the Rectangle
@@ -76,7 +86,7 @@ export class Rectangle implements RectangleInterface{
 
     //Get the extent vector of the Rectangle
     extent():Point{
-		return;
+		return this.corner.subtract(this.origin);
 	}
 
     height():number{
@@ -84,7 +94,7 @@ export class Rectangle implements RectangleInterface{
 	}
 
     left():number{
-		return;
+		return this.origin.x;;
 	}
 
     leftCenter():Point{
@@ -92,7 +102,7 @@ export class Rectangle implements RectangleInterface{
 	}
 
     right():number{
-		return;
+		return this.corner.x;
 	}
 
     rightCenter():Point{
@@ -100,7 +110,7 @@ export class Rectangle implements RectangleInterface{
 	}
 
     top():number{
-		return;
+		return this.origin.y;
 	}
 
     topCenter():Point{
@@ -116,12 +126,12 @@ export class Rectangle implements RectangleInterface{
 	}
 
     width():number{
-		return;
+		return this.corner.x-this.origin.x;
 	}
 
     //Get the topLeftPoint of the Rectangle
     position():Point{
-		return;
+		return this.origin;
 	}
 
     // Rectangle comparison:
@@ -155,7 +165,10 @@ export class Rectangle implements RectangleInterface{
 
     //Get the intersect part of two Rectangle
     intersect(aRect:Rectangle):Rectangle{
-		return;
+        let result:Rectangle = new Rectangle();
+        result.origin=this.origin.max(aRect.origin);
+        result.corner=this.corner.min(aRect.corner);
+		return result;
 	}
 
     //Get the Rectangle that can contain these to Rectangle
@@ -165,7 +178,8 @@ export class Rectangle implements RectangleInterface{
 
     //expand the rectangle that can contain aRect
     mergeWith(aRect:Rectangle):void{
-		return;
+		this.origin = this.origin.min(aRect.origin);
+        this.corner = this.corner.max(aRect.corner);
 	}
 
     //Apply round method to topLeftPoint and bottomRightPoint to create a new Rectangle
@@ -217,8 +231,10 @@ export class Rectangle implements RectangleInterface{
 	}
     
     //translate the current rectangle by factor
-    translateBy(factor:number):Rectangle{
-		return;
+    translateBy(factor:number|Point):Rectangle{
+        var o = this.origin.add(factor),
+            c = this.corner.add(factor);
+		return new Rectangle(o.x, o.y, c.x, c.y);
 	}
 
     // Rectangle converting:
