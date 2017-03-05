@@ -2,61 +2,177 @@ interface assignment:
 ***if you have finished writing interface, 
 ***please append ! to show you have done!
 
-first phase:
-necessary class:
-  Node!
-  Rectangle!
-  Morph!
-  FrameMorph
-  WorldMorph
-  HandMorph!
-  Point!
-  Color!
-  PenMorph
-
-Siyu Xie:
-  Node
-  Rectangle
-  PenMorph
-
-Yiqiang Chen:
-  Morph
-  Point
-  Color
-  FrameMorph!
-  WorldMorph!
-  HandMorph!
-
-
-
-Siyu Xie:
-    Node
-    Rectangle
-    BlinkerMorph
-    CursorMorph
-    BoxMorph
-    MenuMorph
-    SpeechBubbleMorph
-    CircleBoxMorph
-    SliderButtonMorph
-    SliderMorph
-    ColorPaletteMorph
-    GrayPaletteMorph
-    ColorPickerMorph 
-
-Yiqiang Chen:
-    Morph!
+siyu 30
+    PenMorph:
+        constructor
+        drawNew
+        changed
+    PenMorphService:
+        create
+    Node:
+        constructor
+        root
+    NodeService
+        create
+    Rectangle:
+        constructor
+        extent
+        center
+        translateBy
+        intersect
+        position
+        width
+        mergeWith
+        copy
+        left
+        right
+        top
+        bottom  
+    RectangleService:
+        create
+    shared.function
+        newCanvas
+        radians
+        detect
     FrameMorph
-    ScrollFrameMorph
-    ListMorph
-    StringFieldMorph
+        constructor
+        fullBounds
+    FrameMorphService
+        create
+    Color
+        constructor
+        toString
+    ColorService
+        create
+
+    
+edward 36
+    Morph:
+        constructor
+        extent
+        center
+        setExtent
+        silentSetExtent
+        width
+        world
+        position
+        setPosition
+        moveBy
+        fullChanged
+        silentMoveBy
+        stepFrame
+        step
+        drawOn
+    MorphService:
+        create
+    Point
+        constructor
+        subtract
+        floorDivideBy
+        add
+        moveAtAngleIndistance(distanceAngle)
+        eq
+        round
+        min
+        max
+        gt
+        neg
+    PointService
+        create
     WorldMorph
-    HandMorph
-    PenMorph
-    ShadowMorph!
-    StringMorph
-    TextMorph
-    TriggerMorph
-    MenuItemMorph
-    Color!
-    Point!
+        constructor
+        doOneCycle
+        stepFrame
+        updateBroken
+        condenseDamages
+        condense
+        fullDrawOn
+        createPenMorph
+    WorldMorphService
+        create
+
+necessary methods:
+
+PenMorph:
+    constructor
+    drawNew
+    changed
+PenMorphService:
+    create
+Morph:
+    constructor
+    extent
+    center
+    setExtent
+    silentSetExtent
+    width
+    world
+    position
+    setPosition
+    moveBy
+    fullChanged
+    silentMoveBy
+    stepFrame
+    step
+    drawOn
+MorphService:
+    create
+Node:
+    constructor
+    root
+NodeService
+    create
+Rectangle:
+    constructor
+    extent
+    center
+    translateBy
+    intersect
+    position
+    width
+    mergeWith
+    copy
+    left
+    right
+    top
+    bottom
+RectangleService:
+    create
+Point
+    constructor
+    subtract
+    floorDivideBy
+    add
+    moveAtAngleIndistance(distanceAngle)
+    eq
+    round
+    min
+    max
+    gt
+    neg
+PointService
+    create
+Color
+    constructor
+    toString
+ColorService
+    create
+shared.function
+    newCanvas
+    radians
+    detect
+WorldMorph
+    constructor
+    doOneCycle
+    stepFrame
+    updateBroken
+    condenseDamages
+    condense
+    fullDrawOn
+WorldMorphService
+    create
+FrameMorph
+    constructor
+    fullBounds
+FrameMorphService
+    create
