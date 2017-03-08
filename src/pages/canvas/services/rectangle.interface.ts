@@ -143,16 +143,6 @@ export interface RectangleInterface{
 
 }
 
-export interface RectangleConstructor {
-    //constructor of Rectangle Class
-
-    new (pointService:PointService,
-         left:number,
-         top:number,
-         right:number,
-         bottom:number): Rectangle;
-}
-
 export interface RectangleServiceInterface{
 
     //public methods of RectangleService

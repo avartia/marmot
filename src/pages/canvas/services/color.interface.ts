@@ -42,21 +42,3 @@ export interface ColorInterface{
     // Color darker based on hsv, ignore alpha
     hsvDarker():Color;
 }
-
-export interface ColorConstructor {
-    // constructor of Color Class
-
-    new (r:number,
-         g:number,
-         b:number,
-         a:number): Color;
-}
-
-export interface ColorServiceInterface{
-
-    // public methods of ColorService
-    create(r:number,
-           g:number,
-           b:number,
-           a?:number): Color;
-}

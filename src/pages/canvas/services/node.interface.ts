@@ -56,15 +56,3 @@ export interface NodeInterface{
     //Find an ancestor of Node that is an instance of Type in an array including itself
     parentThatIsAnyOf(constructor:any[]):Node;
 }
-
-export interface NodeConstructor {
-    //constructor of Node Class
-
-    new (parent:Node, children:Node[]): Node;
-}
-
-export interface NodeServiceInterface{
-
-    //public methods of NodeService
-    create(parent?:Node, children?:Node[]): Node;
-}

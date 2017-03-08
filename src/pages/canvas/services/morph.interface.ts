@@ -482,14 +482,8 @@ export interface MorphInterface extends NodeInterface{
   
 }
 
-export interface MorphConstructor {
-    // constructor of Morph Class
-
-    new (noDraw:boolean): Morph;
-}
-
 export interface MorphServiceInterface{
 
     // public methods of MorphService
-    create(noDraw?:boolean): Morph;
+    create(): Morph;
 }

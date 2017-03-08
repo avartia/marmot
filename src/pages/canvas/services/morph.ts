@@ -1,11 +1,13 @@
 import {Node} from './node'
 import {MorphInterface} from './morph.interface'
 import {Rectangle} from './rectangle'
+import {RectangleService} from './rectangle.service'
 import {Color} from "./color"
 import {MenuMorph} from './menumorph'
 import {Point} from './point'
 import {ShadowMorph} from './shadowmorph'
 import {WorldMorph} from './worldmorph'
+import {HandMorph} from './handmorph'
 
 export class Morph extends Node implements MorphInterface{
         
@@ -31,11 +33,12 @@ export class Morph extends Node implements MorphInterface{
     public customContextMenu:MenuMorph;
 
 
-    constructor(noDraw:boolean = null) {
+    constructor(private rectangleService:RectangleService) {
         super();
         this.fps = 0;
         this.lastTime = Date.now();
         this.isVisible = true;
+        this.bounds=rectangleService.create(0,0,50,40);
         
     }
     
@@ -72,7 +75,16 @@ export class Morph extends Node implements MorphInterface{
 
     public setExtent(extentPoint:Point, 
                      silently:boolean):void{
-
+        if (silently) {
+        this.silentSetExtent(extentPoint);
+        return;
+    }
+    if (!extentPoint.equal(this.extent())) {
+        this.changed();
+        this.silentSetExtent(extentPoint);
+        this.changed();
+        this.drawNew();
+    }
     }
 
     public fullDrawOn(otherCanvas:HTMLCanvasElement,
@@ -112,7 +124,7 @@ export class Morph extends Node implements MorphInterface{
 
     // Morph accessing(get morph center point coordinates)
     center():Point{
-        return;        
+        return this.bounds.center();        
     }
 
     // Morph accessing(get morph center point's coordinate of bottom border)
@@ -172,12 +184,12 @@ export class Morph extends Node implements MorphInterface{
 
     // Morph accessing(get extent including width and height of morph)
     extent():Point{
-        return;
+        return this.bounds.extent();
     }
 
     // Morph accessing(get width of morph bound)
     width():number{
-        return;
+        return this.bounds.width();
     }
 
     // Morph accessing(get height of morph bound)
@@ -260,9 +272,16 @@ export class Morph extends Node implements MorphInterface{
 
     }
 
-    // Morph accessing(set new extent of morph by redrawing a complete morph)
+    // Morph accessing(set new extent of morph by revise the point corner)
     silentSetExtent(extentPoint:Point):void{
-
+        let ext:Point, newWidth:number, newHeight:number;
+        ext = extentPoint.round();
+        newWidth = Math.max(ext.x, 0);
+        newHeight = Math.max(ext.y, 0);
+        this.bounds.corner = new Point(
+            this.bounds.origin.x + newWidth,
+            this.bounds.origin.y + newHeight
+        );
     }   
 
     // Morph accessing(set width of morph avoid redrawing)
@@ -386,7 +405,14 @@ export class Morph extends Node implements MorphInterface{
     
     // Morph accessing(get worldmorph which contains the morph)
     getWorld():WorldMorph{
-        return;
+        let root = this.root();
+        if (root instanceof WorldMorph) {
+             return root;
+        }
+         if (root instanceof HandMorph) {
+             return root.myWorld;
+        }
+        return null;
     }
 
     // Morph accessing(add new morph and remove old parent)
