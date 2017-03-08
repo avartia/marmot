@@ -186,9 +186,6 @@ siyu 30
         toString
     ColorService
         create
-
-    
-edward 36
     !Morph:
         constructor
         extent
@@ -207,6 +204,9 @@ edward 36
         drawOn
     MorphService:
         create
+
+    
+edward 36
     Point
         constructor
         subtract

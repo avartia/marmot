@@ -19,8 +19,7 @@ export class RectangleService implements RectangleServiceInterface{
     let origin:Point=this.pointService.create(left,top);
     let corner:Point=this.pointService.create(right,bottom);
 
-     return new Rectangle(
-                          origin,
+     return new Rectangle(origin,
                           corner);
   }
 

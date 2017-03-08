@@ -8,21 +8,21 @@ import {Color} from './color'
 export class FrameMorph extends Morph implements FrameMorphInterface{
   public scrollFrame:ScrollFrameMorph;
 
-  constructor() { 
-    super();
+  constructor(color:Color,
+              bounds:Rectangle) { 
+    super(color, bounds);
     this.scrollFrame=null;
-    this.color=new Color(255,250,245);
+    this.color=color;
     this.drawNew();
     this.acceptsDrops=true;
 
-    if (this.scrollFrame) {
-        this.isDraggable = false;
-        this.noticesTransparentClick = false;
-        this.alpha = 0;
-    }
+ 
   }
   setScrollFrame(aScrollFrame:ScrollFrameMorph):void{
     this.scrollFrame=aScrollFrame;
+    this.isDraggable = false;
+    this.noticesTransparentClick = false;
+    this.alpha = 0;
   }
   fullBounds():Rectangle{
     var shadow = this.getShadow();

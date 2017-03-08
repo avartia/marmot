@@ -10,7 +10,7 @@ export class PenMorph extends Morph implements PenMorphInterface{
   private size:number;
   private penBounds:Rectangle;// rect around the visible arrow shape
 
-  constructor(private rectangleService:RectangleService) { 
+  constructor(private rectangleService?:RectangleService) { 
     super();
     this.heading=0;
     this.size=1;

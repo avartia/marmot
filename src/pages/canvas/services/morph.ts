@@ -33,12 +33,14 @@ export class Morph extends Node implements MorphInterface{
     public customContextMenu:MenuMorph;
 
 
-    constructor(private rectangleService:RectangleService) {
+    constructor(color?: Color, 
+                bounds?: Rectangle) {
         super();
         this.fps = 0;
         this.lastTime = Date.now();
         this.isVisible = true;
-        this.bounds=rectangleService.create(0,0,50,40);
+        this.bounds= bounds;
+        this.color = color;
         
     }
     
