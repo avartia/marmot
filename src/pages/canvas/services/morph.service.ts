@@ -1,22 +1,18 @@
 import { Injectable }    from '@angular/core';
-
+import {RectangleService} from './rectangle.service'
 import {Morph} from './morph'
-import {MorphConstructor, MorphInterface, MorphServiceInterface} from './morph.interface'
+import {MorphInterface, MorphServiceInterface} from './morph.interface'
 
 @Injectable()
 export class MorphService implements MorphServiceInterface{
 
-  constructor() {
+  constructor(private rectangleService:RectangleService) {
 
    }
 
-  create(noDraw?:boolean): Morph{
-    return this.createMorph(Morph, noDraw);
+  create(): Morph{
+    return new Morph(this.rectangleService);
   }
 
-  private createMorph(morphConstructor: MorphConstructor,
-                      noDraw:boolean): MorphInterface {
-    return new morphConstructor(noDraw);
-  }
 
 }

@@ -36,14 +36,8 @@ export interface FrameMorphInterface{
 
 }
 
-export interface FrameMorphConstructor {
-    //constructor of FrameMorph Class
-
-    new (aScrollFrame:ScrollFrameMorph): FrameMorph;
-}
-
 export interface FrameMorphServiceInterface{
 
     //public methods of FrameMorphService
-    create(aScrollFrame?:ScrollFrameMorph): FrameMorph;
+    create(): FrameMorph;
 }

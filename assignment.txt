@@ -60,7 +60,6 @@ class Car{
         return this.carService.copy();
         Object.assign()
     }
-
 }
 let engine = new Engine();
 let car = new Car(new Engine(), new Wheel(2,1),..);
@@ -146,18 +145,18 @@ class ChineseCar extends Car{
 }
     
 siyu 30
-    PenMorph:
-        constructor
-        drawNew
-        changed
+    !PenMorph:
+       constructor
+       drawNew
+       changed
     PenMorphService:
         create
-    Node:
+    !Node:
         constructor
         root
     NodeService
         create
-    Rectangle:
+    !Rectangle:
         constructor
         extent
         center
@@ -173,16 +172,16 @@ siyu 30
         bottom  
     RectangleService:
         create
-    shared.function
+    !shared.function
         newCanvas
         radians
         detect
-    FrameMorph
+    !FrameMorph
         constructor
         fullBounds
     FrameMorphService
         create
-    Color
+    !Color
         constructor
         toString
     ColorService
@@ -190,15 +189,15 @@ siyu 30
 
     
 edward 36
-    Morph:
+    !Morph:
         constructor
         extent
         center
         setExtent
         silentSetExtent
-        width
-        world
-        position
+        !width
+        getWorld
+        !position
         setPosition
         moveBy
         fullChanged

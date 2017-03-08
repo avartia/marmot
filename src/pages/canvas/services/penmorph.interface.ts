@@ -26,12 +26,6 @@ export interface PenMorphInterface{
 
 }
 
-export interface PenMorphConstructor {
-    //constructor of PenMorph Class
-
-    new (rectangleService:RectangleService): PenMorph;
-}
-
 export interface PenMorphServiceInterface{
 
     //public methods of PenMorphService

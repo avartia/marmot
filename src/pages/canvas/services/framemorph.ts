@@ -3,13 +3,14 @@ import {Morph} from './morph'
 import {ScrollFrameMorph} from './scrollframemorph'
 import {Rectangle} from './rectangle'
 import {Point} from './point'
+import {Color} from './color'
 
 export class FrameMorph extends Morph implements FrameMorphInterface{
   public scrollFrame:ScrollFrameMorph;
 
-  constructor(public aScrollFrame:ScrollFrameMorph = null) { 
+  constructor() { 
     super();
-    this.scrollFrame=aScrollFrame;
+    this.scrollFrame=null;
     this.color=new Color(255,250,245);
     this.drawNew();
     this.acceptsDrops=true;
@@ -20,7 +21,9 @@ export class FrameMorph extends Morph implements FrameMorphInterface{
         this.alpha = 0;
     }
   }
-
+  setScrollFrame(aScrollFrame:ScrollFrameMorph):void{
+    this.scrollFrame=aScrollFrame;
+  }
   fullBounds():Rectangle{
     var shadow = this.getShadow();
     if (shadow !== null) {

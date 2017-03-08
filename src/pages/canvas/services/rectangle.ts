@@ -6,16 +6,10 @@ import { RectangleInterface } from './rectangle.interface'
 
 
 export class Rectangle implements RectangleInterface{
-    public origin: Point;
-    public corner: Point;
 
-    constructor(pointService:PointService,
-                left:number = 0,
-                top:number = 0,
-                right:number = 0,
-                bottom:number = 0) { 
-        this.origin = pointService.create(left, top);
-        this.corner = pointService.create(right, bottom);
+    constructor(
+                public origin:Point, 
+                public corner:Point) { 
     }
 
     // public extent(): Point{
@@ -30,12 +24,7 @@ export class Rectangle implements RectangleInterface{
 
     // Rectangle copying:
     copy():Rectangle{
-        return new Rectangle(
-        this.left(),
-        this.top(),
-        this.right(),
-        this.bottom()
-    );
+        return Object.assign({},this);
     }
 
     // Rectangle accessing - setting:
@@ -163,12 +152,12 @@ export class Rectangle implements RectangleInterface{
 		return;
 	}
 
-    //Get the intersect part of two Rectangle
+    //Get the intersect part of two Rectangles
     intersect(aRect:Rectangle):Rectangle{
-        let result:Rectangle = new Rectangle();
-        result.origin=this.origin.max(aRect.origin);
-        result.corner=this.corner.min(aRect.corner);
-		return result;
+        
+        let origin:Point=this.origin.max(aRect.origin);
+        let corner:Point=this.corner.min(aRect.corner);
+		return new Rectangle(origin,corner);
 	}
 
     //Get the Rectangle that can contain these to Rectangle
@@ -234,7 +223,7 @@ export class Rectangle implements RectangleInterface{
     translateBy(factor:number|Point):Rectangle{
         var o = this.origin.add(factor),
             c = this.corner.add(factor);
-		return new Rectangle(o.x, o.y, c.x, c.y);
+		return new Rectangle(o,c);
 	}
 
     // Rectangle converting:
