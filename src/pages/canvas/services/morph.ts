@@ -32,6 +32,7 @@ export class Morph extends Node implements MorphInterface{
     public noticesTransparentClick:boolean;
     public customContextMenu:MenuMorph;
 
+    static trackChanges=true;
 
     constructor(color?: Color, 
                 bounds?: Rectangle) {
@@ -41,7 +42,7 @@ export class Morph extends Node implements MorphInterface{
         this.isVisible = true;
         this.bounds= bounds;
         this.color = color;
-        
+        this.cachedFullBounds=null;
     }
     
     public stepFrame(){
@@ -91,7 +92,16 @@ export class Morph extends Node implements MorphInterface{
 
     public fullDrawOn(otherCanvas:HTMLCanvasElement,
                       drawingArea:Rectangle):void{
-
+        var rectangle:Rectangle;
+        if (!this.isVisible) {
+            return null;
+        }
+        rectangle = drawingArea || this.fullBounds();
+        this.drawOn(otherCanvas, rectangle);
+        //if (this.cachedFullImage) {return; }
+        this.children.forEach(function (child) {
+            (child as Morph).fullDrawOn(otherCanvas, rectangle);
+        });
     }
     // Morph deleting
     destroy():void{
@@ -181,7 +191,7 @@ export class Morph extends Node implements MorphInterface{
 
     // Morph accessing(get topLeftPoint of morph bound)
     position():Point{
-        return;
+        return this.bounds.origin;
     }
 
     // Morph accessing(get extent including width and height of morph)
@@ -201,7 +211,14 @@ export class Morph extends Node implements MorphInterface{
 
     // Morph accessing(get morph bound with its children)
     fullBounds():Rectangle{
-        return;
+        let result:Rectangle;
+        result = this.bounds;
+        this.children.forEach(function (child) {
+        if ((child as Morph).isVisible) {
+            result = result.merge((child as Morph).fullBounds());
+        }
+        });
+        return result;
     }
 
     // Morph accessing(get morph bound with its children but no shadow)
@@ -216,22 +233,38 @@ export class Morph extends Node implements MorphInterface{
 
     // Morph accessing(move morph with recording changes)
     moveBy(offset:Point | number):void{
-        
+        this.fullChanged();
+        this.silentMoveBy(offset);
+        this.fullChanged();
     }
 
     // Morph accessing(just move morph with its children)
     silentMoveBy(offset:Point | number):void{
-
+        let children:Node[]=this.children;
+        let i:number=children.length;
+        this.bounds=this.bounds.translateBy(offset);
+        // if (this.cachedFullBounds) {
+        //     this.cachedFullBounds = this.cachedFullBounds.translateBy(delta);
+        // }
+        for(;i>0;i-=1){
+            (children[i-1] as Morph).silentMoveBy(offset);
+        }
     }
 
     // Morph accessing(set position of morph with recording changes)
     setPosition(otherPoint:Point):void{
-
+        let delta=otherPoint.subtract(this.topLeft());
+        if((delta.x!==0)||(delta.y!==0)){
+            this.moveBy(delta);
+        }
     }
 
     // Morph accessing(set position of morph without recording changes)
     silentSetPosition(offset:Point):void{
-
+        let delta=offset.subtract(this.topLeft());
+        if((delta.x!==0)||(delta.y!==0)){
+            this.silentMoveBy(delta);
+        }
     } 
 
     // Morph accessing(set left border of morph by translation)
@@ -317,7 +350,47 @@ export class Morph extends Node implements MorphInterface{
     // Morph displaying(draw canvas of a morph without its children)
     drawOn(otherCanvas:HTMLCanvasElement,
            drawingArea:Rectangle):void{
+        let rectangle:Rectangle;
+        let area:Rectangle;
+        let delta:Point;
+        let src:Rectangle;
+        let sl:number;
+        let st:number;
+        var context, w, h;
+        let pic:HTMLCanvasElement= this.image;
+        let bounds:Rectangle = this.bounds;
+        if (!this.isVisible) {
+           return null;
+        }
+        rectangle = drawingArea || bounds;
+        area = rectangle.intersect(bounds);
+        if (area.extent().gt(new Point(0, 0))) {
+            delta = bounds.position().neg();
+            src = area.copy().translateBy(delta);
+            context = otherCanvas.getContext('2d');
+            context.globalAlpha = this.alpha;
 
+            sl = src.left();
+            st = src.top();
+            w = Math.min(src.width(), pic.width - sl);
+            h = Math.min(src.height(), pic.height - st);
+
+            if (w < 1 || h < 1) {
+            return null;
+        }
+
+        context.drawImage(
+            pic,
+            sl,
+            st,
+            w,
+            h,
+            area.left(),
+            area.top(),
+            w,
+            h
+        );
+    }
     }
 
     // Morph displaying(hide a morph with its children)
@@ -394,7 +467,14 @@ export class Morph extends Node implements MorphInterface{
 
     // Morph updating(record full changes for morphs with children)
     fullChanged():void{
-
+        if (this.trackChanges) {
+        let w = this.root();
+        if (w instanceof WorldMorph) {
+            w.broken.push(
+                (this.fullBounds())
+            );
+        }
+    }
     }
 
     // Morph updating

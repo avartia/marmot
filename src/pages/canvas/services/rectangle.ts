@@ -82,7 +82,7 @@ export class Rectangle implements RectangleInterface{
 	}
 
     left():number{
-		return this.origin.x;;
+		return this.origin.x;
 	}
 
     leftCenter():Point{
@@ -172,13 +172,6 @@ export class Rectangle implements RectangleInterface{
 
     //Apply round method to topLeftPoint and bottomRightPoint to create a new Rectangle
     round():Rectangle{
-		return;
-	}
-
-    // round me by applying floor() to my origin and ceil() to my corner
-    // expand by 1 to be on the safe side, this eliminates rounding
-    // artifacts caused by Safari's auto-scaling on retina displays
-    spread():Rectangle{
 		return;
 	}
 

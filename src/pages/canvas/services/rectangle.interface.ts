@@ -100,10 +100,6 @@ export interface RectangleInterface{
     //Apply round method to topLeftPoint and bottomRightPoint to create a new Rectangle
     round():Rectangle;
 
-    // round me by applying floor() to my origin and ceil() to my corner
-    // expand by 1 to be on the safe side, this eliminates rounding
-    // artifacts caused by Safari's auto-scaling on retina displays
-    spread():Rectangle;
 
     //make the rectangle be inside of aRect after self+delta
     //at least topleft inside
