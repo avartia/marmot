@@ -8,9 +8,15 @@ export class HandMorph extends Morph implements HandMorphInterface{
     public morphToGrab:Morph;
 
     public grabPosition:Point;
+
+    public myWorld:WorldMorph;
     
-    constructor(public myWorld:WorldMorph) { 
+    constructor() { 
       super();
+    }
+
+    setWorld(world:WorldMorph):void{
+        this.myWorld = world;
     }
 
     fullChanged():void{

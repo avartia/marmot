@@ -3,6 +3,7 @@ import { Injectable }    from '@angular/core';
 import {PenMorph} from './penmorph'
 import {PenMorphServiceInterface} from './penmorph.interface'
 import { RectangleService } from './rectangle.service'
+import { Color } from "./color";
 
 @Injectable()
 export class PenMorphService implements PenMorphServiceInterface{
@@ -12,7 +13,9 @@ export class PenMorphService implements PenMorphServiceInterface{
    }
 
   create(): PenMorph{
-    return new PenMorph(this.rectangleService);
+    let bounds = this.rectangleService.create(0, 0, 60, 60);
+    let color = new Color(80, 80, 80);
+    return new PenMorph(bounds, color, this.rectangleService);
   }
 
 }

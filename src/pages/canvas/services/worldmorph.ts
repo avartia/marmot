@@ -1,12 +1,15 @@
-import {Gesture} from 'ionic-angular/gestures/gesture';
+import { Gesture } from 'ionic-angular/gestures/gesture';
 
-import {FrameMorph} from './framemorph'
-import {Rectangle} from './rectangle'
-import {WorldMorphInterface} from './worldmorph.interface'
-import {HandMorphService} from './handmorph.service'
-import {HandMorph} from './handmorph'
-import {ColorService} from './color.service'
-import {RectangleService} from './rectangle.service'
+import { FrameMorph } from './framemorph'
+import { Rectangle } from './rectangle'
+import { WorldMorphInterface } from './worldmorph.interface'
+import { HandMorph } from './handmorph'
+import { Color } from './color'
+import { detect } from './shared.function'
+import { Point } from "./point";
+import { PenMorph } from "./penmorph";
+import { RectangleService } from "./rectangle.service";
+import { PenMorphService } from "./penmorph.service";
 
 export class WorldMorph extends FrameMorph implements WorldMorphInterface
 {
@@ -15,24 +18,22 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
     public worldCanvas:HTMLCanvasElement;
     public hand:HandMorph;
     private canvasGesture: Gesture;
-    constructor(handMorphService:HandMorphService,
-                colorService:ColorService,
-                rectangleService:RectangleService,
-                aCanvas:HTMLCanvasElement) { 
-        super();
-        this.color = colorService.create(205, 205, 205);
+    constructor(hand:HandMorph,
+                color:Color,
+                bounds:Rectangle,
+                aCanvas:HTMLCanvasElement,
+                private rectangleService?:RectangleService,
+                private penMorphService?:PenMorphService) { 
+        super(color, bounds);
         this.alpha = 1;
-        this.bounds = rectangleService.create(0, 
-                                              0, 
-                                              aCanvas.width,
-                                              aCanvas.height);
         this.isVisible = true;
         this.isDraggable = false;
         this.worldCanvas = aCanvas;
         this.noticesTransparentClick = true;
         this.broken = [];
         
-        this.hand = handMorphService.create(this);
+        this.hand = hand;
+        this.hand.setWorld(this);
         this.drawNew();
         this.fillPage();
         this.initEventListeners();
@@ -74,7 +75,19 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
     }
 
     private condense(src:Rectangle[]):Rectangle[] {
-        return [];
+        let target = [];
+        let hit:Rectangle;
+        src.forEach(rect => {
+            hit = detect(target, 
+                         (each:Rectangle) => {return each.isNearTo(rect)}) as Rectangle;
+            if(hit){
+                hit.mergeWith(rect);
+            }
+            else{
+                target.push(rect);
+            }
+        })
+        return target as Rectangle[];
     }
 
     private fillPage():void{
@@ -134,7 +147,12 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
     }
 
     private createPenMorph():void{
-        
+        this.broken.push(this.rectangleService.create(0,
+                                                      0,
+                                                      60,
+                                                      60));
+        let pen = this.penMorphService.create();
+        this.children.push(pen);
 
     }
     

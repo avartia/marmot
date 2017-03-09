@@ -29,15 +29,6 @@ export interface WorldMorphInterface{
     fullDrawOn(aCanvas:HTMLCanvasElement, aRect:Rectangle):void;
 }
 
-export interface WorldMorphConstructor {
-    // constructor of WorldMorph Class
-
-    new (handMorphService:HandMorphService,
-         colorService:ColorService,
-         rectangleService:RectangleService,
-         aCanvas:HTMLCanvasElement): WorldMorph;
-}
-
 export interface WorldMorphServiceInterface{
 
     // public methods of WorldMorphService

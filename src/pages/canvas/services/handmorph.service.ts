@@ -1,8 +1,7 @@
 import { Injectable }    from '@angular/core';
 
-import {HandMorph} from './handmorph'
-import {HandMorphConstructor, HandMorphServiceInterface} from './handmorph.interface'
-import {WorldMorph} from './worldmorph'
+import { HandMorph } from './handmorph'
+import { HandMorphServiceInterface } from './handmorph.interface'
 
 @Injectable()
 export class HandMorphService implements HandMorphServiceInterface{
@@ -11,13 +10,8 @@ export class HandMorphService implements HandMorphServiceInterface{
 
    }
 
-  create(aWorld:WorldMorph): HandMorph{
-    return  this.createHandMorph(HandMorph, aWorld);
-  }
-
-  private createHandMorph(handMorphConstructor: HandMorphConstructor,
-                          aWorld:WorldMorph): HandMorph {
-    return new handMorphConstructor(aWorld);
+  create(): HandMorph{
+    return new HandMorph();
   }
 
 }

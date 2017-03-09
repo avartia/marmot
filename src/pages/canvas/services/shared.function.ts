@@ -21,7 +21,7 @@ export function radians(degrees){
 
 // answer the first element of list for which predicate evaluates
 // true, otherwise answer null
-function detect(list:[any],predicate:Function){
+export function detect(list:any[],predicate:Function){
     let i:number;
     let size:number=list.length;
     for(i=0;i<size;i+=1){

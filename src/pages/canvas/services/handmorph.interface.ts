@@ -1,7 +1,7 @@
 import { Morph } from './morph'
 import { WorldMorph } from './worldmorph'
 import { Point } from './point'
-import {HandMorph} from './handmorph'
+import { HandMorph } from './handmorph'
 
 // HandMorph Class
 // I represent the Mouse cursor
@@ -18,6 +18,8 @@ export interface HandMorphInterface{
     
     // public methods
 
+    setWorld(world:WorldMorph):void;
+
     fullChanged():void;
 
     // HandMorph dragging and dropping:
@@ -31,14 +33,8 @@ export interface HandMorphInterface{
     processTouchEnd(event:Event):void;
 }
 
-export interface HandMorphConstructor {
-    //constructor of HandMorph Class
-
-    new (aWorld:WorldMorph): HandMorph;
-}
-
 export interface HandMorphServiceInterface{
 
     //public methods of HandMorphService
-    create(aWorld:WorldMorph): HandMorph;
+    create(): HandMorph;
 }

@@ -7,8 +7,7 @@ import { RectangleInterface } from './rectangle.interface'
 
 export class Rectangle implements RectangleInterface{
 
-    constructor(
-                public origin:Point, 
+    constructor(public origin:Point, 
                 public corner:Point) { 
     }
 
@@ -208,8 +207,23 @@ export class Rectangle implements RectangleInterface{
 
     //whether aRect is in a new Rectangle into which the rectangle expanded
     //by threshold
-    isNearTo(aRect:Rectangle,threshold:number):boolean{
-		return;
+    isNearTo(aRect:Rectangle,threshold:number = 0):boolean{
+        if(!aRect){
+            return false;
+        }
+		let ro = aRect.origin;
+        let rc = aRect.corner;
+        let border = threshold;
+
+        if(rc.x + border >= this.origin.x &&
+           rc.y + border >= this.origin.y &&
+           ro.x - border <= this.corner.x &&
+           ro.y - border <= this.corner.y)  {
+            return true;
+        }           
+        else{
+            return false;
+        }                                                              
 	}
 
     // Rectangle transforming:

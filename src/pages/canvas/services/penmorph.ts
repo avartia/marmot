@@ -3,19 +3,22 @@ import { Morph } from './morph'
 import { Rectangle } from './rectangle'
 import { newCanvas } from './shared.function'
 import { RectangleService } from './rectangle.service'
-import {Point} from './point'
+import { Point } from './point'
+import { Color } from "./color";
 
 export class PenMorph extends Morph implements PenMorphInterface{
   private heading:number;
   private size:number;
   private penBounds:Rectangle;// rect around the visible arrow shape
 
-  constructor(private rectangleService?:RectangleService) { 
-    super();
-    this.heading=0;
-    this.size=1;
-    this.penBounds=null;
-    //?this.setExtent(new Point(size, size));
+  constructor(bounds:Rectangle,
+              color: Color,
+              private rectangleService?:RectangleService) { 
+      super(color, bounds);
+      this.heading=0;
+      this.size=1;
+      this.penBounds=null;
+      //this.setExtent(new Point(size, size));
   }
 
   // PenMorph display:
@@ -30,7 +33,6 @@ export class PenMorph extends Morph implements PenMorphInterface{
       let len:number;
       let direction:number;
       direction= facing || this.heading;
-
 
       this.image= newCanvas(this.extent());
       context=this.image.getContext('2d');
@@ -49,11 +51,11 @@ export class PenMorph extends Morph implements PenMorphInterface{
           Math.max(start.y, dest.y, left.y, right.y)
       );
       // cache penBounds
-    this.penBounds = this.rectangleService.create(
-        Math.min(start.x, dest.x, left.x, right.x),
-        Math.min(start.y, dest.y, left.y, right.y),
-        Math.max(start.x, dest.x, left.x, right.x),
-        Math.max(start.y, dest.y, left.y, right.y)
+      this.penBounds = this.rectangleService.create(
+          Math.min(start.x, dest.x, left.x, right.x),
+          Math.min(start.y, dest.y, left.y, right.y),
+          Math.max(start.x, dest.x, left.x, right.x),
+          Math.max(start.y, dest.y, left.y, right.y)
     );
     
     // draw arrow shape

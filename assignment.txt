@@ -209,29 +209,29 @@ siyu 30
 edward 36
     Point
         constructor
-        subtract
-        floorDivideBy
-        add
-        moveAtAngleIndistance(distanceAngle)
-        eq
-        round
-        min
-        max
-        gt
-        neg
+        subtract!
+        floorDivideBy!
+        add!
+        moveAtAngleIndistance(distanceAngle)!
+        eq!
+        round!
+        min!
+        max!
+        gt!
+        neg!
     PointService
-        create
+        create!
     WorldMorph
-        constructor
-        doOneCycle
-        stepFrame
-        updateBroken
-        condenseDamages
-        condense
-        fullDrawOn
-        createPenMorph
+        constructor!
+        doOneCycle!
+        stepFrame!
+        updateBroken!
+        condenseDamages!
+        condense!
+        fullDrawOn!
+        createPenMorph!
     WorldMorphService
-        create
+        create!
 
 
 

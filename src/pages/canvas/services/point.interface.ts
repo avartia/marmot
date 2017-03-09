@@ -31,10 +31,10 @@ export interface PointInterface {
     le(otherPoint :Point): boolean;
 
     //Point comparison(max)
-    max(otherPoint :Point): boolean;
+    max(otherPoint :Point): Point;
 
     //Point comparison(min)
-    min(otherPoint :Point): boolean;
+    min(otherPoint :Point): Point;
 
     //Point conversion(round)
     round(): Point;
@@ -100,11 +100,6 @@ export interface PointInterface {
     rotateBy(angle:number, centerPoint:Point): Point;    
     
 }
-
-export interface PointConstructor {
-    new (x:number, y:number): Point;
-}
-
 export interface PointServiceInterface{
 
     //public methods of PointService
