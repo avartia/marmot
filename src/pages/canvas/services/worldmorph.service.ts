@@ -31,6 +31,4 @@ export class WorldMorphService implements WorldMorphServiceInterface{
                             this.penMorphService);
   }
 
-  }
-
 }

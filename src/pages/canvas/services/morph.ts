@@ -7,7 +7,8 @@ import {MenuMorph} from './menumorph'
 import {Point} from './point'
 import {ShadowMorph} from './shadowmorph'
 import {WorldMorph} from './worldmorph'
-import {HandMorph} from './handmorph'
+import { HandMorph } from './handmorph'
+import { newCanvas } from "./shared.function";
 
 export class Morph extends Node implements MorphInterface{
         
@@ -35,7 +36,8 @@ export class Morph extends Node implements MorphInterface{
     static trackChanges=true;
 
     constructor(color?: Color, 
-                bounds?: Rectangle) {
+                bounds?: Rectangle,
+                isDraw?:boolean) {
         super();
         this.fps = 0;
         this.lastTime = Date.now();
@@ -43,6 +45,9 @@ export class Morph extends Node implements MorphInterface{
         this.bounds= bounds;
         this.color = color;
         this.cachedFullBounds=null;
+        if (isDraw === true) {
+            this.drawNew();
+        }
     }
     
     public stepFrame(){
@@ -66,6 +71,11 @@ export class Morph extends Node implements MorphInterface{
     }
 
     public drawNew():void{
+        this.image = newCanvas(this.extent());
+        let context = this.image.getContext('2d');
+        context.fillStyle = this.color.toString();
+        context.fillRect(0, 0, this.width(), this.height());
+
 
     }
     public setWidth(width:number):void{
@@ -356,7 +366,9 @@ export class Morph extends Node implements MorphInterface{
         let src:Rectangle;
         let sl:number;
         let st:number;
-        var context, w, h;
+        let context:CanvasRenderingContext2D;
+        let w:number;
+        let h:number;
         let pic:HTMLCanvasElement= this.image;
         let bounds:Rectangle = this.bounds;
         if (!this.isVisible) {
@@ -491,9 +503,9 @@ export class Morph extends Node implements MorphInterface{
         if (root instanceof WorldMorph) {
              return root;
         }
-         if (root instanceof HandMorph) {
-             return root.myWorld;
-        }
+        //  if (root instanceof HandMorph) {
+        //      return root.myWorld;
+        // }
         return null;
     }
 

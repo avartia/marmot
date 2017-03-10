@@ -8,7 +8,7 @@ import { Color } from "./color";
 @Injectable()
 export class PenMorphService implements PenMorphServiceInterface{
 
-  constructor(private rectangleService:RectangleService) {
+  constructor(public rectangleService:RectangleService) {
 
    }
 

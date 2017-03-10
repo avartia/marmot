@@ -37,6 +37,8 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
         this.drawNew();
         this.fillPage();
         this.initEventListeners();
+        this.createPenMorph();
+
     }
 
     public doOneCycle(): void{

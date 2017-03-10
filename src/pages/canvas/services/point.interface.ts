@@ -100,8 +100,3 @@ export interface PointInterface {
     rotateBy(angle:number, centerPoint:Point): Point;    
     
 }
-export interface PointServiceInterface{
-
-    //public methods of PointService
-    create(x:number, y:number): Point;
-}

@@ -2,6 +2,8 @@ import { HandMorphInterface } from './handmorph.interface'
 import { Point } from './point'
 import { Morph } from './morph'
 import { WorldMorph } from './worldmorph'
+import { Rectangle } from "./rectangle";
+import { Color } from "./color";
 
 export class HandMorph extends Morph implements HandMorphInterface{
 
@@ -11,8 +13,10 @@ export class HandMorph extends Morph implements HandMorphInterface{
 
     public myWorld:WorldMorph;
     
-    constructor() { 
-      super();
+    constructor(color: Color, 
+                bounds: Rectangle) { 
+      super(color, bounds);
+      this.drawNew();
     }
 
     setWorld(world:WorldMorph):void{
@@ -28,7 +32,7 @@ export class HandMorph extends Morph implements HandMorphInterface{
     }
 
     processTouchStart(event:Event):void{
-
+        
     }
 
     processTouchMove(event:Event):void{

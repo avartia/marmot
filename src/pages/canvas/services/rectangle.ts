@@ -1,7 +1,6 @@
-import { PointService } from './point.service'
 import { Point } from './point'
 import { RectangleInterface } from './rectangle.interface'
-
+import { cast } from './shared.function'
 
 
 
@@ -23,7 +22,8 @@ export class Rectangle implements RectangleInterface{
 
     // Rectangle copying:
     copy():Rectangle{
-        return Object.assign({},this);
+        let object = Object.assign({},this);
+        return cast<Rectangle>(object, Rectangle);
     }
 
     // Rectangle accessing - setting:
@@ -78,7 +78,7 @@ export class Rectangle implements RectangleInterface{
 	}
 
     height():number{
-		return;
+		return this.corner.y - this.origin.y;
 	}
 
     left():number{
@@ -153,7 +153,6 @@ export class Rectangle implements RectangleInterface{
 
     //Get the intersect part of two Rectangles
     intersect(aRect:Rectangle):Rectangle{
-        
         let origin:Point=this.origin.max(aRect.origin);
         let corner:Point=this.corner.min(aRect.corner);
 		return new Rectangle(origin,corner);
@@ -227,10 +226,10 @@ export class Rectangle implements RectangleInterface{
 	}
     
     //translate the current rectangle by factor
-    translateBy(factor:number|Point):Rectangle{
-        var o = this.origin.add(factor),
-            c = this.corner.add(factor);
-		return new Rectangle(o,c);
+    translateBy(factor:number|Point):Rectangle{     
+        let o = this.origin.add(factor);
+        let c = this.corner.add(factor);
+		return new Rectangle(o, c);
 	}
 
     // Rectangle converting:

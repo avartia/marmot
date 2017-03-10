@@ -3,7 +3,7 @@ import { Injectable }    from '@angular/core';
 import {FrameMorph} from './framemorph'
 import {FrameMorphServiceInterface} from './framemorph.interface'
 //import {ScrollFrameMorphService} from './scrollframemorph.service'
-import { ScrollFrameMorph } from './scrollframemorph'
+// import { ScrollFrameMorph } from './scrollframemorph'
 import { RectangleService } from "./rectangle.service";
 import { Color } from "./color";
 

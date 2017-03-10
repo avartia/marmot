@@ -31,3 +31,8 @@ export function detect(list:any[],predicate:Function){
     }
     return null;
 }
+
+export function cast<T>(obj, cl): T {
+    obj.__proto__ = cl.prototype;
+    return obj;
+}

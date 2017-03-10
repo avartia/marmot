@@ -1,6 +1,6 @@
 import { Point } from './point'
 import { Rectangle } from './rectangle'
-import { PointService } from './point.service'
+
 
 //Rectangle Class
 

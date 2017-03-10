@@ -14,10 +14,11 @@ export class PenMorph extends Morph implements PenMorphInterface{
   constructor(bounds:Rectangle,
               color: Color,
               private rectangleService?:RectangleService) { 
-      super(color, bounds);
+      super(color, bounds, false);
       this.heading=0;
       this.size=1;
       this.penBounds=null;
+      this.drawNew();
       //this.setExtent(new Point(size, size));
   }
 

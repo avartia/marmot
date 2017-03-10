@@ -3,7 +3,8 @@ import {Morph} from './morph'
 import {ScrollFrameMorph} from './scrollframemorph'
 import {Rectangle} from './rectangle'
 import {Point} from './point'
-import {Color} from './color'
+import { Color } from './color'
+import { ShadowMorph } from "./shadowmorph";
 
 export class FrameMorph extends Morph implements FrameMorphInterface{
   public scrollFrame:ScrollFrameMorph;
@@ -39,6 +40,19 @@ export class FrameMorph extends Morph implements FrameMorphInterface{
 
   fullDrawOn(aCanvas:HTMLCanvasElement,
              aRect:Rectangle):void{
+      let rectangle = aRect || this.fullBounds();
+      let dirty = this.bounds.intersect(rectangle);
+      if (!dirty.extent().gt(new Point(0, 0))) {
+          return null;
+      }
+      this.drawOn(aCanvas, dirty);
+      this.children.forEach(child => {
+          if (child instanceof ShadowMorph) {
+              child.fullDrawOn(aCanvas, rectangle);
+          } else {
+              (child as Morph).fullDrawOn(aCanvas, dirty);
+          }
+      });
   }
 
   // FrameMorph navigation:

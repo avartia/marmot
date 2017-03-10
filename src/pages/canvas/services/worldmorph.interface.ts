@@ -1,8 +1,5 @@
 import { Rectangle } from './rectangle'
 import { HandMorph } from './handmorph'
-import { HandMorphService } from './handmorph.service'
-import { ColorService } from './color.service'
-import { RectangleService } from './rectangle.service'
 import { WorldMorph } from "./worldmorph";
 
 
