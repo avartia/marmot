@@ -4,18 +4,73 @@ interface assignment:
 
 necessary functions to achieve effects of dragging and dropping
 
+
+siyu 
+shared.functions
+    getDocumentPositionOf
+    contains
+
+Morph
+    rootForGrab
+    setPosition
+    topLeft
+    moveBy
+    fullChanged
+    silentMoveBy
+    fullBounds
+    topMorphAt
+    isTransparentAt
+    situation
+    addShadow
+    shadow
+    setExtent
+    silentSetExtent
+    changed
+    shadowImageBlurred
+    fullImage
+    addBack
+    fullImageClassic
+    fullDrawOn
+    add
+    
+FrameMorph
+    constructor
+    topMorphAt
+    reactToGrabOf
+
+    
+edward 
+
 HandMorph
     destroyTemporaries
     morphAtPointer
     constructor
-
-shared.functions
-
+    processTouchStart
+    processTouchMove
+    processTouchEnd
+    fullChanged
+    changed
+    grab
+    drop
 
 Node
+    allParents
+    root
+    allChildren
+    removeChild
+    addChildFirst
+    addChild
 
+Point
+    copy
+    subtract
+    round
 
+Rectangle
+    topLeft
+    merge
+    translateBy
+    containsPoint
 
-siyu 
-    
-edward 
+ShadowMorph
+    constructor
