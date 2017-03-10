@@ -9,6 +9,7 @@ import {ShadowMorph} from './shadowmorph'
 import {WorldMorph} from './worldmorph'
 import { HandMorph } from './handmorph'
 import { newCanvas } from "./shared.function";
+import { ScrollFrameMorph } from "./scrollframemorph";
 
 export class Morph extends Node implements MorphInterface{
         
@@ -584,7 +585,12 @@ export class Morph extends Node implements MorphInterface{
     // Morph dragging and dropping
     // get root morph which contains dragging morph
     rootForGrab():Morph{
-        return;
+        if (this instanceof ShadowMorph){
+            return (this.parent as Morph).rootForGrab();
+        }
+        if (this.parent instanceof ScrollFrameMorph){
+            return
+        }
     }
 
     // Morph dragging and dropping

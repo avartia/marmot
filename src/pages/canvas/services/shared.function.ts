@@ -36,3 +36,21 @@ export function cast<T>(obj, cl): T {
     obj.__proto__ = cl.prototype;
     return obj;
 }
+
+// answer the absolute coordinates of a DOM element in the document
+export function getDocumentPositionOf(aDOMelement:HTMLCanvasElement):Point{
+    let pos:Point;
+    if(aDOMelement===null){
+        return new Point(0,0);
+    }
+    return new Point(aDOMelement.offsetLeft,aDOMelement.offsetTop);
+}
+
+// answer true if element is a member of list
+export function contains(list, element){
+    return list.some(function (any){
+        return any === element;
+    })
+}
+
+
