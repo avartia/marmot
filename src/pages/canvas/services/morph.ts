@@ -10,6 +10,7 @@ import {WorldMorph} from './worldmorph'
 import { HandMorph } from './handmorph'
 import { newCanvas } from "./shared.function";
 import { ScrollFrameMorph } from "./scrollframemorph";
+import { FrameMorph } from "./framemorph";
 
 export class Morph extends Node implements MorphInterface{
         
@@ -585,12 +586,19 @@ export class Morph extends Node implements MorphInterface{
     // Morph dragging and dropping
     // get root morph which contains dragging morph
     rootForGrab():Morph{
-        if (this instanceof ShadowMorph){
+        if ((this as Morph) instanceof ShadowMorph ){
             return (this.parent as Morph).rootForGrab();
         }
-        if (this.parent instanceof ScrollFrameMorph){
-            return
+        if (this instanceof ScrollFrameMorph){
+            return this.parent as Morph;
         }
+        if (this.parent === null ||
+            this instanceof WorldMorph ||
+            this instanceof FrameMorph ||
+            this.isDraggable === true){
+            return this;
+        }
+        return (this.parent as Morph).rootForGrab();
     }
 
     // Morph dragging and dropping
