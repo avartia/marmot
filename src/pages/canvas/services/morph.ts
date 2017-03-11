@@ -11,6 +11,8 @@ import { HandMorph } from './handmorph'
 import { newCanvas } from "./shared.function";
 import { ScrollFrameMorph } from "./scrollframemorph";
 import { FrameMorph } from "./framemorph";
+import {ShadowMorphService} from './shadowmorph.service';
+
 
 export class Morph extends Node implements MorphInterface{
         
@@ -36,10 +38,14 @@ export class Morph extends Node implements MorphInterface{
     public customContextMenu:MenuMorph;
 
     static trackChanges=true;
+    static shadowBlur=4;
 
-    constructor(color?: Color, 
+    constructor(
+                color?: Color, 
                 bounds?: Rectangle,
-                isDraw?:boolean) {
+                isDraw?:boolean,
+                private shadowMorphService?:ShadowMorphService
+                ) {
         super();
         this.fps = 0;
         this.lastTime = Date.now();
@@ -47,6 +53,7 @@ export class Morph extends Node implements MorphInterface{
         this.bounds= bounds;
         this.color = color;
         this.cachedFullBounds=null;
+        this.noticesTransparentClick=false;//????????????????
         if (isDraw === true) {
             this.drawNew();
         }
@@ -71,7 +78,7 @@ export class Morph extends Node implements MorphInterface{
             }
         }
     }
-
+    // draw the morph in the memory the first time
     public drawNew():void{
         this.image = newCanvas(this.extent());
         let context = this.image.getContext('2d');
@@ -183,7 +190,7 @@ export class Morph extends Node implements MorphInterface{
 
     // Morph accessing(get morph top left point's coordinate)
     topLeft():Point{
-        return;
+        return this.bounds.topLeft();
     }
 
     // Morph accessing(get morph top right point's coordinate)
@@ -423,39 +430,115 @@ export class Morph extends Node implements MorphInterface{
     }
 
     // Morph full image(?)
+    //all the coordinates will be subtracted by (fb.origin.x,fb.origin.y) after using translate
+    //new a HTMLCanvasElement same as this.image and return it
     fullImageClassic():HTMLCanvasElement{
-        return;
+        let fb=this.fullBounds();
+        let img:HTMLCanvasElement=newCanvas(fb.extent());
+        let ctx:CanvasRenderingContext2D=img.getContext('2d');
+        ctx.translate(-fb.origin.x,-fb.origin.y);
+        this.fullDrawOn(img,fb);
+        //img.globalAlpha=this.alpha;
+        return img;
     }
 
-    // Morph full image(?)
+    // return this.image directly
     fullImage():HTMLCanvasElement{
-        return;
+        return this.image;
     }
 
-    // Morph shadow(?)
+    // Morph shadow
+    // create a shadow image without blur
     shadowImage(off:Point, 
                 color:Color):HTMLCanvasElement{
-        return;
+        let fb:Point=this.fullBounds().extent();
+        let img:HTMLCanvasElement=this.fullImage();
+        let offset=off||new Point(7,7);
+        let clr=color||new Color(0,0,0);
+        let outline=newCanvas(fb);
+        let sha=newCanvas(fb);
+        let ctx:CanvasRenderingContext2D=outline.getContext('2d');
+        ctx.drawImage(img,0,0);
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.drawImage(
+            img,
+            -offset.x,
+            -offset.y
+        );
+        ctx=sha.getContext('2d');
+        ctx.drawImage(outline,0,0);
+        ctx.globalCompositeOperation = 'source-atop';
+        ctx.fillStyle = clr.toString();
+        ctx.fillRect(0, 0, fb.x, fb.y);
+        return sha;
     }
     
-    // Morph shadow(produce shadow morph)
+    // create a shadow image with blur
     shadowImageBlurred(off:Point, 
                        color:Color):HTMLCanvasElement{
-        return;
+        let blur:number=this.shadowBlur;
+        let fb:Point=this.fullBounds().extent().add(blur*2);
+        let offset:Point= off || new Point(7, 7);
+        let sha:HTMLCanvasElement=newCanvas(fb);
+        let ctx:CanvasRenderingContext2D=sha.getContext('2d');
+        let img:HTMLCanvasElement=this.fullImage();
+        let clr=color||new Color(0,0,0);
+        ctx.shadowOffsetX=offset.x;
+        ctx.shadowOffsetY=offset.y;
+        ctx.shadowBlur=blur;
+        ctx.shadowColor=clr.toString();
+        ctx.drawImage(
+            img,
+            blur-offset.x,
+            blur-offset.y
+        );
+        ctx.shadowOffsetX=0;
+        ctx.shadowOffsetY=0;
+        ctx.shadowBlur=0;
+        ctx.globalCompositeOperation='destination-out';
+        ctx.drawImage(
+            img,
+            blur - offset.x,
+            blur - offset.y
+        );
+        return sha;
     }
     
     // Morph shadow(create and set shadow morph)
     shadow(off:Point,
-           alpha:number, 
+           a:number, 
            color:Color):ShadowMorph{
-        return;
+        let shadow = this.shadowMorphService.create();
+        let offset:Point= off || new Point(7, 7);
+        let alpha:number = a || ((a === 0) ? 0 : 0.2);
+        let fb:Rectangle=this.fullBounds();
+        shadow.setExtent(fb.extent().add(this.shadowBlur*2),true);
+        // if (useBlurredShadows && !MorphicPreferences.isFlat) {
+        //     shadow.image = this.shadowImageBlurred(offset, color);
+        //     shadow.alpha = alpha;
+        //     shadow.setPosition(fb.origin.add(offset).subtract(this.shadowBlur));
+        // } else {
+        //     shadow.image = this.shadowImage(offset, color);
+        //     shadow.alpha = alpha;
+        //     shadow.setPosition(fb.origin.add(offset));
+        // }
+        shadow.image = this.shadowImage(offset, color);
+        shadow.alpha = alpha;
+        shadow.setPosition(fb.origin.add(offset));
+        return shadow;
     }
     
     // Morph shadow(add shadowmorph to a morph)
-    addShadow(off:Point,
-             alpha:number, 
-             color:Color):ShadowMorph{
-        return;
+    addShadow(off?:Point,
+             a?:number, 
+             color?:Color):ShadowMorph{
+        let shadow:ShadowMorph;
+        let offset:Point=off || new Point(7,7);
+        let alpha = a || ((a === 0)? 0: 0.2);
+        shadow = this.shadow(offset,alpha,color);
+        this.addBack(shadow);
+        this.fullChanged();        
+        return shadow;
     }
 
     // Morph shadow(get shadowmorph which belongs to a morph)
@@ -476,7 +559,15 @@ export class Morph extends Node implements MorphInterface{
 
     // Morph updating(record changes for morphs without children)
     changed():void{
-
+        if (this.trackChanges) {
+        let w = this.root();
+        if (w instanceof WorldMorph) {
+            w.broken.push(this.visibleBounds());
+        }
+    }
+    if (this.parent) {
+        (this.parent as Morph).childChanged(this);
+    }
     }
 
     // Morph updating(record full changes for morphs with children)
@@ -495,8 +586,10 @@ export class Morph extends Node implements MorphInterface{
     // react to a change in one of my children,
     // default is to just pass this message on upwards
     // override this method for Morphs that need to adjust accordingly
-    childChanged():void{
-
+    childChanged(changedMorph:Morph):void{
+        if(this.parent){
+            (this.parent as Morph).childChanged(changedMorph);
+        }
     }
     
     // Morph accessing(get worldmorph which contains the morph)
@@ -513,18 +606,38 @@ export class Morph extends Node implements MorphInterface{
 
     // Morph accessing(add new morph and remove old parent)
     add(childMorph):void{
-        
+        let owner=childMorph.parent;
+        if(owner!==null){
+            owner.removeChild(childMorph);
+        }
+        this.addChild(childMorph);
     }
 
     // Morph accessing(add new morph and remove old parent)
     // move child to the first member of its children
     addBack(childMorph):void{
-
+        let owner=childMorph.parent;
+        if(owner!==null){
+            owner.removeChild(childMorph);
+        }
+        this.addChildFirst(childMorph);
     }
 
-    // Morph accessing(get top layer of morph)  
+    // Morph accessing(get top layer of morph where the cursor click at)
+    //if the morph can notice transparent click, then return itself;
+    //if it can't,  judge whether the position of the point in morph is transparent or not,
+    //if it is transparent, return null; if it is not, return itself
     topMorphAt(point:Point):Morph{
-        return;
+        let i:number;
+        let result:Morph;
+        if(!this.isVisible) {return null; }
+        for(i=this.children.length-1;i>=0;i-=1){
+            result=(this.children[i] as Morph).topMorphAt(point);
+            if(result){return result;}
+        }
+        return this.bounds.containsPoint(point)&&
+            (this.noticesTransparentClick|| !this.isTransparentAt(point))? this
+            : null;
     }
 
     // Morph accessing(get overlapped morph) 
@@ -540,7 +653,26 @@ export class Morph extends Node implements MorphInterface{
     // Morph pixel access
     // (answer whether some point is transparent in the morph)
     isTransparentAt(aPoint:Point):boolean{
-        return;
+        let point:Point;
+        let context:CanvasRenderingContext2D;
+        let data;
+        if(this.bounds.containsPoint(aPoint)){
+            if(this.texture){
+                return false;
+            }
+            point = aPoint.subtract(this.bounds.origin);
+            context = this.image.getContext('2d');
+            data = context.getImageData(
+                Math.floor(point.x),
+                Math.floor(point.y),
+                1,
+                1
+            );
+            //if data.data[3]===0, means the point on the morph is transparent
+            //else, means the point on the morph is not transparent 
+            return data.data[3]===0;
+        }
+        return false;
     }
 
     // Morph duplicating(shallow copy without children)
@@ -623,7 +755,13 @@ export class Morph extends Node implements MorphInterface{
     // answer a dictionary specifying where I am right now, so
     // I can slide back to it if I'm dropped somewhere else
     situation():{origin:Morph, position:Point}{
-        return;
+        if(this.parent){
+            return {
+                origin: this.parent as Morph,
+                position: this.position().subtract((this.parent as Morph).position())
+            };
+        }
+        return null;
     }   
 
     // Morph dragging and dropping

@@ -261,9 +261,9 @@ export interface MorphInterface extends NodeInterface{
             color:Color):ShadowMorph;
     
     // Morph shadow(add shadowmorph to a morph)
-    addShadow(off:Point,
-            alpha:number, 
-            color:Color):ShadowMorph;
+    addShadow(off?:Point,
+            alpha?:number, 
+            color?:Color):ShadowMorph;
 
     // Morph shadow(get shadowmorph which belongs to a morph)
     getShadow():ShadowMorph;
@@ -285,7 +285,7 @@ export interface MorphInterface extends NodeInterface{
     // react to a change in one of my children,
     // default is to just pass this message on upwards
     // override this method for Morphs that need to adjust accordingly
-    childChanged():void;
+    childChanged(changedMorph:Morph):void;
     
     // Morph accessing(get worldmorph which contains the morph)
     getWorld():WorldMorph;
