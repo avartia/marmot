@@ -532,7 +532,13 @@ export class Morph extends Node implements MorphInterface{
     addShadow(off:Point,
              a:number, 
              color:Color):ShadowMorph{
-
+        let shadow:ShadowMorph;
+        let offset:Point=off || new Point(7,7);
+        let alpha = a || ((a === 0)? 0: 0.2);
+        shadow = this.shadow(offset,alpha,color);
+        this.addBack(shadow);
+        this.fullChanged();        
+        return shadow;
     }
 
     // Morph shadow(get shadowmorph which belongs to a morph)
