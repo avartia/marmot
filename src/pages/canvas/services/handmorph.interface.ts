@@ -20,6 +20,8 @@ export interface HandMorphInterface{
 
     setWorld(world:WorldMorph):void;
 
+    changed():void;
+
     fullChanged():void;
 
     // HandMorph dragging and dropping:

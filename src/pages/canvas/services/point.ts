@@ -14,7 +14,7 @@ export class Point implements PointInterface{
 
     //Point copying
     copy() : Point{
-        return;
+        return new Point(this.x, this.y);
     }
 
     //Point comparison(==)

@@ -1,13 +1,15 @@
 import { Point } from './point'
 import { RectangleInterface } from './rectangle.interface'
 import { cast } from './shared.function'
+import { RectangleService } from "./rectangle.service";
 
 
 
 export class Rectangle implements RectangleInterface{
 
     constructor(public origin:Point, 
-                public corner:Point) { 
+                public corner:Point,
+                private rectangleService?:RectangleService) { 
     }
 
     // public extent(): Point{
@@ -22,8 +24,10 @@ export class Rectangle implements RectangleInterface{
 
     // Rectangle copying:
     copy():Rectangle{
-        let object = Object.assign({},this);
-        return cast<Rectangle>(object, Rectangle);
+        return this.rectangleService.create(this.left(),
+                                            this.top(),
+                                            this.right(),
+                                            this.bottom());
     }
 
     // Rectangle accessing - setting:
@@ -106,7 +110,7 @@ export class Rectangle implements RectangleInterface{
 	}
 
     topLeft():Point{
-		return;
+		return this.origin;
 	}
 
     topRight():Point{
@@ -153,14 +157,17 @@ export class Rectangle implements RectangleInterface{
 
     //Get the intersect part of two Rectangles
     intersect(aRect:Rectangle):Rectangle{
-        let origin:Point=this.origin.max(aRect.origin);
-        let corner:Point=this.corner.min(aRect.corner);
-		return new Rectangle(origin,corner);
+        let o:Point=this.origin.max(aRect.origin);
+        let c:Point=this.corner.min(aRect.corner);
+        return this.rectangleService.create(o.x, o.y, c.x, c.y);
 	}
 
     //Get the Rectangle that can contain these to Rectangle
     merge(aRect:Rectangle):Rectangle{
-		return;
+		let result = this.rectangleService.create();
+        result.origin = this.origin.min(aRect.origin);
+        result.corner = this.corner.max(aRect.corner);
+        return result;
 	}
 
     //expand the rectangle that can contain aRect
@@ -184,7 +191,12 @@ export class Rectangle implements RectangleInterface{
 
     //whether this rectangle can contain aPoint
     containsPoint(aPoint:Point):boolean{
-		return;
+		if(aPoint.ge(this.origin) && aPoint.le(this.corner)){
+            return true;
+        }
+        else{
+            return false;
+        }
 	}
 
     //whether this rectangle can contain aRect
@@ -229,7 +241,7 @@ export class Rectangle implements RectangleInterface{
     translateBy(factor:number|Point):Rectangle{     
         let o = this.origin.add(factor);
         let c = this.corner.add(factor);
-		return new Rectangle(o, c);
+		return this.rectangleService.create(o.x, o.y, c.x, c.y);
 	}
 
     // Rectangle converting:

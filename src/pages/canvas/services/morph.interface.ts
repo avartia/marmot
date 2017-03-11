@@ -261,9 +261,9 @@ export interface MorphInterface extends NodeInterface{
             color:Color):ShadowMorph;
     
     // Morph shadow(add shadowmorph to a morph)
-    addShadow(off:Point,
-            alpha:number, 
-            color:Color):ShadowMorph;
+    addShadow(off?:Point,
+            alpha?:number, 
+            color?:Color):ShadowMorph;
 
     // Morph shadow(get shadowmorph which belongs to a morph)
     getShadow():ShadowMorph;

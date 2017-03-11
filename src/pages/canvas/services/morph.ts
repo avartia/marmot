@@ -452,9 +452,9 @@ export class Morph extends Node implements MorphInterface{
     }
     
     // Morph shadow(add shadowmorph to a morph)
-    addShadow(off:Point,
-             alpha:number, 
-             color:Color):ShadowMorph{
+    addShadow(off?:Point,
+             alpha?:number, 
+             color?:Color):ShadowMorph{
         return;
     }
 

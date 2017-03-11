@@ -17,24 +17,29 @@ export class Node implements NodeInterface {
 
     // Add a child at the end of the children list
     addChild(aNode:Node):void{
-      
+        this.children.push(aNode);
+        aNode.parent = this;
     }
 
     // Add a child at the top of the children list
     addChildFirst(aNode:Node):void{
-
+        this.children.splice(0, 0, aNode);
+        aNode.parent = this;
     }
 
     // remove a child 
     removeChild(aNode:Node):void{
-
+        let index = this.children.indexOf(aNode);
+        if (index !== -1){
+            this.children.splice(index, 1);
+        }
     }
 
     // Node functions:
 
     //find the root of the current Node
     root():Node{
-        if(this.parent==null)
+        if(this.parent === null)
             return this;
         return this.parent.root();
     }
@@ -46,7 +51,13 @@ export class Node implements NodeInterface {
 
     //return all children including current Node
     allChildren():Node[]{
-        return;
+        let result = [];
+        result.push(this);
+        this.children.forEach(child => {
+                result = result.concat(child.allChildren());
+            }
+        )
+        return result;
     }
 
     //apply aFunction to all descentants of the current Node include itself
@@ -66,7 +77,12 @@ export class Node implements NodeInterface {
 
     //Get all ancesters of the Node including itself
     allAncesters():Node[]{
-        return;
+        let result = [];
+        result.push(this);
+        if (this.parent !== null){
+            result = result.concat(this.parent.allAncesters());
+        }
+        return result;
     }
 
     //Get all siblings of the Node

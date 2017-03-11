@@ -37,7 +37,7 @@ FrameMorph
     constructor
     topMorphAt
     reactToGrabOf
-
+    reactToDropOf
     
 edward 
 
