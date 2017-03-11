@@ -57,18 +57,30 @@ export class FrameMorph extends Morph implements FrameMorphInterface{
 
   // FrameMorph navigation:
   topMorphAt(point:Point):Morph{
-    return
+    let i:number;
+    let result:Morph;
+    if (!(this.isVisible && this.bounds.containsPoint(point))) {
+        return null;
+    }
+    for (i = this.children.length - 1; i >= 0; i -= 1) {
+        result = (this.children[i] as Morph).topMorphAt(point);
+        if (result) {return result; }
+    }
+    return this.noticesTransparentClick ||
+        !this.isTransparentAt(point) ? this : null;
   }
 
   // FrameMorph scrolling support:
-  adjustBounds():void{
+  adjustBounds():void{     
   }
 
   // FrameMorph dragging & dropping of contents:
   reactToDropOf():void{
+      this.adjustBounds();
   }
 
   reactToGrabOf():void{
+      this.adjustBounds();
   }
   
 

@@ -285,7 +285,7 @@ export interface MorphInterface extends NodeInterface{
     // react to a change in one of my children,
     // default is to just pass this message on upwards
     // override this method for Morphs that need to adjust accordingly
-    childChanged():void;
+    childChanged(changedMorph:Morph):void;
     
     // Morph accessing(get worldmorph which contains the morph)
     getWorld():WorldMorph;
