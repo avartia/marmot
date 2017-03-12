@@ -1,11 +1,11 @@
-import { HandMorphInterface } from './handmorph.interface'
+import { HandMorphInterface, GesTureEvent } from './handmorph.interface'
 import { Point } from './point'
 import { Morph } from './morph'
 import { WorldMorph } from './worldmorph'
 import { Rectangle } from "./rectangle";
 import { Color } from "./color";
 import { FrameMorph } from "./framemorph";
-
+import { getDocumentPositionOf } from './shared.function'
 export class HandMorph extends Morph implements HandMorphInterface{
 
     public morphToGrab:Morph;
@@ -79,7 +79,7 @@ export class HandMorph extends Morph implements HandMorphInterface{
             this.children = [];
             this.setExtent(new Point(), false);
             if((target as FrameMorph).reactToDropOf){
-                (target as FrameMorph).reactToDropOf(morphToDrop, this);
+                (target as FrameMorph).reactToDropOf();
             }
         }
     }
@@ -91,15 +91,72 @@ export class HandMorph extends Morph implements HandMorphInterface{
         return target;
     }
 
-    processTouchStart(event:Event):void{
-        
+    processPanStart(event:GesTureEvent):void{
+        let morph:Morph;
+        let action:string;
+
+        this.morphToGrab = null;
+        this.grabPosition = null;
+        this.bounds.corner = this.bounds.origin = event.center;
+        morph = this.morphAtPointer(); 
+
+        this.morphToGrab = morph.rootForGrab();
+        this.grabPosition = this.bounds.origin.copy();
+        action = "processPanStart";
+        while(!morph[action]){
+            morph = morph.parent as Morph;
+        }     
+        morph[action](this.bounds.origin);
     }
 
-    processTouchMove(event:Event):void{
+    processPanMove(event:GesTureEvent):void{
+        let pos:Point;
+        let posInDocument = getDocumentPositionOf(this.myWorld.worldCanvas);
+        let topMorph:Morph;
+        let morph:Morph;
+        pos = new Point(
+            event.center.x - posInDocument.x,
+            event.center.y - posInDocument.y
+        );
 
+        this.setPosition(pos);
+
+        if(this.children.length === 0){
+            topMorph = this.morphAtPointer();
+            morph = topMorph.rootForGrab();
+
+            if(this.morphToGrab !== null){
+                if(this.morphToGrab.isDraggable === true){
+                    morph = this.morphToGrab;
+                    this.grab(morph);
+                }
+                else if (this.morphToGrab.isTemplate){
+                    morph = this.morphToGrab.fullCopy();
+                    morph.isTemplate = false;
+                    morph.isDraggable = true;
+                    
+                    this.grab(morph);
+                    this.grabOrigin = this.morphToGrab.situation();
+                }
+                this.setPosition(pos);
+            }
+        }
     }
 
-    processTouchEnd(event:Event):void{
-      
+    processPanEnd(event:GesTureEvent):void{
+        let morph = this.morphAtPointer();
+        let action:string;
+        if(this.children.length !== 0){
+            this.drop();
+        }
+        else{
+            action = "processPanEnd";
+            while(!morph[action]){
+                morph = morph.parent as Morph;
+            }     
+            morph[action](this.bounds.origin);
+        }
     }
 }
+
+

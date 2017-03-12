@@ -111,15 +111,15 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
 
         this.canvasGesture.on('panstart', (event) => {
             console.log("panstart");
-            myself.hand.processTouchStart(event);
+            myself.hand.processPanStart(event);
         });
         this.canvasGesture.on('panmove', (event) => {
             console.log("panmove");            
-            myself.hand.processTouchMove(event);
+            myself.hand.processPanMove(event);
         });
         this.canvasGesture.on('panend', (event) => {
             console.log("panend");            
-            myself.hand.processTouchEnd(event);
+            myself.hand.processPanEnd(event);
         });    
         this.canvasGesture.on('panup', (event) => {
 

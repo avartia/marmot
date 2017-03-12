@@ -19,6 +19,7 @@ export class PenMorph extends Morph implements PenMorphInterface{
       this.size=1;
       this.penBounds=null;
       this.drawNew();
+      this.isDraggable = true;
       //this.setExtent(new Point(size, size));
   }
 

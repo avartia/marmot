@@ -40,8 +40,7 @@ export class Morph extends Node implements MorphInterface{
     static trackChanges=true;
     static shadowBlur=4;
 
-    constructor(
-                color?: Color, 
+    constructor(color?: Color, 
                 bounds?: Rectangle,
                 isDraw?:boolean,
                 private shadowMorphService?:ShadowMorphService
@@ -529,9 +528,9 @@ export class Morph extends Node implements MorphInterface{
     }
     
     // Morph shadow(add shadowmorph to a morph)
-    addShadow(off:Point,
-             a:number, 
-             color:Color):ShadowMorph{
+    addShadow(off?:Point,
+              a?:number, 
+              color?:Color):ShadowMorph{
         let shadow:ShadowMorph;
         let offset:Point=off || new Point(7,7);
         let alpha = a || ((a === 0)? 0: 0.2);

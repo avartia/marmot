@@ -28,15 +28,19 @@ export interface HandMorphInterface{
     grab(aMorph:Morph):void;
 
     // HandMorph event dispatching:
-    processTouchStart(event:Event):void;
+    processPanStart(event:GesTureEvent):void;
 
-    processTouchMove(event:Event):void;
+    processPanMove(event:GesTureEvent):void;
 
-    processTouchEnd(event:Event):void;
+    processPanEnd(event:GesTureEvent):void;
 }
 
 export interface HandMorphServiceInterface{
 
     //public methods of HandMorphService
     create(): HandMorph;
+}
+
+export interface GesTureEvent{
+    center:Point;
 }
