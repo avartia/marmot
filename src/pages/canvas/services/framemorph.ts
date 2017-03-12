@@ -11,31 +11,29 @@ export class FrameMorph extends Morph implements FrameMorphInterface{
 
   constructor(color:Color,
               bounds:Rectangle) { 
-    super(color, bounds);
-    this.scrollFrame=null;
-    this.color=color;
-    this.drawNew();
-    this.acceptsDrops=true;
-
- 
+        super(color, bounds);
+        this.scrollFrame=null;
+        this.color=color;
+        this.drawNew();
+        this.acceptsDrops=true;
   }
   setScrollFrame(aScrollFrame:ScrollFrameMorphInterface):void{
-    this.scrollFrame=aScrollFrame;
-    this.isDraggable = false;
-    this.noticesTransparentClick = false;
-    this.alpha = 0;
+        this.scrollFrame=aScrollFrame;
+        this.isDraggable = false;
+        this.noticesTransparentClick = false;
+        this.alpha = 0;
   }
   fullBounds():Rectangle{
-    var shadow = this.getShadow() as ShadowMorph;
-    if (shadow !== null) {
-        return this.bounds.merge(shadow.bounds);
-    }
-    return this.bounds;
+        var shadow = this.getShadow() as ShadowMorph;
+        if (shadow !== null) {
+            return this.bounds.merge(shadow.bounds);
+        }
+        return this.bounds;
   }
 
   // use only for shadows
   fullImage():HTMLCanvasElement{
-    return
+        return;
   }
 
   fullDrawOn(aCanvas:HTMLCanvasElement,

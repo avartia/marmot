@@ -13,7 +13,7 @@ export class HandMorphService implements HandMorphServiceInterface{
    }
 
   create(): HandMorph{
-      let bounds = this.rectangleService.create(0, 0, 50, 40);
+      let bounds = this.rectangleService.create(0, 0, 0, 0);
       let color = new Color(80, 80, 80);
       return new HandMorph(color, bounds);
   }

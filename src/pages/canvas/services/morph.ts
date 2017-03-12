@@ -85,25 +85,25 @@ export class Morph extends Node implements MorphInterface{
 
     }
     public setWidth(width:number):void{
-
+        this.setExtent(new Point(width || 0, this.height()), false);
     }
 
-    public setHeight(width:number):void{
-
+    public setHeight(height:number):void{
+        this.setExtent(new Point(this.width(), height || 0), false);
     }
 
     public setExtent(extentPoint:Point, 
                      silently:boolean):void{
         if (silently) {
-        this.silentSetExtent(extentPoint);
-        return;
-    }
-    if (!extentPoint.equal(this.extent())) {
-        this.changed();
-        this.silentSetExtent(extentPoint);
-        this.changed();
-        this.drawNew();
-    }
+            this.silentSetExtent(extentPoint);
+            return;
+        }
+        if (!extentPoint.equal(this.extent())) {
+            this.changed();
+            this.silentSetExtent(extentPoint);
+            this.changed();
+            this.drawNew();
+        }
     }
 
     public fullDrawOn(otherCanvas:HTMLCanvasElement,
@@ -222,7 +222,7 @@ export class Morph extends Node implements MorphInterface{
 
     // Morph accessing(get height of morph bound)
     height():number{
-        return;
+        return this.bounds.height();
     }
 
     // Morph accessing(get morph bound with its children)
@@ -244,7 +244,18 @@ export class Morph extends Node implements MorphInterface{
 
     // Morph accessing(get morph bound itself intersected by all parents' framemorphs)
     visibleBounds():Rectangle{
-        return;
+        let visible = this.bounds;
+        let frames:Morph[] = this.allAncesters().filter(
+            ancester => 
+            {
+                return ancester.constructor.name === "FrameMorph" ||
+                       ancester.constructor.name === "WorldMorph";
+            }
+        ) as Morph[];
+        frames.forEach(
+            frame => visible = visible.intersect(frame.bounds)
+        );
+        return visible;
     }
 
     // Morph accessing(move morph with recording changes)
@@ -394,21 +405,21 @@ export class Morph extends Node implements MorphInterface{
             h = Math.min(src.height(), pic.height - st);
 
             if (w < 1 || h < 1) {
-            return null;
-        }
+                return null;
+            }
 
-        context.drawImage(
-            pic,
-            sl,
-            st,
-            w,
-            h,
-            area.left(),
-            area.top(),
-            w,
-            h
-        );
-    }
+            context.drawImage(
+                pic,
+                sl,
+                st,
+                w,
+                h,
+                area.left(),
+                area.top(),
+                w,
+                h
+            );
+        }
     }
 
     // Morph displaying(hide a morph with its children)
@@ -538,12 +549,25 @@ export class Morph extends Node implements MorphInterface{
 
     // Morph shadow(get shadowmorph which belongs to a morph)
     getShadow():ShadowMorphInterface{
-        return;
+        let shadows;
+        shadows = this.children.slice(0).reverse().filter(
+            function(child) {
+                return child.constructor.name ===  "ShadowMorph";
+            }
+        );
+        if (shadows.length !== 0) {
+            return shadows[0];
+        }
+        return null;
     }
 
     // Morph shadow(remove shadowmorph which belongs to a morph)
     removeShadow():void{
-
+        let shadow:any = this.getShadow();
+        if(shadow !== null){
+            this.fullChanged();
+            this.removeChild(shadow);
+        }
     }
     
     // Morph pen trails

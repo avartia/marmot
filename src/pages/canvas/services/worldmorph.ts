@@ -34,8 +34,8 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
         
         this.hand = hand;
         this.hand.setWorld(this);
-        this.drawNew();
         this.fillPage();
+        this.drawNew();
         this.initEventListeners();
         this.createPenMorph();
 
@@ -54,15 +54,11 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
 
     private updateBroken(): void{
         let myself = this;
-        // this.condenseDamages();
+        this.condenseDamages();
         this.broken.forEach((rect:Rectangle) => {
             myself.fullDrawOn(this.worldCanvas, rect);
         })
-        console.log(this.broken);
-        console.log("-------------");
-        this.broken = [];
-        console.log(this.broken);
-        console.log("-------------");        
+        this.broken = [];    
     }
 
     // collapse clustered damaged rectangles into their unions,
@@ -154,10 +150,10 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
     }
 
     private createPenMorph():void{
-        this.broken.push(this.rectangleService.create(0,
-                                                      0,
-                                                      60,
-                                                      60));
+        // this.broken.push(this.rectangleService.create(0,
+        //                                               0,
+        //                                               60,
+        //                                               60));
         let pen = this.penMorphService.create();
         this.children.push(pen);
         pen.parent = this;

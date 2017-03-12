@@ -19,7 +19,7 @@ export class HandMorph extends Morph implements HandMorphInterface{
     
     constructor(color:Color,
                 bounds: Rectangle) { 
-        super(color, bounds, true);
+        super(color, bounds, false);
         this.morphToGrab = null;
         this.grabPosition = null;
         this.grabOrigin = null;
