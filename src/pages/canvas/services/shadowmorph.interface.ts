@@ -4,7 +4,7 @@ import { ShadowMorph } from "./shadowmorph";
 export interface ShadowMorphInterface{
   //public intance member and public intance methods of ShadowMorph Class
 
-  topMorphAt():void;
+    topMorphAt():void;
 }
 
 export interface ShadowMorphServiceInterface{

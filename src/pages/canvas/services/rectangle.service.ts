@@ -7,7 +7,7 @@ import {Point} from './point'
 @Injectable()
 export class RectangleService implements RectangleServiceInterface{
 
-  constructor(private rectangleService:RectangleService) {
+  constructor() {
 
    }
 
@@ -19,8 +19,7 @@ export class RectangleService implements RectangleServiceInterface{
     let corner:Point= new Point(right,bottom);
 
      return new Rectangle(origin,
-                          corner,
-                          this.rectangleService);
+                          corner);
   }
 
 

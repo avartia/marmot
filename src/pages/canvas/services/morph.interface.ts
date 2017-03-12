@@ -5,7 +5,8 @@ import {MenuMorph} from './menumorph'
 import {Point} from './point'
 import {ShadowMorph} from './shadowmorph'
 import {WorldMorph} from './worldmorph'
-import {Morph} from './morph'
+import { Morph } from './morph'
+import { ShadowMorphInterface } from "./shadowmorph.interface";
 
 // Morph Class
 
@@ -258,15 +259,15 @@ export interface MorphInterface extends NodeInterface{
     // Morph shadow(create and set shadow morph)
     shadow(off:Point,
             alpha:number, 
-            color:Color):ShadowMorph;
+            color:Color):ShadowMorphInterface;
     
     // Morph shadow(add shadowmorph to a morph)
     addShadow(off?:Point,
             alpha?:number, 
-            color?:Color):ShadowMorph;
+            color?:Color):ShadowMorphInterface;
 
     // Morph shadow(get shadowmorph which belongs to a morph)
-    getShadow():ShadowMorph;
+    getShadow():ShadowMorphInterface;
 
     // Morph shadow(remove shadowmorph which belongs to a morph)
     removeShadow():void;

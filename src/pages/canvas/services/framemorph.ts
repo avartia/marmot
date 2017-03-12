@@ -1,13 +1,13 @@
 import {FrameMorphInterface} from './framemorph.interface'
 import {Morph} from './morph'
-import {ScrollFrameMorph} from './scrollframemorph'
 import {Rectangle} from './rectangle'
 import {Point} from './point'
 import { Color } from './color'
 import { ShadowMorph } from "./shadowmorph";
+import { ScrollFrameMorphInterface } from "./scrollframemorph.interface";
 
 export class FrameMorph extends Morph implements FrameMorphInterface{
-  public scrollFrame:ScrollFrameMorph;
+  public scrollFrame:ScrollFrameMorphInterface;
 
   constructor(color:Color,
               bounds:Rectangle) { 
@@ -19,14 +19,14 @@ export class FrameMorph extends Morph implements FrameMorphInterface{
 
  
   }
-  setScrollFrame(aScrollFrame:ScrollFrameMorph):void{
+  setScrollFrame(aScrollFrame:ScrollFrameMorphInterface):void{
     this.scrollFrame=aScrollFrame;
     this.isDraggable = false;
     this.noticesTransparentClick = false;
     this.alpha = 0;
   }
   fullBounds():Rectangle{
-    var shadow = this.getShadow();
+    var shadow = this.getShadow() as ShadowMorph;
     if (shadow !== null) {
         return this.bounds.merge(shadow.bounds);
     }

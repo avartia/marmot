@@ -24,10 +24,7 @@ export class Rectangle implements RectangleInterface{
 
     // Rectangle copying:
     copy():Rectangle{
-        return this.rectangleService.create(this.left(),
-                                            this.top(),
-                                            this.right(),
-                                            this.bottom());
+        return new Rectangle(this.origin.copy(), this.corner.copy());
     }
 
     // Rectangle accessing - setting:
@@ -159,12 +156,12 @@ export class Rectangle implements RectangleInterface{
     intersect(aRect:Rectangle):Rectangle{
         let o:Point=this.origin.max(aRect.origin);
         let c:Point=this.corner.min(aRect.corner);
-        return this.rectangleService.create(o.x, o.y, c.x, c.y);
+        return new Rectangle(o, c);
 	}
 
     //Get the Rectangle that can contain these to Rectangle
     merge(aRect:Rectangle):Rectangle{
-		let result = this.rectangleService.create();
+		let result = new Rectangle(null, null);
         result.origin = this.origin.min(aRect.origin);
         result.corner = this.corner.max(aRect.corner);
         return result;
@@ -241,7 +238,7 @@ export class Rectangle implements RectangleInterface{
     translateBy(factor:number|Point):Rectangle{     
         let o = this.origin.add(factor);
         let c = this.corner.add(factor);
-		return this.rectangleService.create(o.x, o.y, c.x, c.y);
+		return new Rectangle(o, c);
 	}
 
     // Rectangle converting:

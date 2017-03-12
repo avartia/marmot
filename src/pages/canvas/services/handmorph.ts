@@ -6,6 +6,7 @@ import { Rectangle } from "./rectangle";
 import { Color } from "./color";
 import { FrameMorph } from "./framemorph";
 import { getDocumentPositionOf } from './shared.function'
+import { ShadowMorph } from "./shadowmorph";
 export class HandMorph extends Morph implements HandMorphInterface{
 
     public morphToGrab:Morph;
@@ -16,8 +17,9 @@ export class HandMorph extends Morph implements HandMorphInterface{
 
     private grabOrigin: {origin:Morph, position:Point};
     
-    constructor(bounds: Rectangle) { 
-        super(null, bounds, false);
+    constructor(color:Color,
+                bounds: Rectangle) { 
+        super(color, bounds, true);
         this.morphToGrab = null;
         this.grabPosition = null;
         this.grabOrigin = null;
@@ -48,12 +50,16 @@ export class HandMorph extends Morph implements HandMorphInterface{
 
     grab(aMorph:Morph):void{
         let oldParent = aMorph.parent;
+        let shadow:ShadowMorph;
         if(aMorph instanceof WorldMorph){
             return;
         }
         if(this.children.length === 0){
             this.grabOrigin = aMorph.situation();
-            aMorph.addShadow();
+            shadow = aMorph.addShadow() as ShadowMorph;
+            this.addBack(shadow);
+            this.fullChanged();
+             
             aMorph.cachedFullImage = aMorph.fullImageClassic();
             aMorph.cachedFullBounds = aMorph.fullBounds();
             this.add(aMorph);
@@ -97,7 +103,13 @@ export class HandMorph extends Morph implements HandMorphInterface{
 
         this.morphToGrab = null;
         this.grabPosition = null;
-        this.bounds.corner = this.bounds.origin = event.center;
+
+        let position = event.center;
+        this.bounds.origin.x = event.center.x;
+        this.bounds.origin.y = event.center.y;
+        this.bounds.corner.x = event.center.x;
+        this.bounds.corner.y = event.center.y;        
+
         morph = this.morphAtPointer(); 
 
         this.morphToGrab = morph.rootForGrab();

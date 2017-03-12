@@ -1,17 +1,16 @@
-import {Node} from './node'
-import {MorphInterface} from './morph.interface'
-import {Rectangle} from './rectangle'
-import {RectangleService} from './rectangle.service'
-import {Color} from "./color"
-import {MenuMorph} from './menumorph'
-import {Point} from './point'
-import {ShadowMorph} from './shadowmorph'
-import {WorldMorph} from './worldmorph'
+import { Node } from './node'
+import { MorphInterface} from './morph.interface'
+import { Rectangle} from './rectangle'
+import { RectangleService} from './rectangle.service'
+import { Color} from "./color"
+import { MenuMorph} from './menumorph'
+import { Point} from './point'
+import { WorldMorph} from './worldmorph'
 import { HandMorph } from './handmorph'
 import { newCanvas } from "./shared.function";
-import { ScrollFrameMorph } from "./scrollframemorph";
 import { FrameMorph } from "./framemorph";
-import {ShadowMorphService} from './shadowmorph.service';
+import { ShadowMorphService } from './shadowmorph.service';
+import { ShadowMorphInterface } from "./shadowmorph.interface";
 
 
 export class Morph extends Node implements MorphInterface{
@@ -506,7 +505,7 @@ export class Morph extends Node implements MorphInterface{
     // Morph shadow(create and set shadow morph)
     shadow(off:Point,
            a:number, 
-           color:Color):ShadowMorph{
+           color:Color):ShadowMorphInterface{
         let shadow = this.shadowMorphService.create();
         let offset:Point= off || new Point(7, 7);
         let alpha:number = a || ((a === 0) ? 0 : 0.2);
@@ -530,18 +529,16 @@ export class Morph extends Node implements MorphInterface{
     // Morph shadow(add shadowmorph to a morph)
     addShadow(off?:Point,
               a?:number, 
-              color?:Color):ShadowMorph{
-        let shadow:ShadowMorph;
+              color?:Color):ShadowMorphInterface{
+        let shadow:ShadowMorphInterface;
         let offset:Point=off || new Point(7,7);
         let alpha = a || ((a === 0)? 0: 0.2);
-        shadow = this.shadow(offset,alpha,color);
-        this.addBack(shadow);
-        this.fullChanged();        
+        shadow = this.shadow(offset,alpha,color);   
         return shadow;
     }
 
     // Morph shadow(get shadowmorph which belongs to a morph)
-    getShadow():ShadowMorph{
+    getShadow():ShadowMorphInterface{
         return;
     }
 
@@ -655,6 +652,7 @@ export class Morph extends Node implements MorphInterface{
         let point:Point;
         let context:CanvasRenderingContext2D;
         let data;
+
         if(this.bounds.containsPoint(aPoint)){
             if(this.texture){
                 return false;
@@ -667,6 +665,24 @@ export class Morph extends Node implements MorphInterface{
                 1,
                 1
             );
+
+            // let i = 0;
+            // let j = 0;
+    
+            // for(i = 0;i < this.image.width;i ++){
+            //     for(j = 0;j < this.image.height;j ++){
+            //             console.log("i:" + i + " j:" + j + " " + context.getImageData(
+            //               i,
+            //               j,
+            //               1,
+            //               1
+            //                ).data);
+            //     }
+            // }
+            console.log(point);
+            console.log(data);
+
+
             //if data.data[3]===0, means the point on the morph is transparent
             //else, means the point on the morph is not transparent 
             return data.data[3]===0;
@@ -717,15 +733,15 @@ export class Morph extends Node implements MorphInterface{
     // Morph dragging and dropping
     // get root morph which contains dragging morph
     rootForGrab():Morph{
-        if ((this as Morph) instanceof ShadowMorph ){
+        if (this.constructor.name === "ShadowMorph" ){
             return (this.parent as Morph).rootForGrab();
         }
-        if (this instanceof ScrollFrameMorph){
+        if (this.constructor.name === "ScrollFrameMorph"){
             return this.parent as Morph;
         }
         if (this.parent === null ||
-            this instanceof WorldMorph ||
-            this instanceof FrameMorph ||
+            this.constructor.name === "WorldMorph" ||
+            this.constructor.name === "FrameMorph" ||
             this.isDraggable === true){
             return this;
         }

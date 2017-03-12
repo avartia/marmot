@@ -1,8 +1,8 @@
 import {Morph} from './morph'
 import {FrameMorph} from './framemorph'
-import {ScrollFrameMorph} from './scrollframemorph'
 import {Rectangle} from './rectangle'
-import {Point} from './point'
+import { Point } from './point'
+import { ScrollFrameMorphInterface } from "./scrollframemorph.interface";
 
 // FrameMorph Class
 // I clip my submorphs at my bounds
@@ -11,7 +11,7 @@ import {Point} from './point'
 export interface FrameMorphInterface{
     // public intance member and public intance methods of FrameMorph Class
 
-    scrollFrame:ScrollFrameMorph;
+    scrollFrame:ScrollFrameMorphInterface;
 
     fullBounds():Rectangle;
 

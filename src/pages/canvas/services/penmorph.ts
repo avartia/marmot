@@ -76,8 +76,7 @@ export class PenMorph extends Morph implements PenMorphInterface{
     context.strokeStyle = 'black';
     context.lineWidth = 1;
     context.stroke();
-    context.fill();   
-
+    context.fill();  
   }
 
     
