@@ -5,6 +5,7 @@ import { newCanvas } from './shared.function'
 import { RectangleService } from './rectangle.service'
 import { Point } from './point'
 import { Color } from "./color";
+import { ShadowMorphService } from "./shadowmorph.service";
 
 export class PenMorph extends Morph implements PenMorphInterface{
   private heading:number;
@@ -13,8 +14,9 @@ export class PenMorph extends Morph implements PenMorphInterface{
 
   constructor(bounds:Rectangle,
               color: Color,
+              shadowMorphService?:ShadowMorphService,
               private rectangleService?:RectangleService) { 
-      super(color, bounds, false);
+      super(color, bounds, false, shadowMorphService);
       this.heading=0;
       this.size=1;
       this.penBounds=null;

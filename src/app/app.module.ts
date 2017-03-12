@@ -13,6 +13,7 @@ import { HandMorphService } from '../pages/canvas/services/handmorph.service'
 import { MorphService } from '../pages/canvas/services/morph.service'
 import { PenMorphService } from '../pages/canvas/services/penmorph.service'
 import { RectangleService } from '../pages/canvas/services/rectangle.service'
+import { ShadowMorphService } from '../pages/canvas/services/shadowmorph.service'
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { RectangleService } from '../pages/canvas/services/rectangle.service'
               HandMorphService,
               MorphService,
               PenMorphService,
-              RectangleService]
+              RectangleService,
+              ShadowMorphService]
 })
 export class AppModule {}

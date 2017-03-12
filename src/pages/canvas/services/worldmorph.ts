@@ -54,10 +54,15 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
 
     private updateBroken(): void{
         let myself = this;
-        this.condenseDamages();
+        // this.condenseDamages();
         this.broken.forEach((rect:Rectangle) => {
             myself.fullDrawOn(this.worldCanvas, rect);
         })
+        console.log(this.broken);
+        console.log("-------------");
+        this.broken = [];
+        console.log(this.broken);
+        console.log("-------------");        
     }
 
     // collapse clustered damaged rectangles into their unions,
@@ -155,7 +160,15 @@ export class WorldMorph extends FrameMorph implements WorldMorphInterface
                                                       60));
         let pen = this.penMorphService.create();
         this.children.push(pen);
+        pen.parent = this;
+    }
+
+    public processPanStart(aPoint:Point){
 
     }
+
+    public processPanEnd(aPoint:Point){
+
+    }   
     
 }

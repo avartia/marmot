@@ -57,8 +57,8 @@ export class HandMorph extends Morph implements HandMorphInterface{
         if(this.children.length === 0){
             this.grabOrigin = aMorph.situation();
             shadow = aMorph.addShadow() as ShadowMorph;
-            this.addBack(shadow);
-            this.fullChanged();
+            aMorph.addBack(shadow);
+            aMorph.fullChanged();
              
             aMorph.cachedFullImage = aMorph.fullImageClassic();
             aMorph.cachedFullBounds = aMorph.fullBounds();

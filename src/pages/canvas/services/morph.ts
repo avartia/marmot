@@ -36,9 +36,6 @@ export class Morph extends Node implements MorphInterface{
     public noticesTransparentClick:boolean;
     public customContextMenu:MenuMorph;
 
-    static trackChanges=true;
-    static shadowBlur=4;
-
     constructor(color?: Color, 
                 bounds?: Rectangle,
                 isDraw?:boolean,
@@ -51,6 +48,8 @@ export class Morph extends Node implements MorphInterface{
         this.bounds= bounds;
         this.color = color;
         this.cachedFullBounds=null;
+        this.trackChanges = true;
+        this.shadowBlur = 4;
         this.noticesTransparentClick=false;//????????????????
         if (isDraw === true) {
             this.drawNew();
